@@ -126,6 +126,17 @@ window.VtmCreatorGuides = (function () {
   // ── details from the books, opened on demand ──
   // A <details> whose body is an entity as printed, its book loaded when first opened.
   const E = () => window.VtmEntity;
+  // Is a book one this character draws on? The core always; another official book unless step 0's
+  // Sources turned it off (meta.books: the official books on; none set = every one); a third-party
+  // book only when its options were taken and acknowledged there.
+  const ALWAYS = ['core', 'players-guide', 'base', 'errata'];   // the walk itself reads the core and the Players Guide
+  function bookOn(meta, id) {
+    const m = meta || {};
+    const b = D.indexBook(id) || {};
+    if (ALWAYS.indexOf(id) !== -1) return true;
+    if (b.shelf === 'third-party') return !!(m.thirdParty && m.ack && (m.sources || []).indexOf(id) !== -1);
+    return !m.books || m.books.indexOf(id) !== -1;
+  }
   function detailsOf(summary, id, book, extra) {
     const box = el('details', { class: 'book-details' }, [el('summary', {}, summary)]);
     let filled = false;
@@ -174,7 +185,7 @@ window.VtmCreatorGuides = (function () {
       ]));
       if (ent) card.appendChild(detailsOf(['About ' + r.Discipline], ent.id, ent.book));
       if (r.Discipline && (+r.Dots || 0) > 0) {
-        const avail = Sheet.powersFor(r.Discipline, +r.Dots).filter((x) => x.kind === 'power' || x.kind === 'ritual');
+        const avail = Sheet.powersFor(r.Discipline, +r.Dots).filter((x) => (x.kind === 'power' || x.kind === 'ritual') && bookOn(ctx.meta, x.book));
         const byLevel = {};
         avail.forEach((x) => { const l = D.levelNumber(x) || 0; (byLevel[l] = byLevel[l] || []).push(x); });
         const taken = new Set(r.Powers);
@@ -247,7 +258,8 @@ window.VtmCreatorGuides = (function () {
     const lore = ctx.meta.lore || {};
     const loreOn = !!(lore.on && lore.ack);
     const recs = D.records();
-    const cat = advantageCatalogue().concat(loreOn ? recs.filter((r) => r.kind === 'loresheet').map((r) => ({ r, name: r.name, kind: 'Loresheet', books: [r.book], parent: '', choices: [], dots: '' })) : []);
+    const cat = advantageCatalogue().concat(loreOn ? recs.filter((r) => r.kind === 'loresheet').map((r) => ({ r, name: r.name, kind: 'Loresheet', books: [r.book], parent: '', choices: [], dots: '' })) : [])
+      .map((x) => Object.assign({}, x, { books: x.books.filter((b) => bookOn(ctx.meta, b)) })).filter((x) => x.books.length);
     const kinds = ['all', 'Merit', 'Background', 'Flaw'].concat(loreOn ? ['Loresheet'] : []);
     if (kinds.indexOf(advKind) === -1) advKind = 'all';
     const bookIds = D.books().map((b) => b.id).filter((id) => cat.some((x) => x.books.indexOf(id) !== -1));
@@ -424,12 +436,13 @@ window.VtmCreatorGuides = (function () {
   function advantageOption(t) {
     const flaw = /\bFlaw\b/.test(t);
     let dots = dotsIn(t);
-    const w = /\b(one|two|three|four|five) dots? of (?:the )?(.+?)(?: Background)?$/i.exec(t);
+    const w = /\b(one|two|three|four|five) (?:additional )?dots? of (?:the )?(.+?)(?: Background)?$/i.exec(t);   // "two additional dots of migrating Herd"
     if (!dots && w) dots = num(w[1]);
     let name;
     if (w && !dotsIn(t)) name = w[2].replace(/^either\s+/i, '');
     else {
-      const s = t.replace(/^(?:Gain\s+)?(?:either\s+)?(?:the\s+)?/i, '');
+      // "Gain the Flaw Prey Exclusion (locals)", "Gain an Adversary (••)": the article and the kind are not the name
+      const s = t.replace(/^(?:Gain\s+)?(?:either\s+)?(?:the\s+|an?\s+)?(?:(?:Merit|Flaw|Background|Advantage)\s+(?=[A-Z]))?/i, '');
       // the words before the printed dots ("Dark Secret (Mortal Ties)", "Feeding Merit: Iron Gullet")
       const before = s.split(/\s*\(?[•●]/)[0].replace(/:\s*$/, '').trim();
       // the words after them: a name ("Beautiful", "Prey Exclusion (mortals)"), not a description
@@ -443,12 +456,19 @@ window.VtmCreatorGuides = (function () {
       else name = bare || s;
       name = name.replace(/\s*\b(Feeding|Mythic|Looks|Haven|Retainer|Mask)?\s*(Merit|Flaw|Advantage)\s*$/i, '').replace(/[•●]/g, '').replace(/\(\s*\)/g, '').replace(/^one\s+\w+\s+Flaw$/i, '').replace(/\s+/g, ' ').trim();
     }
-    return { name: name.charAt(0).toUpperCase() + name.slice(1), dots, flaw, text: t };
+    name = name.charAt(0).toUpperCase() + name.slice(1);
+    // no dots in the grant: the rating the books give that Advantage, where it has one (Prey Exclusion ●)
+    if (!dots) { const r = D.records().find((x) => x.kind === 'advantage' && x.rating && x.name === stripParens(name)); if (r) dots = +r.rating; }
+    return { name, dots, flaw, text: t };
   }
   // "A or B": a choice only where each side names an Advantage of its own; "A and B" (each with its
   // dots) is both, in one choice. A choice is a list of Advantage lines.
   const own = (p) => dotsIn(p) || /\b(Merit|Flaw)\b/.test(p);
   function advantageOptions(t) {
+    // "Gain three dots of Domain or Status, representing …": one of the two, each at those dots (the
+    // rest of the line is what they represent; the grant keeps it as printed)
+    const pick = /^Gain\s+(one|two|three|four|five) (?:additional )?dots? of ([A-Z][\w ]*?) or ([A-Z][\w ]*?)(?:,.*)?$/.exec(t);
+    if (pick) return [pick[2], pick[3]].map((n) => [{ name: n.trim(), dots: num(pick[1]), flaw: false, text: t }]);
     const body = t.replace(/^Gain\s+(?:either\s+)?/i, '');
     const parts = body.split(/,?\s+or\s+(?:the\s+)?/);
     const choices = parts.length > 1 && parts.every(own) ? parts : [body];
@@ -462,13 +482,13 @@ window.VtmCreatorGuides = (function () {
 
   function parseGrant(t) {
     let m;
-    if ((m = /^Add a specialty:\s*(.+)$/i.exec(t))) {
+    if ((m = /^Add a specialty:?\s*(.+)$/i.exec(t))) {          // (Let the Streets Run Red prints no colon)
       return { kind: 'specialty', options: m[1].split(/,\s*(?:or\s+)?|\s+or\s+/).map((o) => { const x = /^(.+?)\s*\((.+)\)\s*$/.exec(o.trim()); return x ? { skill: x[1].trim(), spec: x[2].trim() } : null; }).filter(Boolean) };
     }
     if ((m = /^(Lose|Gain) (\w+) dots? of Humanity\.?$/i.exec(t))) return { kind: 'humanity', delta: (m[1].toLowerCase() === 'lose' ? -1 : 1) * num(m[2]) };
     if ((m = /^Increase (?:your )?Blood Potency by (\w+)\.?$/i.exec(t))) return { kind: 'potency', delta: num(m[1]) };
     const known = D.disciplines();
-    const segs = t.split(/\s+and\s+gain\s+/i).map((sg) => /^(?:Gain\s+)?one dot of (.+?)\.?$/i.exec(sg.trim()));
+    const segs = t.split(/\s+and\s+gain\s+/i).map((sg) => /^(?:(?:Gain|Add)\s+)?one dot of (.+?)\.?$/i.exec(sg.trim()));   // "Add one dot of Fortitude or Protean"
     if (segs.every(Boolean)) {
       const sets = segs.map((x) => x[1].split(/\s+or\s+/).map((o) => ({ name: stripParens(o), text: o.trim() })));
       if (sets.every((s) => s.every((o) => known.indexOf(o.name) !== -1))) return { kind: 'discipline', sets };
@@ -569,9 +589,12 @@ window.VtmCreatorGuides = (function () {
       const patch = undoAll();
       setMeta({ pred: { name: name || null, applied: {} } }, Object.assign(patch, { Predator: name }));
     };
-    box.appendChild(el('div', { class: 'prop' }, [el('div', { class: 'prop-k' }, ['Predator type']), el('div', { class: 'prop-v' }, [
-      el('select', { class: 'scope', onchange: (ev) => choose(ev.target.value) }, [el('option', { value: '' }, ['—'])].concat(types.map((p) => el('option', { value: p.name, selected: p.name === v.Predator || null }, [p.name])))),
-    ])]));
+    // each type as the book prints it: its name, its book, its description (the chosen one whole)
+    box.appendChild(el('div', { class: 'prop-k' }, ['Predator type']));
+    box.appendChild(el('div', { class: 'dist-cards pred-cards' }, types.map((p) => el('button', {
+      type: 'button', class: 'dist-card' + (p.name === v.Predator ? ' on' : ''), onclick: () => choose(p.name === v.Predator ? '' : p.name),
+    }, [el('div', { class: 'dist-name' }, [p.name]), el('div', { class: 'muted small' }, [(D.indexBook(p.entity.book) || {}).label || p.entity.book]),
+        p.entity.desc ? el('div', { class: 'pred-desc' + (p.name === v.Predator ? '' : ' clamp') }, [E().prose(p.entity.desc)]) : null]))));
     const cur = types.find((p) => p.name === v.Predator);
     if (!cur) return box;
     const grants = grantsOf(cur.entity);
@@ -634,5 +657,5 @@ window.VtmCreatorGuides = (function () {
     return 'in the Notes';
   }
 
-  return { seaOfTime, seaBands, detailsOf, allocator, skills, predator, disciplines, advantages, grantsOf, parseGrant, fromPredator, predatorDots, describe, titleCase };
+  return { bookOn, ALWAYS, seaOfTime, seaBands, detailsOf, allocator, skills, predator, disciplines, advantages, grantsOf, parseGrant, fromPredator, predatorDots, describe, titleCase };
 })();
