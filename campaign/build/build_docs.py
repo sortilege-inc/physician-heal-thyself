@@ -293,19 +293,91 @@ def flat_blocks(n):
 
 
 # ── the pages ─────────────────────────────────────────────────────────
+CHAPTERS = HERE / 'docs' / 'chronicle'
+
+
+def md(text):
+    """The chapters' small Markdown: paragraphs, `---` breaks, `> ` quotes, *italic*, **bold**."""
+    def inline(t):
+        t = html.escape(t, quote=False)
+        t = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', t)
+        return re.sub(r'\*(.+?)\*', r'<em>\1</em>', t)
+    out = []
+    for blk in re.split(r'\n\s*\n', text.strip()):
+        lines = blk.split('\n')
+        if blk.strip() == '---':
+            out.append('<hr>')
+        elif all(l.startswith('>') for l in lines):
+            inner = '\n'.join(l[1:].lstrip() for l in lines)
+            out.append('<blockquote>' + ''.join('<p>' + inline(' '.join(q.split())) + '</p>' for q in re.split(r'\n\s*\n', inner) if q.strip()) + '</blockquote>')
+        else:
+            out.append('<p>' + inline(' '.join(blk.split())) + '</p>')
+    return ''.join(out)
+
+
+def front(path):
+    t = path.read_text(encoding='utf-8')
+    m = re.match(r'---\n(.*?)\n---\n', t, re.S)
+    if not m:
+        sys.exit(f'{path.name}: no front matter')
+    meta = dict(l.split(': ', 1) for l in m.group(1).splitlines())
+    for k in ('title', 'part'):
+        if k not in meta:
+            sys.exit(f'{path.name}: front matter has no {k}')
+    return meta, t[m.end():]
+
+
+def names_check(chapters, notes_text):
+    """Every proper name in a written chapter is in the Notion export (the notes, the tables, the pages)."""
+    export = ' '.join(p.read_text(encoding='utf-8', errors='ignore') for p in NOTION.parent.rglob('*') if p.suffix in ('.html', '.csv'))
+    export = html.unescape(export)
+    bad = {}
+    for c in chapters:
+        if not c.get('written'):
+            continue
+        text = re.sub(r'<[^>]+>', ' ', c['html'])
+        for sent in re.split(r'(?<=[.!?"\u201d:])\s+|\n', text):
+            for w in re.findall(r"(?<!^)(?<![.!?]\s)\b([A-Z][a-z\u00e0-\u00ff'\u2019]+(?:[- ][A-Z][a-z]+)*)", sent.strip())[0:]:
+                for part in re.split(r"[- ]", w):
+                    part = re.sub(r"['\u2019]s$", '', part)
+                    if part and part not in export and part not in NAME_OK:
+                        bad.setdefault(c['slug'], set()).add(part)
+    if bad:
+        sys.exit('names in a chapter that the export never uses: ' + '; '.join(f'{k}: {sorted(v)}' for k, v in bad.items()))
+
+
+# words a chapter may capitalise that are not names from the export (declared, with the reason)
+NAME_OK = {
+    'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'June',   # the nights' dates
+}
+
+
 def chronicle():
+    """The nights: a written chapter (campaign/docs/chronicle/NN-*.md, NN the night's place) where
+    there is one, the owner's notes for that night until then."""
     (path,) = NOTION.glob('The Story So Far *.html')
     page = Page('The Story So Far')
     blocks = flat_blocks(body(path))
-    chapters = []
+    notes = []
     for title, nodes in split_sections(blocks, 'h1'):
         htm = ''.join(page.render(n, path.parent) for n in nodes)
         if not title:
             assert not re.sub(r'<[^>]+>', '', htm).strip(), 'text before the first night'
             continue
         htm = re.sub(r'^<h1>.*?</h1>', '', htm, count=1)
-        chapters.append({'slug': slug(title), 'title': title, 'html': htm})
-    check(page, path, ''.join(f'<h1>{html.escape(c["title"])}</h1>' + c['html'] for c in chapters))
+        notes.append({'slug': slug(title), 'title': title, 'part': '', 'html': htm})
+    check(page, path, ''.join(f'<h1>{html.escape(c["title"])}</h1>' + c['html'] for c in notes))
+    written = {int(p.name[:2]): p for p in sorted(CHAPTERS.glob('[0-9][0-9]-*.md'))} if CHAPTERS.is_dir() else {}
+    if any(n < 1 or n > len(notes) for n in written):
+        sys.exit(f'a chapter number outside 01-{len(notes):02d}: {sorted(written)}')
+    chapters = []
+    for i, c in enumerate(notes, 1):
+        if i in written:
+            meta, text = front(written[i])
+            chapters.append({'slug': c['slug'], 'title': meta['title'], 'part': meta['part'], 'html': md(text), 'written': True})
+        else:
+            chapters.append(dict(c, part=c['title']))
+    names_check(chapters, None)
     return chapters, page
 
 
@@ -435,7 +507,7 @@ def main():
                    'window.PHT_DOCS = ' + json.dumps(docs, ensure_ascii=False, separators=(',', ':')) + ';\n', encoding='utf-8')
     for p in [cp, lp, hp] + pps:
         print(f'  {p.name}: kept, dropped {dict(p.dropped) or "nothing"}')
-    print(f'docs: {len(chapters)} chapters · letters · {len(pcs)} coterie · {len(dp)} dramatis personae '
+    print(f'docs: {len(chapters)} chapters ({sum(1 for c in chapters if c.get("written"))} written, the rest the notes) · letters · {len(pcs)} coterie · {len(dp)} dramatis personae '
           f'({", ".join(d["name"] for d in dp)}) · {len(set(sum((p.images for p in [cp, lp, hp] + pps), [])))} page images · words checked both ways')
 
 

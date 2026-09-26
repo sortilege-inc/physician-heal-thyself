@@ -243,6 +243,12 @@ def main():
     check('The Story Coming Up', up, secs)
     overview.append({'id': sid('The Story Coming Up'), 'title': 'The Story Coming Up', 'text': '',
                      'sections': [s2 for s in secs for s2 in ([{'id': s['id'], 'title': s['title'], 'text': s['text']}] if s['text'] else []) + s.get('sections', [])]})
+    # the session notes, as written — the public Chronicle is prose written from them
+    (sofar,) = NOTION.glob('The Story So Far *.html')
+    secs, _ = page_sections(sofar, 'The Story So Far (the notes)')
+    check('The Story So Far', sofar, secs)
+    overview.append({'id': sid('The Story So Far (the notes)'), 'title': 'The Story So Far (the notes)', 'text': '',
+                     'sections': [{'id': s['id'], 'title': s['title'], 'text': '\n\n'.join(x for x in [s['text']] + [f"**{ss['title']}**\n\n{ss['text']}" for ss in s.get('sections', [])] if x)} for s in secs if not s.get('synthetic')]})
     npc_rows = {r['Name']: r for r in table_rows('VtM NPCs *.csv')}
     cot_rows = {r['Name']: r for r in table_rows('Coterie *.csv')}
     for name, r in list(npc_rows.items()) + [('Baruch Espinosa', cot_rows['Baruch Espinosa'])]:

@@ -152,3 +152,9 @@ h4.pht-group { font-family: var(--font-ui); font-size: 12px; letter-spacing: .16
   .pht-rail-n { font-size: 16px; }
   .pht-night { scroll-margin-top: calc(var(--pht-head, 56px) + 64px); }
 }
+/* a written chapter: its night above its title, the prose, the scene breaks */
+.pht-part { font-family: var(--font-ui); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--silver-dark); margin: 0 0 4px; }
+.pht-chapter { font-size: 19.5px; line-height: 1.62; }
+.pht-chapter hr { border: 0; text-align: center; margin: 26px 0; }
+.pht-chapter hr::after { content: '\2020'; color: var(--silver-dark); font-size: 18px; }
+.pht-chapter blockquote { font-style: italic; }

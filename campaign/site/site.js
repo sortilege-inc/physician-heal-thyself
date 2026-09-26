@@ -34,7 +34,7 @@
   const page = (container) => { const p = el('div', { class: 'page pht-page' }); container.appendChild(p); return p; };
   const facts = (rows) => el('table', { class: 'pht-facts' }, [el('tbody', {}, rows.filter((r) => r[1]).map((r) => el('tr', {}, [el('th', {}, [r[0]]), el('td', {}, [r[1]])])))]);
   const crumbs = (ctx, id, label, here) => el('div', { class: 'crumbs pht-crumbs' }, [el('a', { href: ctx.href(id) }, [label]), here ? ' › ' + here : '']);
-  const nightTitle = (slug) => (DOCS.chronicle.find((c) => c.slug === slug) || {}).title || slug;
+  const nightTitle = (slug) => { const c = DOCS.chronicle.find((x) => x.slug === slug) || {}; return c.written ? c.title + ' \u00b7 ' + c.part : c.title || slug; };
 
   // ── Home ──
   function renderHome(container, path, ctx) {
@@ -107,8 +107,9 @@
   // ── The Story So Far: one page, a rail of the nights ──
   // #chronicle/<night> opens the page at that night. A click on the rail scrolls there and
   // rewrites the address without a hashchange (history.replaceState), so the page is not redrawn.
-  const railLabel = (c) => c.title.replace(/^Night of /, '').replace(/, \d{4}$/, '');
-  const sessionOf = (c) => ((c.html.match(/Session:\s*([^<]+)/) || [])[1] || '').trim();
+  // a written chapter's rail entry is its title over its night; a night still in notes, the night over its session
+  const railLabel = (c) => (c.written ? c.title : c.title.replace(/^Night of /, '').replace(/, \d{4}$/, ''));
+  const sessionOf = (c) => (c.written ? c.part.replace(/,? \d{4}$/, '') : ((c.html.match(/Session:\s*([^<]+)/) || [])[1] || '').trim());
   function renderChronicle(container, path, ctx) {
     const p = page(container);
     const head = document.querySelector('.site-head');
@@ -124,7 +125,8 @@
       }, [el('span', { class: 'pht-rail-n' }, [railLabel(c)]), sessionOf(c) ? el('span', { class: 'pht-rail-s' }, [sessionOf(c)]) : null])]))),
     ]);
     const sections = DOCS.chronicle.map((c) => el('section', { class: 'pht-night', id: 'night-' + c.slug, 'data-slug': c.slug }, [
-      el('h2', { class: 'chapter-h' }, [c.title]), prose(c.html, 'pht-notes'),
+      c.written ? el('div', { class: 'pht-part' }, [c.part]) : null,
+      el('h2', { class: 'chapter-h' }, [c.title]), prose(c.html, c.written ? 'pht-chapter' : 'pht-notes'),
     ]));
     p.appendChild(el('div', { class: 'pht-chronicle' }, [rail, reader(sections)]));
 
