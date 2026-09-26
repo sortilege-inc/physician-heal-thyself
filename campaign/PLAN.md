@@ -31,39 +31,44 @@ Status words: **PROPOSED** (awaiting the owner), **(owner)** decided, **landed**
 | *Consent Checklists* | Four players' filled-in consent forms (PDF) and a screenshot | — |
 | Images | 78 PNG + 23 JPG: portraits, clan marks, rules screenshots | — |
 
-## Owner decisions — PROPOSED
+## Owner decisions (2026-09-25)
 
-**P1 — Visibility.** The GitHub repo is **PUBLIC and empty**. The first push carries upstream's
-`data/` — the books verbatim. Recommend public, Pages from `main`, `.nojekyll`, but **nothing is pushed until the
-owner says so**.
+**P1 — Public (owner).** The repo stays public; Pages from `main` when pushed. **Not pushed yet.**
 
-**P2 — Who the coterie is.** The Coterie table has seven rows. Recommend **six PCs** — Claire,
-Nico, Richart, Kamal, Calliope, Susanna — and **Baruch Espinosa as an NPC** (the GM's own row,
-empty page; the letter-writer found dead on night one). Calliope plays night one only; Susanna
-joins partway through night two (the notes' own *PCs:* lines).
+**P2 — Six PCs; Baruch Espinosa is an NPC (owner).** Claire, Nico, Richart, Kamal, Calliope,
+Susanna. Baruch is in Dramatis Personae and the GM's People.
 
-**P3 — The Chronicle.** No transcripts exist; the GM's session notes are the record. Recommend
-one chapter per night (six), written as prose from the notes alone, every
-event traceable to a line in them, no dice or rules named, no player names. Pilot night one for
-approval before the other five. (Alternative: publish the notes nearly as they are.)
+**P3 — The Chronicle is the notes as they are (owner).** *The Story So Far*, split at each
+"Night of …" heading and the Epilogue — seven pages, word for word.
 
-**P4 — Portraits.** 28 of the 30 portraits are photographs of real people — actors (Jennifer
-Connelly, Mads Mikkelsen, Tom Ellis…), public figures (Sartre for Nico, a Mitterrand-era photo
-for Comte Cioran), stock and press photos; the other two are third-party illustrations (Calliope;
-Richart, credited to sikuriina on DeviantArt). Recommend **none
-on the public site**: each person is shown by their clan or sect mark, which the VTT already
-ships.
+**P4 — The portraits are used (owner)**: they are the reference images. Each is cut to a 4:5 card
+with torn edges, and the clan mark (else the sect's; AURORA's Second Inquisition mark from the
+export) sits over its bottom-right corner, half off the card.
 
-**P5 — The site's sections.** Recommend: **Home · The Coterie · Dramatis Personae · The
-Chronicle · The City** (Quebec by night — the Camarilla court, the Anarch barons, the Sabbat
-packs and the Opposition, only what the coterie knows) · **The Letters** (Baruch's five letters,
-verbatim).
+**P5 — The site's tabs** (proposed, not objected to; one change, below): Home · The Coterie ·
+The Story So Far · Dramatis Personae · The Letters.
 
-**P6 — The cast as a DSL layer.** The six PCs and the NPCs are written by a
-converter from the export kept in `campaign/source/`, checked field by field by an independent
-checker. **Recommend it carries only what the export records**: the PCs have no Attributes or
-Skills, so their VTT sheets start partial (the GM or player fills them in on the sheet). Only
-Maggie Molyneux and Fatima have stat blocks.
+**Owner, mid-build: every GM note is in the GM section.** The whole export is in the pack
+(`campaign/pack/seed.json`, `build_seed.py`), word for word.
+
+**P6 — The cast as a DSL layer: DEFERRED, for the owner.** Finding: the VTT counts an entity as a
+*character* only by its stat shape (`build_data.py`: *Standard Dice Pools*, or *Secondary
+Attributes*, or *Attributes* and *Skills*). The export carries a full stat block for two people
+(Maggie Molyneux's Attributes and Skills; Fatima's on the root page); the six PCs have clan,
+generation, Blood Potency, Humanity, Predator type and Disciplines but **no Attributes, Skills,
+Health or Willpower**, and the NPCs only table fields. A layer from it would hold two characters;
+writing the rest would invent numbers.
+
+## Milestones
+
+| # | What | Proof |
+|---|---|---|
+| **M1** | The fork | landed 2026-09-25 (`58d8292`, boundary `f05000c`) |
+| **M2** | The export in the repo — `campaign/source/import_notion.py` → `campaign/source/notion/` | landed 2026-09-25: *158 files — copied 144, redacted 8, excluded 6; players redacted: 6; 0 names remain*. The name check **proven by planting a fault** (redaction disabled → *a player name survives in:* six Coterie pages, exit 1) |
+| **M3** | The public site — `build_portraits.py`, `build_docs.py` → `campaign/data/docs.js`; `campaign/site/site.js` | landed 2026-09-25: 30 portraits (byte-identical on rebuild); 7 chronicle pages, the letters, 6 coterie, 21 dramatis personae; every page **word-checked both ways** (raw words = published + dropped by reason). Browser on 8748: all five tabs, every character page, 0 console errors, 0 missing assets (35 referenced), no horizontal scroll at 375px |
+| **M4** | The GM's material — `build_seed.py` → `campaign/pack/seed.json`, `defaultCampaign.seed` | landed 2026-09-25: overview 10 sections (47 with subsections), people 25, pc 6, every page word for word; the gate **proven by planting a fault** (one name dropped → *the root page: words differ — missing {'sybille': 1}*). In `/gm/` after the gate: Overview, People and Coterie notes populated from the seed (`seeded` 271 ids), 0 console errors |
+| M5 | The cast layer | DEFERRED (P6) |
+| M6 | Deploy — push, Pages, the Worker | awaiting the owner |
 
 ## Decided without asking (decision log)
 
@@ -76,3 +81,8 @@ Maggie Molyneux and Fatima have stat blocks.
 | 2026-09-25 | autonomous, privacy | **The consent checklists never enter the repo**, nor do the players' names (the Notion *Player* column) | Personal data about real people, not campaign material |
 | 2026-09-25 | **owner** | **Depend on `sortilege-vtt-vtm5e` only** — no reference to or dependence on the Blood & Other Drugs repo. Checked: `grep` over every instance-owned file and `campaign/` for its name, path, storage prefix → 0 | Owner instruction |
 | 2026-09-25 | proof | **The fork boundary, proven by making it fail** in a throwaway clone: a fake upstream commit editing `engine/config.js` and `index.html`. Without the driver → `CONFLICT (content): Merge conflict in engine/config.js`; with it → merged clean, the title stayed *Physician, Heal Thyself*, `index.html` took upstream's edit. In the browser on 8748: title *Physician, Heal Thyself*, `campaign.css` loaded after `vtm5e.css`, `--night` `#0c0e11`, 0 console errors | The playbook's boundary check |
+| 2026-09-25 | autonomous, method | **Public pages keep only the players' part of each Coterie page**: the GM To-Do section goes to the GM tabs, and any paragraph that is the books' own text is left out (found in the VTT's `data/` by 32-letter runs, or exactly for short lines; a player's own sentence inside one is kept). 2.3–3.1k words a page left out as book text | The books stay off the public site (§4b.4); Notion's copies had lost spaces at line breaks, so a word match missed them |
+| 2026-09-25 | autonomous, scope | **Dramatis Personae = the NPCs the notes name** (21 of 25, matched by name or first name, aliases listed in `build_docs.py`); each shows title, clan, faction, generation and the nights they appear in. Their NPC pages (descriptions, tarot traits, stat blocks) are in the GM's People | The public site holds what the table saw; the GM's notes on a person are the GM's |
+| 2026-09-25 | autonomous, scope | **No separate City tab**: the root page's two player-facing blocks — the *Chronicle Tenets* and *Game Lore Notes* (Comte Cioran's mausoleum) — are on Home; the rest of the setting (the sects, the Opposition) is GM material | There was no gazetteer to publish; a City tab would have been two paragraphs |
+| 2026-09-25 | autonomous, fidelity | **Susanna's `Salubri.pdf` is not linked or copied on the public site** (its name stays as the notes show it); the GM's copy links it | It is a published book's chapter |
+| 2026-09-25 | autonomous, tool | The GM page opens on **Overview · People · Chronicle** (`defaultSlots`) | The notes are what the owner asked to have at hand |

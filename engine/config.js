@@ -16,9 +16,9 @@ window.VttConfig = {
   //   notes: { src: 'campaign/docs/state.html', title: '…', class: '…',
   //            gate: { title: '…', text: '…', enter: 'Enter' } }
   // a .html src is the instance's own fragment, inserted as it is; anything else reads as Markdown.
-  defaultCampaign: { name: 'Physician, Heal Thyself', modules: [], books: [] },
+  defaultCampaign: { name: 'Physician, Heal Thyself', modules: [], books: [], seed: 'campaign/pack/seed.json' },
   // the three panels the GM page opens on (engine/app.js)
-  defaultSlots: ['chronicle', 'party', 'inspector'],
+  defaultSlots: ['overview', 'people', 'chronicle'],
   // What an instance adds to these pages (engine/instance.js). Upstream declares none, so
   // every stage tag is a no-op here; a campaign repo forked from this VTT owns engine/config.js
   // and fills this in. Its DSL layer is built by build/build_layer.sh into its own data folder.
@@ -37,7 +37,12 @@ window.VttConfig = {
   //   bash build/build_layer.sh campaign/dsl campaign "Physician, Heal Thyself" campaign/data
   instance: {
     styles: ['campaign/site/campaign.css'],
-    stages: { data: [], site: [], gm: [], table: [], play: [], maps: [] },
+    stages: {
+      data: [],
+      // the chronicle's own tabs, ahead of the books: its pages (built from the Notion export), then the tabs
+      site: ['campaign/data/docs.js', 'campaign/site/site.js'],
+      gm: [], table: [], play: [], maps: [],
+    },
   },
   // The Worker that holds player sessions. Served from localhost the app talks to
   // `wrangler dev`; deployed, to the URL below. Empty = sessions disabled until the owner

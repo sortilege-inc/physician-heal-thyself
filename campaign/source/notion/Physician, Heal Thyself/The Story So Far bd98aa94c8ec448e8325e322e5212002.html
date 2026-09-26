@@ -1,0 +1,859 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>The Story So Far...</title><meta name="data-notion-page-icon" content="🌘"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%F0%9F%8C%98%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="bd98aa94-c8ec-448e-8325-e322e5212002" class="page sans" data-notion-page-icon="🌘"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="🌘"></span></div><h1 class="page-title" dir="auto">The Story So Far...</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="f592b0d3-0faf-452c-bb31-819998f04b28" class="column-list" data-notion-column-list="" dir="auto"><div id="faaf83a4-2141-43a9-8a03-4d3c00fd2926" style="width:16.666666666666664%" class="column" data-notion-column-ratio="0.16666666666666666" dir="auto"><nav id="9d8e887a-ff76-4cac-8330-04adb13d8ae0" class="block-color-gray table_of_contents" data-notion-highlight="gray" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#f4eba07d-a674-4734-8388-647c4dbbdba6">Night of June 9th, 2021</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cfd365f3-2ae8-4570-b4b9-e0f8d881679a">Letters from Baruch</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ab7b2179-fd14-4956-9ce6-749306b932cd">Rousing</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#25fd53da-1d03-4bba-b00b-1fd13b47cb70">Baruch&#x27;s Haven</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#76e84b7d-9515-466d-898b-7a92a78d3af5">Night of June 10th, 2021</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#ddd82587-bc89-49cd-8151-b03403b3cdfe">Waking Up in Custody</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6433daf3-43b4-4153-bdfe-d7301b5030de">Rousing/Bar le Sacrilege</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c76f3205-bf61-43b8-9626-7938f02b6824">Interrogation</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e803d019-c253-4b3b-bc5d-9772f9f6e806">Menu</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9a1ddab0-d041-4709-b1c7-a6877f4a0576">Conditional Release</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#c39ae0ba-8771-4f32-bbec-0ad8b7256b57">Blood</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8ac74ada-95c0-4a9e-83e1-816cdab5c8d1">In the VIP</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#6b48a2c4-57d5-4ffe-9007-4bc976aa2b9a">A Message for Milica</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0ae6b5c2-b79f-484a-bc99-7619eea2fa10">Investigating with Javier</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#fd5d47dd-e6f4-4573-8df3-307e638b6edf">At Baruch&#x27;s Haven</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#d1905714-d239-4c58-a27f-9183f0736f54">Returning to the Mausoleum</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4a3448be-c98d-42d5-aabd-8cdda6e9177d">Night of June 11th, 2021</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#e51fcddb-c6e1-4f93-a989-7eb69d39103f">Waking the Wight</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#7d0545fc-0dd2-422e-a76f-da8327d0d992">Blood Walk</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#918862f4-eee5-4adf-bb4c-7d40475adc4f">Night of June 12th, 2021</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#32e88fd8-5982-41d6-81d3-93ea031c88c9">En Route</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#87057650-2094-4da9-9674-10c3ef09c107">Elysium</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0affb767-4b5f-41ed-9e55-7abaa2add446">The Chantry</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#f7e1471b-7749-426c-9d22-711d86938684">Order of Business</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#b05d413e-72f0-444d-a491-56443f63813d">Late Arrivals</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#00871c59-a10d-428e-a927-4fbc269f8dfa">Debt</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#0e0117f7-f254-4974-97cc-438f52376ba2">Affairs of State</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#215c19aa-7391-4e3b-b74f-f33de4a97ff8">Night of June 13th, 2021</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c2a05fc8-d6a5-4e99-a543-8029e8ce6f01">Night of June 14th, 2021</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5c15858c-6289-4d60-bc77-fc65ff0bcc13">Epilogue</a></div></nav></div><div id="2bc7f9ab-a2fe-429f-8073-b8197bb3bcb2" style="width:58.33333333333333%" class="column" data-notion-column-ratio="0.5833333333333333" dir="auto"><h1 id="f4eba07d-a674-4734-8388-647c4dbbdba6" class="" dir="auto">Night of June 9th, 2021</h1><p id="a56f7e5c-7055-46a6-a513-bde3779e5ac5" class="" dir="auto"><em>Session: April 3rd</em></p><h2 id="cfd365f3-2ae8-4570-b4b9-e0f8d881679a" class="" dir="auto">Letters from Baruch</h2><p id="e028e015-d829-4968-a758-1d0cee5846d5" class="" dir="auto">To Claire:</p><blockquote id="fcfced1a-d575-421a-987e-579f6ef8cde5" class="" dir="auto">Our esteemed Warlock<br/>I believe it will be to your delight that I introduce my latest acquisitions; the seventh, and the ninth that precedes the eighth. Do come and witness my latest acquisition, and sharpen your knives.</blockquote><p id="4b415855-779a-449e-abf0-454fc2b0269a" class="" dir="auto">
+</p><p id="051067ec-1414-460a-9372-c9535bf1a121" class="" dir="auto">To Calliope:</p><blockquote id="c0da577c-e3df-4e28-b601-558d83bdba38" class="" dir="auto">My intemperate Promethea,<br/>These nights see us poised upon a knife&#x27;s edge. Our city lacks vision, and is fraught with the squabbles of the leaderless. This detente cannot hold, and when the opportunity arises, power must be grasped, swiftly and without remorse. I care not the face of a new order, for I have seen the rise and fall of Anarch, Camarilla, and Sabbat, each in turn. Use the tool you find most pliant.<br/>For now, I caution patience. Be ye the virgin with oil for the night, vigilant to seize upon the bridegroom, and to take his place to consummate influence.<br/>Watchfully yours, Baruch.</blockquote><p id="598314bf-6a27-48dc-8992-ac5817b85457" class="" dir="auto">
+</p><p id="693a4f83-d034-4849-8383-71b8c418432c" class="" dir="auto">To Richart:</p><blockquote id="010ae394-2eb4-46ca-88d4-c9de889eb645" class="" dir="auto">My dear ancilla<br/>In these modern nights, one must assume all discrete communications lack discretion, and that any apparent cryptogram must elicit a remedy, even years hence. As such, and having learned from the failures of past systems, I have found myself enamored with the arts and sciences of steganography. When one reads the surface and is contented, the esoteric meanings may be relayed without danger or harm.<br/>To this end, may I advise that you watch the fortunes of the Dynamo ARSQ this season, in our city&#x27;s Chronicle-Telegraph.</blockquote><p id="bf4f0eab-8179-44dd-ad54-27453b15a7da" class="" dir="auto">
+</p><p id="c0799859-145e-40f2-ae62-391526b5a38a" class="" dir="auto">To Kamal:</p><blockquote id="f5e8b7aa-f461-4e18-918a-5153c2dda306" class="" dir="auto">To our austere Assamite,<br/>A Spaniard ductus walks carelessly through these streets. It would be tragic if the steel trap of a kind of justice were to snap upon him, and he be waylaid.<br/>His blood is old and strong and, while I am no sommelier, carries certain notes that you may be able to appreciate.<br/>Yours, Baruch Espinosa</blockquote><p id="d0cfb1c1-c36a-4514-81bd-f91baa19ef0d" class="" dir="auto">
+</p><p id="5eab126f-cba4-40c1-8e5c-0fb909fb3057" class="" dir="auto">To Nico:</p><blockquote id="f950d521-8997-4ad5-b4e0-8f5b38f6cba5" class="" dir="auto">An absent-minded lech such as yourself may notice that histories, both personal and societal, suffer themes and variations. The Levant harkens, leaving a vacuum to be abhorred à la débandade. Surely an oracle such as yourself sees the opportunity in this. It would please me greatly to consult.<br/>Yours truly, Baruch</blockquote><h2 id="ab7b2179-fd14-4956-9ce6-749306b932cd" class="" dir="auto">Rousing</h2><p id="3e31909b-ab91-4e6d-a3f2-499a18634fda" class="" dir="auto">Nico feeds first from an inebriated woman he met on the town. -2 Hunger</p><p id="405b1b34-4d22-4f1c-a4fe-b833c0b28386" class="" dir="auto">Claire feeds from a blood bag at the hospital: -1 Hunger</p><p id="24fbe668-cd29-4e2a-be39-c6535ce1ada5" class="" dir="auto">Richart feeds from a sleeping patient at the hospital: -2 Hunger.</p><p id="119c746a-d13f-42e0-8553-dcea091414b3" class="" dir="auto">Calli feeds on someone en route to Baruch&#x27;s: -1 Hunger.</p><p id="06e4a93e-fcc5-4de6-98f3-a3236340b2b6" class="" dir="auto">Kamal holds off, shows up on time and well groomed, but his stigmata is present.</p><h2 id="25fd53da-1d03-4bba-b00b-1fd13b47cb70" class="" dir="auto">Baruch&#x27;s Haven</h2><p id="fead32eb-6ffc-4a24-b6d1-e93d686b6b4c" class="" dir="auto"><em>PCs: Calliope, Richart, Nico, Claire, Kamal</em></p><p id="290ce495-5f49-4439-9b18-815efb4ea703" class="" dir="auto"><strong>Baruch&#x27;s Haven.</strong></p><p id="e3b61639-09cd-4878-a87e-34b134eb5c9b" class="" dir="auto">
+</p><p id="e6b50a71-8bd0-4520-a71e-bc4828203af1" class="" dir="auto">Nico hides in wait for Calli.</p><p id="8f4b4257-7567-4d42-b771-4575ffcf7746" class="" dir="auto">Richart and Claire arrive. Richart notices that the care to conceal the entrance hasn&#x27;t been taken. They head inside. Kamal arrives shortly after and goes inside.</p><p id="8535bfa3-289a-4277-878d-27a1ebe237ca" class="" dir="auto">Richart uses <em>Sense the Unseen</em> and gets a feeling that there are recent dead ahead. Sends a text to the group chat (mostly burner phones, except Richart who uses a smart phone).</p><p id="efa1dd33-1554-4a45-b36a-0867f0bc9df8" class="" dir="auto">Calli walks up and nonchalantly tells Nico &quot;You should learn to hide better.&quot; They head inside.</p><p id="802c50bb-7e2c-4b7f-b38d-3d35d394eecd" class="" dir="auto">The door to Baruch&#x27;s haven has been broken open with a battering ram or similar.</p><p id="38aac123-a772-458c-a3f3-4f95bce06cde" class="" dir="auto">Filing cabinets have been knocked over, gone through; there are two husks of vampires, beheaded and burned. It looks like some computers and other electronics were ripped out of the walls and removed. Claire looks through the files, realizes that Baruch had information on <em>everybody</em>; a lot of it seemingly banal, but there are a lot of kindred referenced here. She finds full files on Kamal and Richart, partial files for Calli and herself, and nothing on Nico. Kamal finds some splattered vitae and <em>A Taste of Blood</em> reveals two vampires, older (blood potency 3 and 5 or 6). They are unsure whether they are the deceased or others; the weaker of the two could presumably be Baruch. Claire notices that one of the bodies appears to have a melted mask; perhaps Baruch&#x27;s signature <em>Phantom of the Opera</em> mask.</p><p id="58a6fd60-b7cf-4679-b3ac-d3262d76fee5" class="" dir="auto">Nico wanders down into the hall and into the guest room. There is signs of a struggle, and blood splattered across wall and floor. Nico cocks his head and stares into it. Kamal walks in and performs <em>A Taste of Blood</em> again, identifying a third kindred and a mortal. The kindred blood is the most delicious he has ever had. Nico speculates that the scene was the result of an argument over artistic differences, likely. Kamal confers with Claire.</p><p id="24843226-705c-408b-a72a-c61a164d9e59" class="" dir="auto">Richart moves down and enters the second room. It is opened but doesn&#x27;t appear ransacked. There are all kinds of older items wrapped in newspaper and held in built-in shelves. He removes two wrapped curios to identify later.</p><p id="55d33b25-34ae-4a12-b6b3-6bb444a1b992" class="" dir="auto">Calli proceeds to last room, through the broken door. A four-poster bed is presumably where Baruch rested, and a wardrobe holds various suits. There&#x27;s a small meditation space that appears to have been used recently. She calls Kamal into the room and allows him to feed from her (+1 Hunger for Calli, -1 for Kamal).</p><p id="02c3c3d7-cb11-46c9-b854-303e83bce39d" class="" dir="auto">Claire continues to peruse the files, and finds a dossier on the Tremere, and takes it for review.</p><p id="fa2d5fc6-a5dc-40e0-adba-9a433aa1f4ef" class="" dir="auto">Baruch was fastidious about personal security; if he died in his own haven, that is a security failure of immense proportions.</p><p id="c1a1c878-02bf-4fd3-8768-d65e5d89c162" class="" dir="auto">Calli turns to Nico: &quot;Why don&#x27;t you have a file?&quot;. Nico is also incensed, he wants to review what pictures he had of him.</p><p id="cf72b80a-729b-417b-875b-6b42ecad78a1" class="" dir="auto">Takeaways:</p><ul id="f07e40d3-34bd-4211-b8b2-ae124ddb7cd0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">It is likely that someone or something truly killed two powerful vampires, and something happened to a third.</li></ul><ul id="81a4a895-3bdd-4c63-8744-0b13f7db7b2d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Baruch had far more information collected than anyone realized.</li></ul><hr id="04522192-fbfd-460b-94f1-798d07e2f649" dir="auto"/><h1 id="76e84b7d-9515-466d-898b-7a92a78d3af5" class="" dir="auto">Night of June 10th, 2021</h1><p id="40ad49b5-e94e-4cad-8dbe-bbef42f18fce" class="" dir="auto"><em>Session: April 17rd</em></p><h2 id="ddd82587-bc89-49cd-8151-b03403b3cdfe" class="" dir="auto">Waking Up in Custody</h2><p id="7b13dfb6-025d-47a5-8836-3ce2b4184cd8" class="" dir="auto"><em>PC: Susanna</em></p><p id="0c142dea-a5ea-4afc-884c-bc3418b6d561" class="" dir="auto"><strong>Undisclosed Location.</strong></p><p id="c7a09b7b-6c1d-48df-8758-8f5f7957de8d" class="" dir="auto">Susanna wakes up in a large room, with a one-way mirror, surveillance, in a dark center with bright lights in a ring around.</p><p id="71f4b55c-354b-461c-882d-95d50dfa7e34" class="" dir="auto">She pushes down her hunger, and braves the light, calling out and knocking on the door, to no avail. She returns to the cot in the center, and two people enter; a priest-looking man and a woman who looks like a field medic, dressed in fatigues.</p><h2 id="6433daf3-43b4-4153-bdfe-d7301b5030de" class="" dir="auto">Rousing/Bar le Sacrilege</h2><p id="ded3253f-bdc5-4d6d-b438-e3d5ec9c1692" class="" dir="auto"><em>PCs: Nico, Richart, Claire, Kamal</em></p><p id="32d663a7-10c9-462e-9633-cc3924446ab0" class="" dir="auto"><em>NPCs: Fatima, Stefan, Jonah, Linh.</em></p><p id="827d84bb-1cdd-4e3b-a4fc-400bdfdd54a5" class="" dir="auto"><strong>Bar le Sacrilège.</strong></p><p id="cc99a9f4-f01d-465f-a315-ccb4d5dc22de" class="" dir="auto">
+</p><p id="f767fc6f-31d6-48eb-88dd-3e943786ee9d" class="" dir="auto">The others (minus Calli) arrive at Bar le Sacrilege. Fatima, Nico&#x27;s ex, is sitting at the bar. They speak to the bartender, who indicates that Faith is present but occupied elsewhere.</p><p id="105ba39f-8252-4843-86c7-afdf13a05fba" class="" dir="auto">Richart and Nico know some parts of the club (including some of the lower levels), but not super familiarly.</p><p id="8160c5cc-519a-4e62-9405-f4d6dbec2f8d" class="" dir="auto">Claire [did not?] share her research as yet.</p><p id="7ed04ad5-c791-4466-b968-a0ced127aa75" class="" dir="auto">Nico has had visions since leaving Baruch&#x27;s.</p><p id="ad5334c8-4939-4cef-b92e-4e7fbe09262b" class="" dir="auto">Kamal indicates that the bodies were buried; he hung around after the others left the previous night to take care of last rites.</p><p id="13cf7aca-bca4-4ef6-99ba-9fa5a2eb19cd" class="" dir="auto">Nico buys a martini and presents it to Fatima.</p><p id="0f043811-6f3e-48fc-8e47-599d3e4fc3cc" class="" dir="auto">Richart activates <mark class="highlight-red" data-notion-highlight="red"><em>Sense the Unseen</em></mark>.</p><p id="1f485060-0219-4cc1-9a59-a405f42d7407" class="" dir="auto">...</p><p id="7e28d4eb-13f5-4de7-8fb0-ecc72c08e1f4" class="" dir="auto">[Kamal asks discreetly?]</p><p id="3eb36ef2-e713-41ea-9e48-3a10d810dd77" class="" dir="auto">Bartender directs them to the feeding room. &quot;Take the left staircase, two floors down.&quot; </p><p id="8a7305ac-4ad5-4602-ac8e-94034b968b61" class="" dir="auto">First level down is some kind of kink dungeon, and then the second has a bit of an old west brothel vibe. The host comes up to them &quot;It looks like you have need of something.&quot; The host proceeds to explain that they have a better-than-average selection, although the particularities of the Ventrue may require prior coordination to accommodate.</p><p id="127255dd-d9d6-4d02-8b3a-6c01d3e04528" class="" dir="auto">Claire recognizes Jonah as her thin-blood contact from the hospital. There is also a young, pink-haired Asian woman with glasses who registers as Kindred; the others are all human.</p><h2 id="c76f3205-bf61-43b8-9626-7938f02b6824" class="" dir="auto">Interrogation</h2><p id="9cb4a520-c334-44af-8310-d962c516e181" class="" dir="auto"><em>PC: Susanna</em></p><p id="3f279e86-7702-45b9-ac7f-3b55f65cd657" class="" dir="auto"><em>NPCs: Councillor Lefebre, CSIS Medic.</em></p><p id="ce4f563f-068b-4988-a376-ca6e09fd3d02" class="" dir="auto"><strong>Undisclosed Location.</strong></p><p id="d02af39f-1350-4a36-85d2-6b645db92b9c" class="" dir="auto">The priest-like man begins haranguing Susanna. &quot;We know who your companions were, and those blankbodies have been excised from existence. You are condemned, death is the only way out. You have no possibility of being rescued. The only way this will go gently for you is to give up your companions.&quot;</p><p id="49c4268e-5d70-4294-8ed9-d361d60303fa" class="" dir="auto">&quot;Are you not a blankbody?&quot;</p><p id="75c80471-9af1-4590-ab3d-8fda7f3b55ff" class="" dir="auto">The woman speaks up. &quot;Your vitals are different from any we&#x27;ve ever seen; it doesn&#x27;t appear that the infection has fully taken hold. I feel that you&#x27;re turning into something there is no turning back from, and at that point we would have no choice but to detain you indefinitely, or deal with the infection.&quot;</p><p id="3f89b517-6ff6-4517-857d-8dcee852e1b5" class="" dir="auto">[Susanna internal monologue]</p><p id="282db6ba-ea16-4e41-b602-8a7816834948" class="" dir="auto">The guy in the robe starts speaking again, but the woman cuts him off, and steers him out of the room for a private discussion. She returns alone, and apologizes.</p><p id="4e97be83-5486-4f96-9a4a-30a7ddc46919" class="" dir="auto">&quot;The councillor speaks a little hastily, but your medical records <em>are</em> dubious; a brief examination could assure us as to your risks to national security.&quot;</p><p id="9cb06fcb-6026-4978-87f4-e69ff7629ff3" class="" dir="auto">Susanna asks whether she has a choice.</p><p id="e74caf57-a2e8-468d-a9f9-d1259d06ba00" class="" dir="auto">The woman indicates that getting her consent is a formality that is, strictly speaking, optional.</p><p id="327f9d35-ff58-480e-823e-d1a4e5d8ae47" class="" dir="auto">[? responds about her superiors]</p><p id="bc9feec9-5923-4eae-8a49-d95b7d86cbc0" class="" dir="auto">Susanna asks to think on it, and the woman exits.</p><h2 id="e803d019-c253-4b3b-bc5d-9772f9f6e806" class="" dir="auto">Menu</h2><p id="85655d12-5af7-4806-acd0-904f775e0dc6" class="" dir="auto"><em>PCs: Nico, Richart, Claire, Kamal</em></p><p id="09341946-3e45-43e5-b342-51c502bd29d2" class="" dir="auto"><em>NPCs: Faith</em></p><p id="c35744b3-389d-459b-8931-9f9ecce73046" class="" dir="auto"><strong>Bar le Sacrilège.</strong></p><p id="2fa51747-76f8-4420-843a-3bc1373eb178" class="" dir="auto">Kamal goes up to the female kindred, and then walks over to the host and asks about &quot;off-menu&quot; options, or custom orders. The host indicates that they can place special orders ahead of time.</p><p id="3c9313b5-b6b5-4fc4-931f-29ff87d1b573" class="" dir="auto">Nico selects a woman who seems a little boozy and they retreat to a side room.</p><p id="d4301b45-7e8e-46ec-ba68-3a5a7cf99667" class="" dir="auto">As Kamal describes what he&#x27;s looking for, the host directs him to the VIP Lounge; (up two flights, center stairs, down two flights; speak to Jerome).</p><p id="51ef4222-f95b-47be-bff0-6e25a498edb5" class="" dir="auto">Richart asks the host what that was about; the host indicates that client preferences are kept discreet. He asks about Faith, and is told she is working, serving the VIP lounge. Richart leaves, following Kamal.</p><h2 id="9a1ddab0-d041-4709-b1c7-a6877f4a0576" class="" dir="auto">Conditional Release</h2><p id="5b19668d-5359-41d4-b647-7a8105e35f9f" class="" dir="auto"><em>PC: Susanna</em></p><p id="5e11a120-2b31-473b-9610-a1e1a1a9ec1b" class="" dir="auto"><strong>Undisclosed Location.</strong></p><p id="45e9a5bc-07de-43cf-98c1-c4963ab8228c" class="" dir="auto">The woman reenters, and offers to drop Susanna off where she was found, contingent on a blood draw. She draws a couple vials, walks Susanna through the drab unmarked hallways, and into a garage where there&#x27;s a large van and a half-dozen military personnel escort her.</p><p id="ffc14637-7268-4c8f-803e-4d3dd0eae553" class="" dir="auto">They drive her back to Baruch&#x27;s and drop her off on the street. Wordlessly, they drive off.</p><p id="0f8cbb57-16eb-4bbc-bb9a-39de751c4f99" class="" dir="auto">Her dog returns to her, having hid in the bushes.</p><p id="e360d51d-eb44-4e94-8291-3f8ff390097c" class="" dir="auto">Susanna heads inside, to see that the door has been battered in, and the inside turned over,  ransacked. The haven is empty.</p><h2 id="c39ae0ba-8771-4f32-bbec-0ad8b7256b57" class="" dir="auto">Blood</h2><p id="a26750f3-0873-4987-86ab-aca78ff12eab" class="" dir="auto"><em>PCs: Nico, Richart, Claire, Kamal</em></p><p id="41690c50-48c4-4474-9653-9fbd1aa389c6" class="" dir="auto"><em>NPCs: Jonah</em></p><p id="40deab9d-86fd-4562-a082-9da51b78275d" class="" dir="auto"><strong>Bar le Sacrilège.</strong></p><p id="ccc5075c-b666-401f-a2e2-08f833c163d6" class="" dir="auto">Claire goes up to Jonah, asks what he&#x27;s doing there, and whether there&#x27;s any bagged blood. Jonah says that she can ask for a &quot;juicebox&quot; up at the bar. He&#x27;s sheepish, and explains that supplies may be limited; a blood drive was attacked by a gang, they&#x27;re dealing with a bit of a shortage; causing issues at the hospital as well. He explains that his presence on the menu is repayment for a boon; that he owed The Bank.</p><p id="6ae8c53e-aa01-4690-ab11-5e29d64f8a06" class="" dir="auto">Claire finishes up the conversation, and then leaves for the bar for a juicebox, and heads down to the VIP Lounge. Nico follows after feeding.</p><h2 id="8ac74ada-95c0-4a9e-83e1-816cdab5c8d1" class="" dir="auto">In the VIP</h2><p id="5ae2f1f8-8777-4ff5-a54a-0b279a63f341" class="" dir="auto"><em>PCs: Nico, Richart, Claire, Kamal</em></p><p id="da97c590-5b3b-4c99-a6a0-17d604b5fcfe" class="" dir="auto"><em>NPCs: Faith, Jerome</em></p><p id="92c40e2d-f448-4586-8837-db444d1b18c2" class="" dir="auto"><strong>Bar le Sacrilège.</strong></p><p id="2d7dc62e-ec60-45e4-9dbe-4cfc899211de" class="" dir="auto">Kamal </p><p id="9cac4c75-417f-4de5-a618-722a9e4ab0ae" class="" dir="auto">[????]</p><p id="43884c33-66c8-4f36-bdf7-e7ca8db362fc" class="" dir="auto">&quot;Mr. Giovanni will be the judge of that.&quot;</p><p id="5c5e0981-f5ba-4be8-8c59-4616e6e6f762" class="" dir="auto">Luxurious room that has been reconfigured into something of a throne room.</p><p id="d408d588-c185-4857-8735-6d2d35872161" class="" dir="auto">Jerome welcomes him in. &quot;Come in, come in; Mr. Hussein, am I right? Your reputation precedes you; you&#x27;ve assisted the sheriff in the nascent court, correct? What can I do for you?&quot;</p><p id="ce926ba8-0e23-40f9-80b7-687c59dfc917" class="" dir="auto">Kamal explains that he wants a reliable, ongoing, safe feeding source, and is willing to offer services in exchange.</p><p id="35d74ccd-4532-43e2-b24a-134f073a91e9" class="" dir="auto">&quot;A boon for a boon; that can certainly be arranged.&quot; Jerome confirms the details; non-lethal feeding at the graveyard near Kamal&#x27;s haven, in exchange for services from Kamal on an ongoing basis. Turnaround will be no more than 24 hours from the request; same-night requests may be accommodated, but no guarantees. Richart listens in but does not speak.</p><p id="fbe035fb-a25c-48b8-84dc-8781ac22386a" class="" dir="auto">As initial payment, Jerome requests that a message be relayed for the upcoming Elysium.</p><p id="39afdb71-41b4-41b4-bef9-d5f86bd72059" class="" dir="auto">Kamal is escorted to a private room for an initial feeding; he only sips.</p><p id="5b528587-9bbd-470d-b9e6-6e6e72572429" class="" dir="auto">
+</p><p id="fcce1e2c-ee3b-4e0c-9f1b-b1f17cf630c7" class="" dir="auto">Meanwhile, Nico and Claire brief Faith on Baruch&#x27;s haven. Her posture goes from distracted to horrified; when they confirm Baruch isn&#x27;t in torpor, but <em>dead</em> dead, she blanches and asks who did it. She doesn&#x27;t understand who would, or even <em>could</em> do that to Baruch, and says that they need to brief Jerome on it.</p><p id="ebe2e5d8-e556-4ecc-ac77-17105b058428" class="" dir="auto">Nico asks Faith for a stiff drink before braving Jerome&#x27;s presence, and she goes to get it.</p><p id="c3d01451-48c0-495a-b4e0-da4bb06498b2" class="" dir="auto">Kamal exits to feed, and returns shortly.</p><p id="402b01e4-cbd6-4c1a-a471-f6f192acd075" class="" dir="auto">Richart rejoins them outside and they discuss.</p><p id="aeac8d1a-226b-4078-b83f-2e6c24f76ea9" class="" dir="auto">Faith returns and gives Nico the drink &quot;0.1 blood alcohol content.&quot;</p><p id="0881bd3d-57ea-49db-b018-baebdf3016ee" class="" dir="auto">[????]</p><p id="4c641ca2-b32b-47a1-afaa-2ec08d375a55" class="" dir="auto">Claire refuses to see Jerome.</p><p id="448b5493-914b-44e7-8d3a-68cc0a6058ee" class="" dir="auto">Nico and Richart enter. Nico negotiates that Fatima be banned from the establishment in exchange for sharing the information. They brief Jerome on what they saw at Baruch&#x27;s.</p><p id="551d71db-28b4-49fa-986f-dc528f96d40e" class="" dir="auto">Jerome stands suddenly and begins pacing. &quot;When did this happen? This is catastrophic news. Baruch knew <em>everything</em> that happened in this city, from all sides. Was this a Sabbat hit?&quot;</p><p id="1b78095c-ebb9-4b9f-987b-ba7db4156d26" class="" dir="auto">They don&#x27;t know.</p><p id="eb3a87d9-8eb9-4c3a-b4f3-ab328b374b8e" class="" dir="auto">Jerome murmurs to himself. &quot;Jesus Christ... he had some information he was going to present at the Elysium via proxy.&quot;</p><p id="9e7746ea-785c-4341-92d0-93cff09bb57b" class="" dir="auto">&quot;I need to call in some favors on the Anarch side; if the Camarilla weren&#x27;t the perpetrators, then they will be incentivized to find them, as will we; this risks everyone.&quot;</p><p id="c779816f-ff19-4d7b-8f2a-cc13f23906b7" class="" dir="auto">To Nico and Richart: &quot;I&#x27;ll pay for results. In exchange, if you find a door that needs opening, I&#x27;ll pull some strings to gain you access in your investigation.&quot;</p><p id="355b8b81-186a-4921-a1f1-6249c4b23620" class="" dir="auto">He then dismisses them. &quot;If you&#x27;ll excuse me.&quot;</p><p id="9196263d-9fbd-422e-a058-4079c25ee6fd" class="" dir="auto">
+</p><p id="9630d340-21e9-4764-8486-ee231cbc5149" class="" dir="auto">Back outside, the four vampires reconvene and strategize. Richart decides to try to send a message to his sire in the Sabbat; Nico offers to join. Kamal and Claire decide to reach out to the sheriff, Javier.</p><h2 id="6b48a2c4-57d5-4ffe-9007-4bc976aa2b9a" class="" dir="auto">A Message for Milica</h2><p id="e148eb0c-4017-40d8-aa99-0b73e1840573" class="" dir="auto"><em>PCs: Nico, Richart</em></p><p id="c7d91d29-0f42-42c4-9d44-48d97a6e831b" class="" dir="auto"><em>NPCs: Sybille</em></p><p id="c847e791-5235-41e9-942a-8a4b6124c8d1" class="" dir="auto"><strong>Sybille&#x27;s Ritual Space.</strong></p><p id="afd50ed1-9b92-4cc1-a45e-1aa502044e89" class="" dir="auto">Richart knows of Sybille, who runs a pack under Milica, and where to find or leave a message for her.</p><p id="811744ff-8f01-4d05-acbb-3b5bceb9fd1a" class="" dir="auto">Background: Richart was cursed by Glaurung, but escaped, and was able to get enough protection from the Anarchs to avoid Sabbat retribution.</p><p id="7971245c-040c-4e5d-b4b9-afff945471f7" class="" dir="auto">Sybille was maybe 19 when she was turned, looks 15. It&#x27;s unclear exactly how old she actually is.</p><p id="4d019ef9-5fb5-4b00-afd7-031e0c63be6f" class="" dir="auto">They leave the bar before the mortal curfew; the Sabbat packs definitely enforce the curfew with prejudice in some of these neighborhoods.</p><p id="093106ff-2fa0-4cdf-b570-9e7f655eee61" class="" dir="auto">They approach the back entrance to Sybille&#x27;s ritual space from the alley.</p><p id="19e534c7-0674-4427-9b4e-d69d08fca093" class="" dir="auto">There&#x27;s a ward on the door to serve as an alarm. Richart pushes past it.</p><p id="22d5e762-db73-430f-9dc4-c1dd45d471d7" class="" dir="auto">Sybille is surrounded by books, and whiteboards in a state of disarray. She angrily responds to their entry with &quot;Roscoe, I told you to stop... who are you?&quot;</p><p id="178625b7-351b-4215-a3b9-2c0e910abd59" class="" dir="auto">[?]</p><p id="02c52b0f-dff2-4e74-81da-7ff65ffedad3" class="" dir="auto">Sybille: &quot;Oh, Richart; what the hell are you doing here?&quot;</p><p id="366d9650-704c-425c-bf66-8dff21cd5d6b" class="" dir="auto">[?]</p><p id="d3475ae1-80e6-41f6-baeb-1b5d1ea58c12" class="" dir="auto">&quot;Thank you, but that won&#x27;t save you.&quot;</p><p id="c98f251f-c5cd-4f3d-9692-6a8fd81633ba" class="" dir="auto">[?]</p><p id="eb0ca5af-495e-4c19-b8a5-b48cae2a5499" class="" dir="auto">&quot;Now you have me intrigued.&quot;</p><p id="2731469f-5c4f-4899-87c7-64a70138dd81" class="" dir="auto">[?]</p><p id="71557240-5ed7-4d50-a3ac-68838c19515b" class="" dir="auto">&quot;Whose murder are we talking about?&quot;</p><p id="c51ff6d4-b6b3-4775-acff-82bfee18f2e9" class="" dir="auto">Nico: &quot;The blessed one.&quot;</p><p id="d918fb4d-1827-466b-96bd-ef1b1c87546d" class="" dir="auto">[?]</p><p id="1a943bd1-dbbc-4066-ae4d-70c00d9640b4" class="" dir="auto">Sybille: &quot;There was no love lost but Baruch was an asset nonetheless. We try not to throw assets away needlessly. Are you accusing us of this?&quot;</p><p id="8f82798b-492f-40cb-9dfd-7543c7fb282f" class="" dir="auto">[Nico asks about Milica&#x27;s boots; he previously admired Sybille&#x27;s.]</p><p id="cc69c680-d86d-473c-b89b-c21a09538b7e" class="" dir="auto">&quot;Milica has exquisite boots. What do you want of her?&quot;</p><p id="576c25c4-118c-44d3-a3a0-40cb1e70523a" class="" dir="auto">[? Richart&#x27;s message?]</p><p id="1cab1b91-77ea-48d4-9481-7c5e46b9164f" class="" dir="auto">Sybille agrees to relay the message. &quot;I can see Jerome using this as a pretext for all sorts of trouble.&quot;<div class="indented"><p id="7100acf0-52c6-42e6-877f-aca1a2f118aa" class="" dir="auto">&quot;Can you give me the location of the blessed one&#x27;s haven?&quot;</p></div></p><p id="68b8f9fa-82c4-43d5-8d86-32f99194d6c2" class="" dir="auto">[?]</p><p id="6fbae276-7025-4988-b03d-fad50e9039de" class="" dir="auto">They head over to the mausoleum afterwards.</p><h2 id="0ae6b5c2-b79f-484a-bc99-7619eea2fa10" class="" dir="auto">Investigating with Javier</h2><p id="ffb1923e-c4fc-48e3-b630-04954f9a6e25" class="" dir="auto"><em>PCs: Claire, Kamal</em></p><p id="c5418233-e5e5-49c3-80b4-3309862681fd" class="" dir="auto"><em>NPCs: Javier.</em></p><p id="7f58c3e3-a855-4796-8959-eedde5668864" class="" dir="auto"><strong>Javier&#x27;s Haven.</strong></p><p id="f8a13898-bc57-4a58-8369-50d024fb2dc7" class="" dir="auto">Kamal and Claire get a ride to Javier&#x27;s haven in Saint-Foy. </p><p id="45af5475-7c9b-442e-aedc-afef07f12dfd" class="" dir="auto">Javier has been a bit aloof and rebuffed collaboration attempts in the past, but nevertheless gets along ok with Kamal.</p><p id="0f1ce35f-7900-4f5a-addc-d020dce5efb2" class="" dir="auto">[Claire has researched something regarding House Goratrix?]</p><p id="9f964ade-0a2b-4953-bb67-9a8ee1ec17e4" class="" dir="auto">Javier welcomes them in, explains that he has been working out security details for the upcoming Elysium.</p><p id="ceb5cb1d-217f-4b97-b02f-dff31a0f572f" class="" dir="auto">They explain what they encountered at Baruch&#x27;s haven. Javier acknowledges that the Camarilla claims jurisdiction but does not have de facto authority, and Baruch was formally Anarch, but he asks if they would bring him to the scene. He drives and they all head over.</p><h2 id="fd5d47dd-e6f4-4573-8df3-307e638b6edf" class="" dir="auto">At Baruch&#x27;s Haven</h2><p id="9b479018-afc9-401c-a3bf-1f3ddda9f26b" class="" dir="auto"><em>PCs: Claire, Kamal, Susanna.</em></p><p id="f09b35ba-ec34-49bd-8ede-0f484856b159" class="" dir="auto"><em>NPCs: Javier.</em></p><p id="03276d2d-faf7-4f92-8cae-a9fe4f766f2f" class="" dir="auto"><strong>Baruch&#x27;s Haven.</strong></p><p id="ee7ebf17-e0ed-4054-9f3a-95c2381c72f1" class="" dir="auto">As they approach, Kamal realizes that the entry has been disturbed since he left.</p><p id="babdedaf-9653-484f-91c0-030b145c516e" class="" dir="auto">They enter cautiously, and they see Susanna and her dog looking around, befuddled.  When Susanna turns, Claire catches a hint of a third eye in her forehead.</p><p id="cc33dd29-fef2-4f7f-84c1-ea858eeaec4d" class="" dir="auto">The intruder&#x27;s clothes are scuffed and damaged but any injuries have since been healed.</p><p id="8a804a40-7edb-4af2-8c60-0596780c1b70" class="" dir="auto">At Javier&#x27;s recommendation, Kamal and Claire offer to bring Susanna to their coterie&#x27;s haven.</p><p id="87c9ebe7-4bc8-4782-a381-c6d842bfae4b" class="" dir="auto">Kamal wants to match Susanna to the blood splatters from the prior night, and asks for a sample. She hesitates, and uses <mark class="highlight-red" data-notion-highlight="red"><em>Scry the Soul</em></mark> to read Kamal&#x27;s aura.  She realizes that Kamal is fellow kindred, and that he is not hostile or ill-intentioned. He believes he has proper authority.</p><p id="64f79f7b-e3b0-4f37-8680-2ea41d16cf83" class="" dir="auto">Claire unpacks her equipment, and draws a vial of blood from Susanna. Claire hands the vial to Kamal, who tastes it... dabs again, then drains the vial, and goes into a hunger frenzy. It&#x27;s definitely the same blood from the guest room, but Kamal has to be physically restrained by Javier to prevent him from attacking Susanna.</p><p id="c8d79be4-29ba-40e4-a557-35c50236fe5d" class="" dir="auto">Claire uses <mark class="highlight-red" data-notion-highlight="red"><em>Blood of Potency</em></mark> and attempts (but fails) to concentrate her blood, before offering her wrist to Kamal. She gives enough vitae to help him start to come down, and pulls her wrist away. Kamal lunges for more but Javier prevents it.</p><p id="ffdfd722-894f-463a-885d-8bd0b9f5501c" class="" dir="auto">Susanna has frenzied before (albeit in more controlled circumstances), and recognizes what is happening.</p><p id="a85a8726-a0fb-4aff-a35a-883fa583c5da" class="" dir="auto">Susanna offers to provide a little more, and Claire draws another vial, tasting it herself instead of offering it to Kamal. She withstands the temptation of a hunger frenzy, and confirms that Susanna must have been the third kindred.</p><p id="ea4faca0-5494-419e-abb5-d88ea4dbe70c" class="" dir="auto">Kamal is mortified by his behavior, as well as in awe of Claire&#x27;s resolve.</p><p id="37b62232-bd46-4461-8988-164abe9ae273" class="" dir="auto">They question Susanna, and learn that she and her sire, Estelle, were to be introduced to the Camarilla by Baruch at the next Elysium.</p><p id="9f018779-1fc9-480b-951b-e6f122c51b35" class="" dir="auto">Javier examines the room, and rips out a camera from the wall, crushing it. He proceeds to scour the other walls and find two others. He indicates that he will survey the scene, and asks for them to go ahead and leave with Susanna.</p><p id="909e5f12-99df-418c-8bf2-2428d9c49bbc" class="" dir="auto">Javier: &quot;I don&#x27;t know whose these are, but I don&#x27;t appreciate being watched by parties unknown.&quot;</p><p id="9394b6e8-2a5d-46c8-a970-335f18b90bf2" class="" dir="auto">When Susanna explains her capture and release, she remembers that the soldiers had CSIS patches. She wasn&#x27;t blindfolded, but could not see outside the vehicle and did not know the route.</p><h2 id="d1905714-d239-4c58-a27f-9183f0736f54" class="" dir="auto">Returning to the Mausoleum</h2><p id="e86c0471-d7c5-435e-b870-430d92c3a81c" class="" dir="auto"><em>PCs: Nico, Richart, Claire, Kamal, Susanna</em></p><p id="ca076993-dc49-4f4c-886f-fbdac60f5d29" class="" dir="auto"><strong>Comte Cioran&#x27;s Crypt.</strong></p><p id="cc23716a-1428-4551-9043-b6bc28a31f0e" class="" dir="auto">Claire &amp; Kamal bring Susanna to the mausoleum, and they meet with Richart, Nico, and Calli. Introductions are made, and it gets towards dawn. As torpor falls over them, there is a frightful howl from the earth beneath them.</p><p id="34bf9181-09b0-49e2-87fe-75c59cfea196" class="" dir="auto">Calli returned with a freezer box of bagged blood.</p><h1 id="4a3448be-c98d-42d5-aabd-8cdda6e9177d" class="" dir="auto">Night of June 11th, 2021</h1><p id="f920a8d4-d164-4547-a602-4a3e3a214de9" class="" dir="auto"><em>Session: March 8th</em></p><h3 id="e51fcddb-c6e1-4f93-a989-7eb69d39103f" class="" dir="auto">Waking the Wight</h3><p id="63dc308c-cef8-4f5d-bb29-abbbc3a998f2" class="" dir="auto"><em>PCs: Nico, Richart, Claire, Kamal, Susanna</em></p><p id="88ace37a-0cce-40e6-a915-184b310db924" class="" dir="auto"><strong>Comte Cioran&#x27;s Crypt.</strong></p><p id="4ee4cc55-a911-402b-8258-70abdfaedd07" class="" dir="auto">Susanna wakes up in a hunger frenzy.</p><p id="3c5af733-3978-4979-8183-a72ce1a63d06" class="" dir="auto">Everyone wakes up, to see Calli facing off a wight who materializes from the soil, roaring and attacking. They fight and Calli gets viciously attacked and falls into torpor.</p><p id="4db9e08a-cf52-446b-9e3a-eabccfde6c84" class="" dir="auto">The wight appears to be the manifestation of the haunting presence. Richart is confident that it&#x27;s alone. Perhaps it was latent, or in torpor, previously.</p><p id="26e01d98-146c-4816-a481-c440774b70a4" class="" dir="auto">Nico is super chill about it, and is trying to reason with it. Kamal uses a <mark class="highlight-red" data-notion-highlight="red"><em>Blood Surge</em></mark>, and Claire prepares using <em><mark class="highlight-red" data-notion-highlight="red">Blood of Potency</mark></em>. The wight engages with Richart and attacks him.</p><p id="530e505c-39a4-4856-8195-67883ddfb3e4" class="" dir="auto">Susanna steers herself towards the wight, and launches herself onto its back, sinking her teeth into its neck, slaking her hunger and snapping her out of the frenzy.</p><p id="d687042c-4912-49b2-a7dd-a3fef673fff7" class="" dir="auto">Nico uses <mark class="highlight-red" data-notion-highlight="red"><em>Compel</em></mark>, commanding the wight to stay Still.</p><p id="23db4b8a-ec79-4f1d-a544-d0808cf47256" class="" dir="auto">Kamal uses <mark class="highlight-red" data-notion-highlight="red"><em>Extinguish Vitae</em></mark>, but the wight still struggles mightily.</p><p id="8382e325-2a26-4350-a9e8-38841fc94825" class="" dir="auto">Richart pulls his handgun and fires on the wight, and the bullets bury themselves in its flesh.</p><p id="ba675a81-24dd-4c28-8c14-4651a3387e88" class="" dir="auto">The wight attacks Claire, and she tries to pull away but it lands on her, bending her leg in a direction it shouldn&#x27;t go.</p><p id="147cf996-fe5e-40e2-a884-ef293261a60e" class="" dir="auto">Nico is disappointed by the wight&#x27;s disregard, and uses <mark class="highlight-red" data-notion-highlight="red"><em>Compel </em></mark>to make it &quot;Sit!&quot;.</p><p id="a8592322-7a03-4b06-94b9-71f117947bf7" class="" dir="auto">Kamal jumps onto it and latches on to feed as well. The body goes slack, and falls into torpor.</p><p id="f96904af-f422-4136-970f-290970c36b88" class="" dir="auto">
+</p><p id="2e2c702b-a256-4f98-a55c-f28eaf84c731" class="" dir="auto">Richart looks at Claire, takes her knife and cuts away the pant leg. His tongue extends to the leg, and by <mark class="highlight-red" data-notion-highlight="red"><em>Vicissitude</em></mark> he reshapes her leg into a form that can support her weight again.</p><p id="3a6f116f-ae06-4b2e-9887-25e555eb7e67" class="" dir="auto">Richart:  &quot;So what exactly <em>was</em> that?&quot;</p><p id="23032cda-781b-423e-b7be-87f4ebeac01c" class="" dir="auto">Nico: &quot;Our bashful friend finally made an appearance.&quot;</p><p id="e3315188-e593-4ff1-8e49-735ea7617200" class="" dir="auto">Richart: &quot;It came from the earth; a distinctly <em>Tzimisce</em> approach, if I do say so.&quot;</p><p id="fdfcde8b-473b-4f20-81ae-0966704e1260" class="" dir="auto">Kamal recognizes that this is a strong vampire, but not as strong as the one that had been guarded; presumably it either just came out of torpor, or its been hiding for quite a while.</p><p id="c3061d27-e156-4563-97f1-1d8a03b41e1c" class="" dir="auto">Claire uses <mark class="highlight-red" data-notion-highlight="red"><em>A Taste for Blood</em></mark> on the wight, corroborating that it is what she has been warned of if a kindred fully succumbs to the Beast. It should be out for about a month.</p><h3 id="7d0545fc-0dd2-422e-a76f-da8327d0d992" class="" dir="auto">Blood Walk</h3><p id="a7294af4-1555-4bb1-aa1d-94b926e6b338" class="" dir="auto">They then catch each other up; Susanna is introduced to Richart and Nico. She denies any factional affiliation, and that she was attacked by mortals, but was let go. Susanna believes that she hid her third eye successfully, but that she had to give up some blood to the mortals.</p><p id="d167ff73-a03f-4a84-8b31-44be03626642" class="" dir="auto">Claire pipes up, says that she believes Susanna&#x27;s blood is powerful, and that she could be an asset, or else in need of protection.</p><p id="7d953351-8cb2-4b27-8a98-501a963ff88c" class="" dir="auto">Nico to Susanna: &quot;How do you feel about boots?&quot;</p><p id="8883574a-9277-40a9-8ba5-087a21e71cb7" class="" dir="auto">Susanna: &quot;The more boots, the better.&quot;</p><p id="2e3d92b7-5077-4457-bc64-5105b99d3dcf" class="" dir="auto">Nico: &quot;A useful asset.&quot;</p><p id="700144a6-aaad-4bb2-a071-f0d29a33f50e" class="" dir="auto">Richart: &quot;She was first after Calli to jump into the scrap, as well.&quot;</p><p id="c0153e2c-b947-4a11-82e1-ce2b0cb92826" class="" dir="auto">Richart then explains that they had relayed news of the attack on Baruch&#x27;s to his contacts.</p><p id="8494f170-5c19-42dc-850e-5017039e35d9" class="" dir="auto">Nico starts researching fashion for Elysium.</p><p id="1c4505f8-5f4e-465e-b6ae-0dac43fa69b8" class="" dir="auto">Kamal explains that he believes the eyes Nico was seeing may have been the surveillance systems that Javier found at Baruch&#x27;s haven.</p><p id="0b9550e9-04d6-441d-8d7b-e4f120ea90b7" class="" dir="auto">Richart examines the wight&#x27;s body, takes a stake that was hidden away for just such an emergency, and stakes the wight as a safeguard.</p><p id="f6e97560-9a07-450b-8cd3-bab480f448b9" class="" dir="auto">Kamal goes to feed some of his vitae to Calli to help her wake up, but Richart stops him, and has Nico do so instead. Calli takes a couple days to fully come to.</p><p id="acbe3d64-ef7e-47a7-87e2-e3773b34ab0b" class="" dir="auto">Claire notices that the bags of blood Calli brought were intended for the hospital.</p><p id="e170172f-ee6b-4652-ae2b-2e1186b217cc" class="" dir="auto">Nico has a vision of Susanna lying in darkness, and a glow around, and looking up; he sees the northern lights. He sees observers all around, some in priestly garb, some in fatigues, some in suits. One of the men has regalia associated with the Society of St. Leopold, which was related to the first Inquisition. He screams &quot;the eyes have arms and badges!&quot; as he looks absently at a wall and strokes it.</p><p id="7ef4c5f2-17c8-4252-91b3-92e470d04427" class="" dir="auto">Richart asks Susanna if he can reach into her memory, and attempt to recover any lost memories; but it seems that Susanna does not have relevant memories to recover.</p><p id="bdd50f02-6bf6-4284-8db7-20a30f255ab9" class="" dir="auto">Kamal wants to attempt a <mark class="highlight-red" data-notion-highlight="red"><em>Blood Walk</em></mark> to determine any outstanding bonds on Susanna. He outlines some of the risks, particularly the risk of frenzy. Claire, Richart and Kamal start discussing practicalities, and Susanna pipes in, confused. Trying to build trust, Susanna explains that she&#x27;s Salubri, that Estelle was her sire, and that she&#x27;s willing to provide a little more blood in a safe way if it helps unravel the mystery.</p><p id="c387a55c-1adb-4894-828a-f238c903ce1e" class="" dir="auto">Claire is surprised by Susanna&#x27;s description of her lineage; it&#x27;s quite in conflict with the Tremere&#x27;s perspective she has learned, but she says nothing.</p><p id="eea41788-387e-4b54-aed7-0b07efd4baf2" class="" dir="auto">Nico is still hallucinating wildly at the walls. Susanna asks about Nico&#x27;s boots, and whether he has a special pair for the event. This gets his attention, and he describes a pair of asymmetrical boots and then resumes walking in circles and experiencing his vision. Richart gives Nico $300 with which to obtain a pair of appropriate cufflinks for Elysium.</p><p id="e96c273e-2a39-40a8-96e3-9f26dcfc5411" class="" dir="auto">Kamal and Richart remove themselves to perform the Blood Walk, but first Richart sits Kamal down, places his necrotizing hands on Kamal&#x27;s shoulders, and his tongue extends down Kamal&#x27;s neck and up to his ear, reducing his <em>Dexterity </em>in favor of <em>Resolve</em> using <mark class="highlight-red" data-notion-highlight="red"><em>Vicissitude.</em></mark> Claire has drawn some blood from Susanna and brought it and a chalice to Kamal.</p><p id="894ad55b-0917-47df-80eb-af7ddae43ada" class="" dir="auto">As Kamal drinks, he steels himself against frenzy and permanently overcomes temptation with regards to Susanna&#x27;s blood. [10 successes where 5 were needed]. The blood walk begins, and Kamal senses an older kindred, Tzimisce, who is close and recent; there is another entity bonded <em>to</em> Susanna, but at a remove.</p><p id="1706e1c5-7c55-494d-b7eb-69b5da5ab954" class="" dir="auto">As the ritual ends, Kamal calls Susanna in, and Richart joins. He describes what he witnessed, &quot;one regnant, and one thrall&quot;, but Susanna is unaware of these bonds. </p><p id="3ef3a16f-00bf-4311-916b-de568679c795" class="" dir="auto">
+</p><p id="2b3cfb4e-4619-498c-a98d-5a47816073b1" class="" dir="auto">Outside, a message was left for Richart in a dead drop outside of the mausoleum, a sealed packet, along with a note indicating that he has an invitation and must attend the Elysium the following night.</p><h1 id="918862f4-eee5-4adf-bb4c-7d40475adc4f" class="" dir="auto">Night of June 12th, 2021</h1><p id="20c606db-d0ce-4ea9-8285-30fb5263b57a" class="" dir="auto"><em>Session: May 8th</em></p><h3 id="32e88fd8-5982-41d6-81d3-93ea031c88c9" class="" dir="auto">En Route</h3><p id="fef28935-9516-4f71-af01-72dcdd2a893c" class="" dir="auto">Richart heals and Claire removes one point of aggravated damage the next night. Kamal reverts Richart&#x27;s changes from the previous night.</p><p id="b4214d78-dcee-4e5f-b128-3a46c12e54e8" class="" dir="auto">En route, Kamal describes the vision of the kindred that Susanna is bonded to. Richart recognizes the description of the former, and suspects that it is the Glaurung, bishop of the Sabbat.</p><p id="85bda6dd-1695-4839-8530-0eaecf85af8f" class="" dir="auto">Richart mentions that he is delivering a package; Kamal asks what&#x27;s in it. They consider trying to surreptitiously open it, but ultimately decide to leave it as is.</p><p id="332abf05-0c7b-4deb-a933-87a2100d1594" class="" dir="auto">Nico presents cufflinks that are a silver rectangle with an emerald centre. Richart is wearing a four-screen shirt with a dark grey tie, and a charcoal grey fitted suit, looking dapper but also looking far too young. He and Nico look like frat boys that cleaned up nice.</p><h3 id="87057650-2094-4da9-9674-10c3ef09c107" class="" dir="auto">Elysium</h3><p id="1817934c-1a17-4cf1-b8c3-4b4f814f7b00" class="" dir="auto">Anselm is masked and announces each kindred as they enter Elysium. There are ghouls dressed beautifully that are walking tall thin lidded glasses of blood around.</p><p id="ab76cc05-d172-4350-967d-c54d9ac85ea3" class="" dir="auto">Richart and Kamal arrive together; Nico has already arrived and is enjoying the party; Claire takes Susanna to her chantry. The Toreadors have style, and Mohammed has done exceptionally. Nico is speaking to Maggie, who is urging him to consider joining the Tower.</p><p id="6d7b7648-b2f9-4069-8187-1e58568a0891" class="" dir="auto">Kamal is wearing a suit and bow tie, and sees Javier off to the side, hair tied up in a bun. Prince Beatrice is at the room&#x27;s natural focal point, talking with Gisele and others. The formal portion of the event hasn&#x27;t yet begun. Richart seeks Mohammed out and requests that his delivery of the package get added to the agenda. Mohammed assures Richart that he has protection at Elysium, but cautions him of the needs of the Masquerade, distrustful. Kamal joins and asks Mohammed for a guest list. Mohammed says he&#x27;ll get it, but says that he&#x27;s provided one to Javier, and asks if there&#x27;s a security concern, which Kamal acknowledges there isn&#x27;t.</p><h3 id="0affb767-4b5f-41ed-9e55-7abaa2add446" class="" dir="auto">The Chantry</h3><p id="04b4b271-9cf2-4a35-8e69-542ada1ed7e3" class="" dir="auto">Claire shows Susanna around the chantry, explains some of her work. She tells Susanna that what she had learned about the Salubri was quite different, that they had been nearly exterminated, and was curious about her off-the-charts blood potency and lineage.</p><p id="a20847a6-9226-4446-9794-4b41a7415873" class="" dir="auto">Susanna: &quot;The blood potency is definitely part of the reason we have been hunted. I&#x27;ll choose to trust you, and acknowledge that there has been animosity between our clans.&quot;</p><p id="d6c6f8d7-790d-4f98-a117-3f2a5f3ada5b" class="" dir="auto">Claire: &quot;We were told that you participated in a kind of verboten diablerie; you were boogiemen, and there wasn&#x27;t much discussion of success with Golconda. But I think you should be protected, which is why I didn&#x27;t bring us to the Elysium, yet&quot;</p><p id="5fef0ef3-71c1-400f-81b7-3b70ff423f5f" class="" dir="auto">
+</p><h3 id="f7e1471b-7749-426c-9d22-711d86938684" class="" dir="auto">Order of Business</h3><p id="7085cf47-0f0f-43fb-b87e-43150ea9b4ac" class="" dir="auto">The formal portion of the Elysium begins, and Javier begins with a description of the destruction of an anarch haven and of two unaffiliated kindred, presumably by the Sabbat in an escalation of needless conflict, risking the Masquerade. This drives home the need for the Camarilla to extent their reach and secure Quebec City from such fraught risk-taking. He describes the scene, the reckless use of technology presence; it&#x27;s part clinical description, part polemic, part speculation. He calls Kamal to step forward to corroborate. Kamal thanks Javier, but says he has no details to add and steps down. Gisele thanks Javier.</p><p id="1b85e1a0-bf67-407c-b929-a511d1bc5a41" class="" dir="auto">Gisele calls Richart forward, and he walks forward with the package. Prince Beatrice takes the package, thanks him, and opens it. It&#x27;s a book and a sheaf of papers. She hands the book to Gisele, reads the papers, and then responds to Richart: &quot;Thank you, and do enjoy the rest of the night, but understand that this invitation will not recur.&quot; Richart bows his head, and says &quot;It was not my decision.&quot;</p><p id="e44ebc11-a6cd-4679-a8d5-8fdd2394203f" class="" dir="auto">Anselm announces, &quot;We welcome the unaffiliated, Jerome Giovanni.&quot; Even as Anselm calls out Jerome strolls confidently in, and straight to the Prince. Richart moves back to an exit.</p><p id="fa252b66-e541-4120-b44a-6b2cbfeb839f" class="" dir="auto">
+</p><h3 id="b05d413e-72f0-444d-a491-56443f63813d" class="" dir="auto">Late Arrivals</h3><p id="4eaa24b9-7668-48b3-ae9f-f4a91de6fdc9" class="" dir="auto">Claire gives Susanna a discreet sash to help cover the forehead and they arrive to the Elysium late. They arrive shortly after Jerome. She convinces Anselm that she doesn&#x27;t want to disturb the proceedings, and she watches as Jerome approaches the Prince and then swerves to berate Michel about his childer and the delinquent payment which is now his responsibility. Michel is blindsided, and tells Jerome he&#x27;s surely mistaken.</p><p id="ebd53b11-d814-4460-b2f5-05e3c0b852fc" class="" dir="auto">
+</p><p id="df76ad78-603c-4eec-b6df-d19e48104749" class="" dir="auto">Kamal and Nico notice Claire and Susanna enter. Richart is listening in to Jerome and Michel. Kamal goes back up to Javier, informs him that they shouldn&#x27;t be so certain about the Sabbat&#x27;s involvement, that he believes mortals were involved instead. Kamal feels Javier&#x27;s influence in his mind, as he says &quot;We are certain of the Sabbat&#x27;s disruptive influence.&quot; Kamal recognizes that it is politically expedient to blame the Sabbat, whether or not they actually were responsible; and the Anarchs are unlikely to interfere in that. As Kamal walks away, Mohammed hands him a folder, tells him it hasn&#x27;t been cross-referenced with attendees.</p><p id="7d1f2379-86d3-4dcf-b988-33d12af69ea7" class="" dir="auto">
+</p><p id="8f81802d-bc31-48e6-980c-7cf79bcd2760" class="" dir="auto">Susanna uses <mark class="highlight-red" data-notion-highlight="red"><em>Sense the Unseen</em></mark> and recognizes that the space seems to be warded, and the wait staff are all ghouls. She recognizes Nico, Kamal, and Richart in the crowd.</p><p id="1fa6d103-64e4-4470-af23-c03214a7d662" class="" dir="auto">Susanna: &quot;Wow, this is quite the affair; is this pretty typical?&quot;</p><p id="6d366004-2355-4e16-890e-140ee83f1798" class="" dir="auto">Claire is panicked and tries to calmly answer Susanna as she tries to avoid Jerome&#x27;s gaze.</p><h3 id="00871c59-a10d-428e-a927-4fbc269f8dfa" class="" dir="auto">Debt</h3><p id="51740c8b-4390-415c-b3d0-d80836cf7bd6" class="" dir="auto">Claire sees Michel lock eyes on her, and storm in her direction. She ducks into a side room, and he catches up.</p><p id="d3de8136-5a39-44d6-bef8-ad3e7545e040" class="" dir="auto">Michel: &quot;Is that why you tried to stand us up? What foolishness have you gotten us into?&quot;</p><p id="654c8ff6-1f3d-4777-8fe2-a9f3cbf9f173" class="" dir="auto">Claire: &quot;I felt like it was a solid plan, and it fizzled, but I&#x27;m working on something that will make good on everything.&quot;</p><p id="57c65dd4-2910-49bd-8471-5988a699d208" class="" dir="auto">Michel: &quot;Your &#x27;plans&#x27; involved standing up and withholding payment on a major boon to a kindred you should never have owed in the first place. Why did you not simply ask? We could have coordinated something, whatever it was.&quot;</p><p id="1521546c-12d0-46ee-8be4-47bae071a6dd" class="" dir="auto">Claire: &quot;Well, it was going to be a surprise, an awesome thing, but I promise I&#x27;ll get it handled.&quot;</p><p id="046cef6c-59c3-489d-8bd5-124b1e343b15" class="" dir="auto">Michel: &quot;Give me one good reason why I shouldn&#x27;t hand you over to Jerome right now.&quot;</p><p id="59a2fb08-d8ba-4bea-a56f-eaf2c0d5e49c" class="" dir="auto">Claire pulls out the vial of Susanna&#x27;s blood. </p><p id="812a4836-39c8-42b2-898e-a583d18f8ee6" class="" dir="auto">Michel: &quot;What&#x27;s that?&quot;</p><p id="9544dd07-d564-4033-9e48-30ed715c81e3" class="" dir="auto">Claire puts a drop on her finger and offers it to him. Michel is confused and uncomprehending, but he takes a lick and his eyes light up in astonishment.</p><p id="a13b7628-0b30-4200-b429-ff7a3731dd5a" class="" dir="auto">Michel: &quot;Is.... is that what I think it is?&quot;</p><p id="3c8face2-8b41-4696-95aa-39f6de2e4ee9" class="" dir="auto">Claire: &quot;Yes, I don&#x27;t know how it exists here, but...&quot;</p><p id="c5360a90-fa5a-4327-b6b9-9cffc3b7938c" class="" dir="auto">Michel: &quot;But there&#x27;s more where that came from?&quot;</p><p id="4384a8b8-9e95-479d-b511-21306c795148" class="" dir="auto">Claire: &quot;...yes.&quot;</p><p id="2b5e899a-dfeb-4dcd-9b2e-adf1ca5f738c" class="" dir="auto">Michel: &quot;Don&#x27;t speak to Jerome of this. Let me talk to the Prince. We can find a way to get him off your back. Give me ten minutes and I&#x27;ll have Jerome removed from the Elysium. I don&#x27;t know how you managed to obtain that, but it&#x27;s a coup.&quot;</p><p id="4cd6dba6-1d44-4447-b980-ad89e7fbdfc7" class="" dir="auto">Claire sighs and slumps against the wall in relief.</p><p id="93570ea3-5f6d-4066-970a-77f450ecff21" class="" dir="auto">
+</p><p id="05b34816-e563-4fc7-915f-5983041ad3d8" class="" dir="auto">Looking through the papers, Kamal does <em>not</em> see Glaurung on the list, but does see Jerome, as well as Baruch and Estelle, although the latter two names are struck out.</p><p id="53c5867f-e105-455c-ad20-949419510934" class="" dir="auto">Susanna spies Estelle&#x27;s name on the list, and asks Kamal about that and about the wards, which Kamal recognizes as preventing ghouls and spirits.</p><p id="55e78325-302a-4f12-8401-19828878e881" class="" dir="auto">Susanna: &quot;Was that what Nico was referring to?&quot;</p><p id="d46456ff-a806-4065-ba8b-6a19201b2762" class="" dir="auto">Kamal: &quot;We&#x27;re never quite sure what Nico is referring to.&quot;</p><p id="dd0d9190-439f-4120-b68d-e5bb297bb213" class="" dir="auto">
+</p><h3 id="0e0117f7-f254-4974-97cc-438f52376ba2" class="" dir="auto">Affairs of State</h3><p id="f5d782da-e1f1-42da-8135-3e422fc72a5e" class="" dir="auto">Nico notices a ghoul standing off to the side from the Prince; it looks like one of the figures from his vision. He goes over and says hi. &quot;Were you in my vision?&quot;</p><p id="9ff5a173-ecc7-4d80-a7bb-bff15ec32934" class="" dir="auto">He responds: &quot;Well, I see you now.&quot;</p><p id="b0270b6e-68f2-4f1f-ac59-959834877d37" class="" dir="auto">Nico: &quot;Not my vision now, earlier, with the walls and the eyes.&quot;</p><p id="7e90dd4f-0d6a-4148-8e68-65a8ae2588ae" class="" dir="auto">Ghoul: &quot;I don&#x27;t know.&quot;</p><p id="501c91ce-d266-47ee-ba42-cda110a268d9" class="" dir="auto">Nico: &quot;Could you call the Prince over here?&quot;</p><p id="642b05f6-6013-4f39-a0f9-b4c0252137f4" class="" dir="auto">Ghoul: &quot;She seems occupied.&quot;</p><p id="ce44c07e-72eb-4d4b-904b-eb8e3008148b" class="" dir="auto">Nico: &quot;Make an attempt.&quot;</p><p id="2dbad0ea-8dcf-4e43-b1fd-a33235abf47f" class="" dir="auto">He walks over, speaks to the Prince, who comes over after finishing addressing the current petition.</p><p id="15197bd5-c5b3-44af-8570-6b1711a728d9" class="" dir="auto">Beatrice: &quot;Thank you for coming, are you considering joining our endeavor?&quot;</p><p id="fb27c548-16bf-4e1d-a0f9-478688af0a65" class="" dir="auto">Nico: &quot;I&#x27;m not much of a joiner. I have a question for you; have you had any news of the northern lights, moving?&quot;</p><p id="734b21bc-1cd7-4ee6-9111-7654f5fabcaf" class="" dir="auto">Beatrice: &quot;...yes. A true Aurora.&quot;</p><p id="b8fbc776-7285-4fff-92a0-605541045983" class="" dir="auto">Nico: &quot;Yes! With many eyes and many arms. And sometimes badges. This is an endeavor we should all be part of.&quot;</p><p id="2b62a81b-7d04-4053-9ba9-a3d1288821fa" class="" dir="auto">Beatrice: &quot;It&#x27;s an endeavor that is a sign of power for some, doom for others.&quot;</p><p id="77870423-18a1-427d-97d0-7eae302d6b2f" class="" dir="auto">Nico: &quot;Agreed. I have friends here, they could be helpful, we are concerned that the doom might reach too many of us.&quot;</p><p id="d54760d0-9505-4598-857a-a7c3fa7e1b41" class="" dir="auto">Beatrice: &quot;Too many is subjective.&quot;</p><p id="543d0c05-f847-4be0-915a-e14c06eae03c" class="" dir="auto">Nico: &quot;You don&#x27;t enjoy kindred? They&#x27;re a good time! You don&#x27;t want the doom to reach all of us.&quot;</p><p id="e4a7cf09-7480-4b34-8b82-0ade943552ef" class="" dir="auto">Beatrice: &quot;I&#x27;m confident that those of the Camarilla will be spared.&quot;</p><p id="fb0784a7-0c86-4c7f-9bf5-d43703d1fc74" class="" dir="auto">Nico: &quot;Then perhaps you underestimate the Aurora; it is a true Aurora.&quot;</p><p id="99d9c4c6-bfd0-4365-b919-de72aa97d502" class="" dir="auto">Beatrice: &quot;Let&#x27;s remain in touch, but the offer of protection is only for joiners; simply being a guest at Elysium is insufficient. Good evening.&quot;</p><p id="f2af42b8-1f21-4167-b50e-ffce318afec4" class="" dir="auto">
+</p><p id="9e9673e5-b8eb-430a-a437-5c365374b566" class="" dir="auto">Richart sees Michel storm into the room, take Jerome by the elbow and walk him out of the main room. Richart moves to join Kamal and Susanna, asks about Claire. He thinks it was a terrible idea that they came, and disapproves of Claire&#x27;s decision. Giselle walks up: &quot;The Prince has a response for you, could you join us?&quot;</p><p id="1022fe54-5525-44a0-9b79-ed4cd3f6a901" class="" dir="auto">The Prince comes over and says &quot;We have drafted a brief but hopefully sufficient response.&quot; She hands him an unsealed package, and requests that he deliver it to Milica and Glaurung. It&#x27;s a small wooden box the size of a novel.</p><p id="3a0bac62-9ed6-4dfa-a2e8-efda99bc053c" class="" dir="auto">Richart walks over to Nico. &quot;I think it&#x27;s in everyone&#x27;s best interests to leave with Susanna; could you manage a distraction?&quot; Nico agrees, and Richart goes to prepare the others.</p><p id="1b952681-a0d1-429e-8080-e09f6b8eee49" class="" dir="auto">Claire reenters and joins from the opposite side.</p><p id="01ed1483-bc32-4352-b224-ab91242b4511" class="" dir="auto">Nico starts loudly drinking and trying to get others to join him, before dropping his glass and screaming about arms extending from the ceiling. Javier comes over and restrains him, but it&#x27;s a sufficient distraction for the others to get out.</p><p id="c38b3f30-ce45-4a1f-917c-b14c1048f7db" class="" dir="auto">Susanna leaves reluctantly, asks Claire if they can return to the chantry, but they ultimately decide to head back to the mausoleum; safety in numbers.</p><p id="169cfd30-a0ce-4a81-bda9-f6eea1f55799" class="" dir="auto">
+</p><h1 id="215c19aa-7391-4e3b-b74f-f33de4a97ff8" class="" dir="auto">Night of June 13th, 2021</h1><p id="63c422db-fe02-4b43-9314-1ae257f137d6" class="" dir="auto"><em>Session: May 22nd</em></p><p id="4ad06857-1139-44da-9727-4860c78ebbed" class="block-color-blue" data-notion-highlight="blue" dir="auto"><em>The recording got everyone&#x27;s voice except for Jordan&#x27;s! Definitely some omissions here.</em></p><p id="a0853415-47d1-4800-9789-031871265936" class="" dir="auto">
+</p><p id="698abdbd-29a3-4581-9e17-d41f6c404e95" class="" dir="auto">Susanna wakes up to find a dossier of Baruch&#x27;s, and a note from Richart. She opens it and begins reading. It seems Baruch had been shopping her and Estelle to all three factions, trying to generate a sort of bidding war to get them the most safety, and himself the biggest kickbacks in boons and intel. Glaurung had been the point person from the Sabbat; Gisele from the Camarilla, and Jerome from the Anarchs.</p><p id="61489d0d-d183-406e-87c9-42982487efcf" class="" dir="auto">Claire feeds from one of the blood bags, then looks at Susanna with intrigue.</p><p id="c01e49ca-526f-4ff6-8d5d-54b5177df9c9" class="" dir="auto">Nico wants them to join him for a vision journey, but he heads out alone to feed first.</p><p id="8ce84f02-e7ba-48de-a604-5e960cb66ee6" class="" dir="auto">
+</p><p id="0ee83c35-c37c-412c-be05-a65fdec7b737" class="" dir="auto">They meet up at Bar la Sacrilege, and find a private room. Nico and Susanna partake, and Claire stands watch. Nico has a strong vision regarding AURORA, and understands that they were operating with Camarilla intel, from Gisele Singh, the seneschal. When Nico comes out of it, he&#x27;s just panicked &quot;get your hands off me, hands off me.&quot; Susanna says &quot;That was disturbing; Nico, it wasn&#x27;t real.&quot; Claire is frozen, unsure what to do.</p><p id="8feca135-833f-4b72-beda-05e5abcc1b64" class="" dir="auto">As he settles down, Nico says &quot;We need to reach out to our friends, they&#x27;re in Sabbat territory.&quot; Claire asks if he has a contact or a lead, and Nico says &quot;we need to follow the boots.&quot;</p><p id="65eb0dad-e9d3-4110-b432-92a9a4e0fb97" class="" dir="auto">
+</p><p id="08e6b519-6f29-4b73-8c72-23e44c5ab115" class="" dir="auto">They decide to go back to the mausoleum, and bring the wight to the Sabbat as a peace offering. They commandeer an Uber, load the staked wight in the back, and Nico directs him to the back alley entrance to Sybille&#x27;s haven. He goes in first, leaving the carrying of the wight body to Claire and Susanna, who struggle in afterwards. Nico introduces Claire and Susanna as his friends, and the wight as his dog. Claire realizes where they are, and goes pale, but introduces herself civilly and hopes that her identity isn&#x27;t recognized.</p><p id="2e049276-a567-41cb-8652-f3d232fcfb31" class="" dir="auto">
+</p><p id="0a065689-64c4-4b61-b4fb-c02374ba9053" class="" dir="auto">Nico leaves the wight with Sybille, agrees to &quot;train it&quot; with her (that it&#x27;s not just something she can do anything with). Claire excuses herself, grabs Susanna and they head back to the mausoleum. Shortly after they leave, The Spaniard arrives. Nico asks him about the AURORA, and The Spaniard hatches a plan; a gift of coordinates to the Sabbat bishops to give to the Camarilla to give to AURORA; but Nico is to substitute those coordinates with those of the Prince&#x27;s haven between the court and AURORA. Nico returns to the mausoleum.</p><p id="a1b7a57d-4ff7-4901-a0b8-c3e5c1f74fef" class="" dir="auto">
+</p><p id="8b8e0968-c923-4e1c-b979-77a078079d42" class="" dir="auto">Back home, Claire confesses that she divulged the secret of Susanna&#x27;s blood to a superior whose intentions are inscrutable but are rarely kind, and that she&#x27;s unsure how to protect her and put her in extra danger. She apologizes. Susanna is demoralized. Claire proposes redirection. Nico enters, compliments Susanna&#x27;s thigh-high purple sparkly boots, and says that the mustache told him to tell the Prince where to go. Claire is concerned, especially when she learns that it was a Sabbat mustache, but ultimately agrees to take the coordinates to Gisele. Nico agrees to stay with Susanna, and gives Claire one of the two pieces of paper, but doesn&#x27;t check which set of coordinates it was.</p><p id="6679d972-b8f4-4d11-91f2-a9489a02d706" class="" dir="auto">
+</p><p id="38785a82-9b2c-46a7-8ae1-27d9945cd097" class="" dir="auto">While Claire&#x27;s gone, Nico finds something to feed Sunshine, and Susanna goes to speak with Jerome; Nico joins her. Susanna tells him she knew that he and Baruch had been discussing particulars. They ultimately agree that Susanna will be granted a home under the protection of the Quebecois Gangrel Anarch motorcycle gang, in exchange for a major boon from Susanna. Matthieu will be told to find her at the mausoleum.</p><p id="244fa58b-1c56-4da1-aee8-bba2c07ac45d" class="" dir="auto">
+</p><p id="3685dab6-8892-4472-95bb-f2d275484490" class="" dir="auto">Claire meets Gisele, and explains that this was information about the whereabouts of the Sabbat (perhaps a meeting?), by way of Nico; recommends asking the Prince for context. Gisele thanks her and dismisses her.</p><p id="744638f8-bbd1-41c9-b8c8-e5e8d7954b2e" class="" dir="auto">
+</p><p id="cbaf637d-d681-4f35-8da5-c77543579fb8" class="" dir="auto">Nice sends a text message to a number he knows Gisele monitors. &quot;There is a trap for the Camarilla at the set of coordinates that Nico possesses, <em>not</em> the ones Claire passed to the Prince.&quot;</p><p id="f874c37d-bdd9-4aad-b81e-c16884166a8d" class="" dir="auto">
+</p><p id="bb4c3cfe-b9e6-4197-ab81-a131ec9efbb0" class="" dir="auto">Nico, Claire and Susanna head out to a club. They mesmerize the bouncer that Sunshine is a cat (and permitted on the premises) and not a dog.</p><p id="3cab37bd-9ec2-482a-9424-a9a9a6fbd6e2" class="" dir="auto">
+</p><p id="ebc2c069-c46d-4fca-81a2-95d409639edb" class="" dir="auto">Nico offers the mausoleum as a home for Susanna so that the &quot;cat&quot; can stay; says it could play with the &quot;dog&quot; (wight) once he gets it trained. They discuss the different details that Nico and Susanna saw in the visions, of tendrils across the city, of &#x27;nerve clusters&#x27;; there were two such, and Claire recognizes that one seemed to be a warehouse that matches Susanna&#x27;s description of where she was held.</p><h1 id="c2a05fc8-d6a5-4e99-a543-8029e8ce6f01" class="" dir="auto">Night of June 14th, 2021</h1><p id="9dcd4c59-18ae-4ef7-a6c2-647be6a3a537" class="" dir="auto"><em>Session: May 29th</em></p><p id="81283d8a-ad3e-4b76-9c4f-d509ea7e9207" class="block-color-blue" data-notion-highlight="blue" dir="auto">
+</p><p id="e689fe5d-1065-4867-b9dd-b58c0d2ed139" class="" dir="auto">Nico, Claire &amp; Susanna wake up to find Calliope still in torpor, and Richart and Kamal missing. </p><p id="1a86cee1-2acb-4412-9411-f492a08b1fa9" class="" dir="auto">
+</p><p id="f80666c9-0884-41e2-8cf3-10e2dfc7cd7a" class="" dir="auto">Claire takes Susanna aside to speak to her privately. Claire proposes a private alliance; that if Susanna provides Claire with vitae, that there&#x27;s a ritual Claire has been learning that could overwhelm any potential enemies or threats. Claire acknowledges that she hasn&#x27;t quite successfully conducted the ritual in the past, but believes that Susanna&#x27;s vitae will make the difference. Susanna mentions holding off on any arrangement until Jerome&#x27;s contact arrives; Claire is shocked that Susanna has apparently already made an arrangement with Jerome.</p><p id="16382e91-ce6d-474b-b5eb-73af2cb4c3aa" class="" dir="auto">
+</p><p id="388033fa-20ed-4e62-9421-6dc36ce427be" class="" dir="auto">Nico says that Jerome can&#x27;t be trusted, because he &quot;pours weak drinks.&quot; Mathieu arrives, with several other bikers; here to pick up Susanna as promised. She asks for a little time, and Matthieu heads off, leaving one of the bikers outside to bring her when she&#x27;s ready. Matthieu asks if they&#x27;ve seen Calli, that she owes him for some bagged blood. They indicate that she&#x27;s in torpor, he takes the bagged blood back and leaves. Claire&#x27;s eyes follow the cooler longingly.</p><p id="fad41bf6-ef8a-4457-9d22-967b57b32847" class="" dir="auto">
+</p><p id="a1b3aa20-0644-42fa-b6c8-a8a5170cf7f9" class="" dir="auto">Nico asks Susanna what she offered Jerome; &quot;a major boon&quot; she says, in return for a safe haven. Nico turns to Claire, &quot;We should get her to stay.&quot;</p><p id="568635da-765e-4358-b1df-8fd1ed42bd62" class="" dir="auto">
+</p><p id="a803d004-4d15-4dee-919a-d29cf1fb0c41" class="" dir="auto">Susanna: &quot;I&#x27;m confused; why would I need to stay to be protected?&quot;</p><p id="4c529990-760e-4376-b59b-fccf56a339ec" class="" dir="auto">
+</p><p id="5dddb554-ad13-4eda-bec6-7326ec52bfdd" class="" dir="auto">Claire gives a confused response, but convinces Susanna to stick with them for a little bit, give some blood for Claire to attempt the powerful ritual. Susanna wants a magical &quot;rider&quot; where if either party betrays the other, they are struck down into torpor. Claire agrees in principle, but doesn&#x27;t know how to do that; Michel might. Blood bonding might work, except Claire cannot do that.</p><p id="19324ad0-7fd3-47b7-b1d1-10e6831d8ceb" class="" dir="auto">
+</p><p id="c0909186-a6d4-40c8-9cd7-640a63c00d17" class="" dir="auto">They hear a disturbance outside, and Javier and Michel enter. Claire looks surprised &quot;What do you need?&quot; Michel looks around. &quot;By process of elimination, I take it she&#x27;s the one?&quot; Claire tries to lie, but it fails terribly. Michel glares and asks what kind of stunt she&#x27;s trying to pull. &quot;I&#x27;m here because of the attempted Sabbat ambush. How did they get those coordinates? The ones you gave me were for Beatrice&#x27;s haven.&quot; Claire points to Nico, and Michel asks &quot;How do they know where the Prince sleeps?&quot; Nico just casually shrugs. Michel: &quot;Well, you&#x27;re going to help us hit them back.&quot; Nico dismisses it &quot;That doesn&#x27;t sound like fun, no thanks.&quot; Michel bares his teeth: &quot;I wasn&#x27;t asking.&quot;</p><p id="a96c3721-cdf9-4e65-9275-d7609e10b7af" class="" dir="auto">
+</p><p id="35e4a8e8-ca81-4f7d-8442-fb599689788c" class="" dir="auto">Kamal re-enters and says &quot;We know where AURORA is going to hit next, we need to help move them move out.&quot; Kamal, Michel, and Javier exit.</p><p id="14377132-15e6-48e7-9520-1eb44fde1145" class="" dir="auto">
+</p><p id="e16deddb-9e7b-4625-8c56-c564dbf64648" class="" dir="auto">Claire slumps down, defeated. &quot;He knows who you are now, Susanna, and Michel is dangerous.&quot; Nico buys them some time (puts a sock on the exterior doorknob, then locks it from the inside), and Claire spends an hour preparing her ritual using Susanna&#x27;s blood mixed with the bagged blood. Claire uses the ritual on herself; Susanna says she trusts her.</p><p id="21ce7a88-b232-416c-b48b-b3b3a434e574" class="" dir="auto">
+</p><p id="aeccdd70-6477-48e1-995e-2d5d4ebb2dff" class="" dir="auto">Susanna is upset when she realizes that this decision means that she&#x27;s utterly dependent on Claire for protection for the time being.</p><p id="a4fa476e-5231-448c-8345-e5add7515b1e" class="" dir="auto">
+</p><p id="85a517bf-acb5-406d-a18d-0cd56c3c858f" class="" dir="auto">Susanna exits first, and leaves with the Gangrel biker for Matthieu&#x27;s haven. Claire and Nico exit shortly after, and Kamal informs them of her departure, and leads them to the Fairmont, where Nico&#x27;s coordinate&#x27;s led. Kamal directs them through a side entrance and they move stealthily through.</p><p id="f27014b2-c2c8-4f44-b9d0-b9bb695712a8" class="" dir="auto">
+</p><p id="16275f26-4591-4025-9128-ad98ba44d84b" class="" dir="auto">They enter a room where Gisele, Javier and Michel are waiting, observing some security camera footage which appears to be showing Glaurung and at least several other armed Sabbat. Javier greets them &quot;Come in, action is about to start.&quot; Michel turns to Claire: &quot;Where is she?&quot; Claire: &quot;Maybe another time? I didn&#x27;t want to ruin this moment.&quot; Michel: &quot;No. <em>Where is she?</em>&quot; Claire: &quot;Jerome. She made a deal with Jerome.&quot; Michel is stunned and lashes out: &quot;You gave the Salubri to the <em>Anarchs?&quot;</em> Claire: &quot;She sort of ran off. We...&quot; Michel: &quot;You let her run away?&quot; Nico: &quot;She&#x27;s her own person, man.&quot; Michel: &quot;No, she is a tool, and she&#x27;s ours to be wielded.&quot; Nico: &quot;If she were, she would be here.&quot; Michel: &quot;If my <em>childer</em> were competent, that would be true.&quot; Nico, wryly: &quot;Sounds like you&#x27;re a bad parent.&quot; Michel: &quot;We&#x27;ll deal with you after.&quot;</p><p id="e3d09d23-bade-4061-8a24-2c9834c1e1e3" class="" dir="auto">
+</p><p id="bc02df2f-96f6-4698-b9eb-9d61abfa3088" class="" dir="auto">On the cameras, the lights cut out, and beams of light flash around, looks like soldiers coming in, gunfire flashes, it&#x27;s hard to tell what is happening; and they hear that this is all happening down the hall. Javier stands and says &quot;Let&#x27;s ensure no one gets out.&quot; He and Kamal dart down the hallway. Claire hangs back with Nico. Claire asks Michel: &quot;Do you want me to go retrieve her now?&quot; Michel: &quot;We need to decapitate the Sabbat while we can, but afterwards I need you to chase her down. We cannot allow a prize like that to get away.&quot; Claire heads down the hall then. A couple soldiers burst out of the room in terror and flee down the hall, followed by a roar and the wight who chases them down and tears them limb from limb. Nico hears the roar and jumps up and runs after it. Kamal and Claire use the opportunity to dart into the room.</p><p id="7c282411-6692-424f-a2f9-fb657336b84e" class="" dir="auto">
+</p><p id="dd3f599b-ba35-42ee-bea6-6258b143933f" class="" dir="auto">The room is a mess and the stench of blood is strong; figures in shadow surround them. Claire recognizes Sybille in her periphery, and regrets coming. She freezes, then screams and starts to back away, but bumps into someone. Two hands grip onto her shoulders, and she turns to see Richart, and breathes a sigh of relief. The hands are real, though; no longer putrid, no longer sewn on. &quot;What&#x27;s going on Richart?&quot; </p><p id="57ce3d19-73ff-4762-8def-175c5f73bee6" class="" dir="auto">
+</p><p id="041d3bee-e916-4ffb-a4ff-d3b7f4c03707" class="" dir="auto">Richart grins. &quot;The Camarilla thought we had set a trap for them, but we knew they would send their human agents in their stead. Do you realize the trouble your friends have been causing, in breach of their beloved masquerade?&quot;</p><p id="32b9b342-a45c-4a15-942b-864983936b08" class="" dir="auto">
+</p><p id="659c9ebe-3b50-4182-8d92-28c27c3a1c46" class="" dir="auto">Claire pushes back: &quot;You&#x27;ve been using AURORA to target havens across the city; Baruch?&quot;</p><p id="d3e16ad0-9a67-4a85-8585-90ef18298c2d" class="" dir="auto">Richart: &quot;It wasn&#x27;t the Sabbat. Why would we stoop to using a vessel like that?&quot; </p><p id="c4375ef4-86aa-403d-90c6-725e3213f8d8" class="" dir="auto">Kamal and Javier have recognized how outnumbered they are and are submitting to Tzimisce custody, fleshcrafting makeshift restraints.</p><p id="886eba69-d7ad-41a9-9a16-14680b0c0541" class="" dir="auto">
+</p><p id="40cac565-9315-4d5c-9cd2-436b63e4d0a7" class="" dir="auto">Nico catches up to the wight, chewing on a soldier. &quot;Good doggy! Good doggy!&quot; He grabs a dismembered arm and throws it back down the hall, tries to get the wight to fetch.</p><p id="6216d6f3-5e91-4741-bf4d-1572bb1c09c9" class="" dir="auto">
+</p><p id="1f0e2ad8-85b0-4f72-b6ce-28ead6bc72e1" class="" dir="auto">Claire asks Kamal: &quot;Were you aware of any of this?&quot; Kamal turns to Javier: &quot;It seems we were told what we needed for our own protection.&quot; </p><p id="1bbf672a-e8e7-4e86-8b3f-6aa588a93eb9" class="" dir="auto">
+</p><p id="a5cccef1-15f1-4ddc-af56-b46c2033a6f5" class="" dir="auto">Claire asks Richart how he could betray his coterie; he explains that the Sabbat restored his hands and gave him a position of authority. She lights up her arms, and the fire causes Sybille to hiss and retreat, and Richart backs away. Claire raises both arms, and Milica is gibbering in terror. Kamal is looking down carefully and Glaurung seems cautious, but Javier is on the floor convulsing. </p><p id="3df8f6b6-25c4-40b9-9ee1-23d027a2fad3" class="" dir="auto">
+</p><p id="605e8dbc-7619-4bd7-bf02-c3192cf42404" class="" dir="auto">Claire tries to get Kamal&#x27;s assistance, but he shows her his fleshcrafted hands, and asks her to cover for him while he runs for help. </p><p id="6ebee219-941b-4f8e-bcf1-5aed3398efe3" class="" dir="auto">
+</p><p id="2ec331e6-802b-49fa-b0f2-3155a724bc42" class="" dir="auto">The wight grabs the arm and returns, and Nico praises it &quot;Good doggy&quot;, mesmerizing it as screams erupt from the room and he sees Kamal exit. Nico and the wight follow Kamal back to Michel and Gisele. Kamal: &quot;We need to help Claire and Javier, the Sabbat have them!&quot; Gisele and Michel argue that they just need to leave and come back with reinforcements.</p><p id="ee15bfc1-797e-4af4-9762-a69c48e411e6" class="" dir="auto">
+</p><p id="9fd62e30-5876-4862-80bb-4f68b01252ca" class="" dir="auto">Nico instructs the wight to attack Michel. It doesn&#x27;t do much damage, but certainly gets Michel&#x27;s attention when Nico calls it to heel. &quot;That thing&#x27;s yours?&quot; Nico: &quot;It is. We have things to do. Will you play nicely?&quot; Michel: &quot;We need to get out.&quot; Nico: &quot;We have folks to help. Be useful.&quot; Michel looks at Nico: &quot;Be my guest.&quot; </p><p id="200ee82b-16cf-486a-b30b-d2a03a0105c7" class="" dir="auto">
+</p><p id="c9aa0a36-1e0f-46c7-9e07-c7f799c21705" class="" dir="auto">Claire can see that Glaurung has a firearm aimed at her. Claire dives for his ankles, arms ablaze. They miss each other, as he takes the shot while jumping backwards. </p><p id="39fda667-afd5-4887-9971-8ddecaf2f2db" class="" dir="auto">
+</p><p id="478315b6-5da2-4847-95fa-f3f14153de7e" class="" dir="auto">Nico arrives: &quot;Need anything?&quot; Claire: &quot;Thank god&quot; and points to Glaurung. Glaurung turns to Nico with a glare: &quot;Get her out of here, she&#x27;s insane.&quot; He fires at Claire again, hitting this time, and Nico sics the wight on him. When the firearm goes flying, Nico calls the wight back. Glaurung to Nico: &quot;What are your intentions here?&quot; Nico: &quot;What would you like to do next, Claire?&quot;</p><p id="8d0e1d1f-bd9e-4e10-8c88-50c8de1de48f" class="" dir="auto">
+</p><p id="b72b81c6-9728-418b-8b93-2c37014b3165" class="" dir="auto">Claire has gotten up and backed up to Nico. &quot;We need to get out of here, we need to get Javier up.&quot; Kamal says &quot;We need to deal with them decisively; we cannot allow a rot like this to fester. Nico has the wight pick up Javier. Nico says to all the Sabbat &quot;If we let you go, I need a favor.&quot; Richart chides him, &quot;They won&#x27;t owe you anything if they allow you to leave without the final death. If Claire and Kamal want to be idiots that&#x27;s on them, not you.&quot;</p><p id="a162223c-8a65-4ca3-b61f-49bbf05013eb" class="" dir="auto">
+</p><p id="c8dce777-dc93-46c0-805e-24eccc9d08ac" class="" dir="auto">Nico points to Claire&#x27;s arms. &quot;You see those? If we leave, they owe <em>us</em>.&quot; Richart looks to Milica, and looks back, and nods. Glaurung says &quot;Fine. If you <em>all</em> leave.&quot; Claire looks doubtfully at Kamal, and backs out the door. Kamal leaves last, resignedly, after it&#x27;s clear that neither ally is staying.</p><p id="b353e58f-a94c-470f-834c-1ac102673811" class="" dir="auto">
+</p><hr id="54bcd6bb-c5d0-43e3-b0dd-29ad3e10b711" dir="auto"/><h1 id="5c15858c-6289-4d60-bc77-fc65ff0bcc13" class="" dir="auto">Epilogue</h1><p id="753f37f4-b7ec-4a25-8f08-7ab62ff261ee" class="" dir="auto">
+</p><p id="030328d7-b8bb-4347-9abf-67d094609e43" class="" dir="auto">In the following nights....</p><p id="dd59f702-2c25-48b9-91ae-3254d009e100" class="" dir="auto">
+</p><p id="b6d50dee-1cff-4ffa-bd79-80917644c413" class="" dir="auto">Susanna finds that what Jerome had offered checks out. The major boon still looms over her head, but the night-to-night with the Gangrels is amiable, and they are <em>very</em> defensive of their territory. Rumor has it that there are other beasts in the nearby woods but so far nothing has come forth.</p><p id="605df789-0d6c-40ba-bd3c-afd1ab9c2cc5" class="" dir="auto">
+</p><p id="9156a55f-65e9-4932-b6b8-b81767c0e905" class="" dir="auto">Nico has become a major Anarch player, all the more so by having connections and being able to negotiate directly with the Sabbat and the Camarilla. He gains a reputation as a dealbroker. Nico is very curious about AURORA, which has gone quiet. The attack in the Fairmont depleted their forces, and drew the attentions of the Sabbat. Nico watches and makes sure that their actions fall within what he deems acceptable bounds.</p><p id="668f9f70-dca4-4c87-9adc-3f6f4f6e2dbb" class="" dir="auto">
+</p><p id="f68f0fe6-a8fb-47c0-8efb-857f829c637b" class="" dir="auto">Claire is in a delicate position. She&#x27;s walked out of the mess with the Sabbat, but they haven&#x27;t been dealt with. Kamal is upset about that. And her failure to retrieve Susanna makes her position with Michel and the Camarilla delicate. She reaches out to Susanna, trying to entice her with offers of knowledge and blood sorcery, but Claire&#x27;s continued working under Michel means that any interactions and trust is limited. The fact that she pulled off the ritual successfully in a way that had only previously been hypothesized raised her in his esteem, but also made his pressure for her to retrieve Susanna more demanding.</p><p id="ca13726f-089e-4df4-b613-891eb9c20c49" class="" dir="auto">
+</p><p id="947055e1-a116-477e-b7ec-9bb39b462ba5" class="" dir="auto">Richart is satisfied with the outcome; he&#x27;s thankful it didn&#x27;t ultimately come to exterminative violence. </p><p id="1d7ace75-2429-477a-90d5-0d33b8f625cb" class="" dir="auto">
+</p><p id="6b34f38e-fe04-4caf-bbda-422fa1bdc6fa" class="" dir="auto">Kamal is somewhat stuck; the big push for a Camarilla takeover was forced to delay, and so he&#x27;s biding his time, but he&#x27;s still a bit resentful of Claire for shrinking back at that moment.</p></div><div id="d2957845-1481-432f-8032-f1174428acec" style="width:25.000000000000018%" class="column" data-notion-column-ratio="0.25000000000000017" dir="auto"><p id="9890d77b-8098-4f6f-a31d-afedb67ff36f" class="" dir="auto">
+</p></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

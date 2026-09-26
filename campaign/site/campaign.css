@@ -55,3 +55,72 @@ aside.guidance, .die { background: var(--night-2); }
 .mark-card:hover { color: var(--silver-2); }
 /* on the paper the title stays ink */
 .site-reader .chapter-h { background: none; color: var(--ink); }
+
+/* ── the chronicle's pages (campaign/site/site.js) ── */
+.pht-hero { padding: 6px 0 22px; }
+.pht-title { font-family: var(--font-display); font-weight: 400; font-size: clamp(38px, 7vw, 64px); line-height: 1.05; margin: 0 0 6px;
+  background: linear-gradient(180deg, #f4f6f8 0%, var(--silver) 70%, #8b939c 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.pht-sub { font-family: var(--font-ui); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--bone-2); margin: 0; }
+.pht-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 0 0 26px; }
+.pht-card { min-height: 96px; }
+.pht-card-t { font-family: var(--font-display); font-size: 22px; color: var(--bone); }
+.pht-card-s { font-family: var(--font-ui); font-size: 13px; color: var(--bone-2); }
+.pht-note { color: var(--bone-2); margin: 0 0 8px; }
+h4.pht-group { font-family: var(--font-ui); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--silver); margin: 26px 0 12px; border-bottom: 1px solid var(--edge); padding-bottom: 6px; }
+
+/* the portrait: the torn card (baked into the image) and the clan mark over its bottom-right corner */
+.pht-portrait { position: relative; margin: 0; display: block; }
+.pht-portrait img, .pht-portrait-none { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .45)); }
+.pht-portrait-none { background: var(--night-3); clip-path: polygon(2% 1%, 98% 2%, 99% 98%, 1% 99%); }
+.pht-mark { position: absolute; right: -9%; bottom: -7%; width: 38%; aspect-ratio: 1; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle at 35% 30%, var(--night-3), var(--night) 70%);
+  border: 2px solid var(--silver); box-shadow: 0 0 0 3px rgba(12, 14, 17, .7), 0 6px 14px rgba(0, 0, 0, .5); }
+.pht-mark .mark { width: 64%; height: 64%; color: var(--silver-2); }
+.site-reader .pht-mark { box-shadow: 0 0 0 3px var(--paper), 0 6px 14px rgba(0, 0, 0, .35); }
+
+.pht-people { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 30px 26px; }
+.pht-person { display: block; text-decoration: none; color: var(--bone); padding-right: 12px; }
+.pht-person .pht-portrait { margin-bottom: 16px; transition: transform .12s; }
+.pht-person:hover .pht-portrait { transform: translateY(-3px) rotate(-.6deg); }
+.pht-person:hover .pht-mark { border-color: var(--silver-2); }
+.pht-person-n { font-family: var(--font-display); font-size: 20px; line-height: 1.15; }
+.pht-person-s { font-family: var(--font-ui); font-size: 12.5px; letter-spacing: .04em; color: var(--bone-2); margin-top: 3px; }
+
+.pht-person-page::after { content: ''; display: block; clear: both; }
+.pht-portrait.large { float: right; width: min(270px, 40%); margin: 4px 22px 26px 26px; }
+.pht-facts { border-collapse: collapse; margin: 6px 0 18px; font-size: 17px; }
+.pht-facts th { font-family: var(--font-ui); font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--silver-dark); text-align: left; padding: 4px 16px 4px 0; vertical-align: top; }
+.pht-facts td { padding: 4px 0; }
+.pht-crumbs { font-family: var(--font-ui); font-size: 13px; margin-bottom: 8px; }
+
+/* prose as the notes were written */
+.pht-prose { font-size: 19px; line-height: 1.55; }
+.pht-prose h1, .pht-prose h2 { font-family: var(--font-display); font-weight: 400; font-size: 26px; margin: 30px 0 8px; color: var(--ink); }
+.pht-prose h3 { font-family: var(--font-display); font-weight: 400; font-size: 21px; margin: 24px 0 6px; color: var(--blood); }
+.pht-prose h4 { font-family: var(--font-ui); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+.pht-prose p { margin: 0 0 .8em; }
+.pht-prose blockquote { margin: 14px 0; padding: 4px 18px; border-left: 3px solid var(--silver); color: var(--ink-2); font-style: italic; }
+.pht-prose details { margin: 10px 0; border: 1px solid var(--rule); padding: 8px 14px; background: var(--paper-2); }
+.pht-prose summary { cursor: pointer; font-family: var(--font-display); font-size: 20px; }
+.pht-prose img { max-width: 100%; height: auto; display: block; margin: 10px 0; box-shadow: 0 3px 10px rgba(0, 0, 0, .18); }
+.pht-prose figure { margin: 12px 0; }
+.pht-prose mark { background: none; color: var(--blood); }
+.pht-prose li.todo { list-style: '\2610  '; }
+.pht-prose li.todo.done { list-style: '\2611  '; color: var(--muted); }
+.pht-prose table { border-collapse: collapse; margin: 10px 0; }
+.pht-prose td, .pht-prose th { border-bottom: 1px solid var(--rule); padding: 4px 12px 4px 0; text-align: left; vertical-align: top; }
+.pht-prose a { color: var(--blood); }
+.pht-tenets { font-style: italic; }
+.pht-toc { font-size: 21px; line-height: 1.8; }
+.pht-toc a, .pht-nights a { color: var(--ink); text-decoration: none; border-bottom: 1px dotted var(--silver-dark); }
+.pht-toc a:hover, .pht-nights a:hover { color: var(--blood); }
+.pht-paging { display: flex; justify-content: space-between; gap: 18px; margin-top: 30px; padding-top: 12px; border-top: 1px solid var(--rule); font-family: var(--font-ui); font-size: 13px; letter-spacing: .04em; }
+.pht-paging a { color: var(--blood); text-decoration: none; }
+
+@media (max-width: 720px) {
+  .pht-portrait.large { float: none; width: 72%; margin: 6px auto 30px; }
+  .site-reader.pht-reader { padding: 22px 18px 30px; }
+  .pht-prose { font-size: 17.5px; }
+  .pht-people { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 20px; }
+}

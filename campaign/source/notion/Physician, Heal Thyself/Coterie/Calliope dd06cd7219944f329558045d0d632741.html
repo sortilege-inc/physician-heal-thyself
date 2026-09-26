@@ -1,0 +1,811 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Calliope</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="dd06cd72-1994-4f32-9558-045d0d632741" class="page sans" data-notion-page-icon="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fc13f5b2-3ed6-440f-a247-503a8aa73b2c/SymbolClanBrujahV5.png"><header><div class="page-header-icon undefined"><img class="icon" src="Calliope/SymbolClanBrujahV5.png"/></div><h1 class="page-title" dir="auto">Calliope</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Clan</th><td><span class="selected-value select-value-color-red">Brujah</span></td></tr><tr class="property-row property-row-number"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>Blood Potency</th><td>1</td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>Generation</th><td><span class="selected-value select-value-color-red">Fledgling (13th Generation)</span></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Humanity Left</th><td>6</td></tr><tr class="property-row property-row-file"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/attachment_gray.svg" style="width:14px;height:14px;display:block"/></span>Portrait</th><td><span style="margin-inline-end:6px"><a href="Calliope/1d672fe11a2d768e6bb6f276da4a4d6f.jpg"><img style="width:20px;max-height:24px" src="Calliope/1d672fe11a2d768e6bb6f276da4a4d6f.jpg" alt="1d672fe11a2d768e6bb6f276da4a4d6f.jpg"/></a></span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>Faction</th><td><span class="selected-value select-value-color-orange">Anarch</span></td></tr><tr class="property-row property-row-relation"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/arrow-northeast_gray.svg" style="width:14px;height:14px;display:block"/></span>Related to Scenes (Tags)</th><td>, </td></tr></tbody></table></header><div class="page-body"><div id="cbcfd6b3-2e37-4ee3-a622-1a8b43eb85a2" class="column-list" data-notion-column-list="" dir="auto"><div id="cd1c66d5-caae-45e2-bd7a-acdd0ce4271a" style="width:12.5%" class="column" data-notion-column-ratio="0.125" dir="auto"><nav id="f557dd3d-2932-461c-866d-3e776d120a1e" class="block-color-gray table_of_contents" data-notion-highlight="gray" data-notion-toc="" dir="ltr"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9a2bd169-1b02-4bab-820e-5256d8e922ee">To-Do</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9d013f8b-ce39-49ff-8a20-80e91109be0c">GM To-Do</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#9b3dba3b-82d0-4b70-b52a-1d6b89f45f0f">Session Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ea547165-2ac8-45ec-94d8-eaa2c0036db8">Character Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cac9e13d-d208-482f-ab8e-ab178b50a45c">History</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#933a52ab-4867-4ea2-805a-f7099a185423">Ambition</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4b4b98e5-6222-41b7-8aeb-7d744e285ca1">Desire</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#76ed3930-ebb6-4a3e-9d32-713364bfdb4d">Convictions &amp; Touchstones</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#0a76c914-b4bc-4e2d-a78a-77f817f1874f">Lore Notes</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#c7ee9136-bfd9-449e-9856-c0f991286bb4">Domain</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#00b044bb-f7e7-4948-8b93-dffd5d254a87">Haven</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#2a54fa2e-d456-4165-a8b8-1f7b7105d61f">Humanity 6</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#03734fc4-02f4-4d60-a813-128a010db99b">Predator Type: Alleycat</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#42752024-f612-4239-b61b-5b6f9c46d0e8">Blood Potency 1</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#40a47ef2-5799-4e39-80ce-0d8a61657036">Blush of Life</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#ecaa91e0-b46d-43e7-af73-07fd9233d851">Blood Surge</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#cd668c71-3148-42dd-8ab2-1bb7ac2bed4c">Vampiric Mending</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#5bc7be5a-3ce1-4b77-89b8-9606fb75197e">Advantages</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#492bfa87-3f8d-47ff-97f2-957274906199">Merits</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#333ea715-0d90-4709-b76c-7cd7dd02adb7">Flaws</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#cc903037-b50a-4f07-86e0-ed3159f191ed">Clan Bane</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9830c713-5579-43cb-8972-9ba1c86d811d">Clan Compulsion</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#11f5a97d-8d8e-4daa-85ad-564c5bddfdd7">Disciplines</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#4f13e08d-1530-4014-ab92-f9b66cd5cd3c">Potence (3)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#63fc9436-0f79-4229-b1c4-3ba53930fde6">Lethal Body</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4c3fb40d-71f0-4d40-9066-0cc40c4e1825">Prowess</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#4fe90ef8-9a0c-4202-aaec-35ccf07a758f">Spark of Rage</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#27b07f3b-b58a-4a0c-bb2c-67a1b4bc4ed2">Presence (3)</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#77f40b9f-99a6-4ced-9131-bb1919e2c445">Awe</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#c139fab9-bbca-43db-bc95-31dcc123b719">Daunt</a></div><div class="table_of_contents-item table_of_contents-indent-2"><a class="table_of_contents-link" href="#88c38c04-89e5-42b1-b5c1-4168e9f6d71f">Dread Gaze</a></div></nav><p id="0d31e617-f75a-4bbe-a1bb-2c71c7bf94b2" class="" dir="auto">
+</p></div><div id="f2a02721-1b40-4927-a9db-dc03c2085d7c" style="width:22.5%" class="column" data-notion-column-ratio="0.225" dir="auto"><h3 id="9a2bd169-1b02-4bab-820e-5256d8e922ee" class="" dir="auto">To-Do</h3><ul id="03186b4d-1429-46ee-824c-6e6dd92580bd" class="to-do-list" dir="auto"><li><input type="checkbox" class="checkbox checkbox-on" disabled="" checked=""/> <span class="to-do-children-checked">Ambition &amp; Desire</span><div class="indented"><p id="64af8907-1cc2-475f-851b-b0ef7361bca7" class="" dir="auto">Ambition and Desire are related, but not identical. Think of Ambition as a long-term goal: an aspiration (if you still breathed), a life’s dream (if you still dreamed, or had life). By contrast, Desires are more immediate: short-term wishes for revenge, satisfaction, or satisfaction through revenge.</p><details id="3f85587e-1b07-486c-9a5c-68ef4f78b2f4" open="" class="toggle" dir="auto"><summary>Ambition</summary><div class="indented"><p id="e2039532-85db-4684-9e2f-8b2eb0b26157" class="" dir="auto">A character’s Ambition keeps them acting and moving both night by night and in the chronicle. It provides motivation for the player and story hooks for the Storyteller. An Ambition must be measurable in game terms (“My Ambition is to achieve Humanity 10”) or a concrete achievement in the world of the chronicle (“My Ambition is to liberate Chicago from the Camarilla”). An Ambition is not something vague like “end racism” or “achieve world peace,” but instead focuses on something specific, like “bring True Death to (insert notably racist elder from your chronicle here)” or “end the Gehenna War in the Ukraine.” If an Ambition is unlikely to happen or would  end the chronicle if achieved, it can still provide rich story juice – it only needs to be theoretically achievable. If a character achieves their Ambition and the chronicle continues, the player should decide on a new Ambition, ideally one that has emerged during play or one that follows on the realization that their first Ambition left something undone or incomplete.</p><p id="0addef33-a2d7-45b7-a398-ff0e1209e7e9" class="" dir="auto">At the end of a session in which the character has actively worked toward their Ambition, they recover one point of Aggravated Willpower damage.</p></div></details><details id="0f422f6e-e993-454c-ba4d-01690b80b754" open="" class="toggle" dir="auto"><summary>Desire</summary><div class="indented"><p id="f9aebf84-3e3a-4fb0-9af9-f4a882f32c45" class="" dir="auto">Desire reflects less than lifelong Ambition, but more than momentary wants. Each session, a character can select a Desire or keep their unfulfilled Desire from the previous session. Once per session, when the character definitively acts to further or accomplish their Desire, they may immediately recover one point of Superficial  Willpower damage. Since Desires change so rapidly, you don’t need to write them on your character sheet. Just write your current Desire on an index card or Post-it Note where both you and the Storyteller can see and remember it. This mechanic intentionally provides players with an incentive for character action rather than<br/>passively waiting for the plot or turtling up defensively. Thus, a good Desire connects in some way to the outside world. One rule of thumb: if it doesn’t involve someone or something named on the Relationship Map, it’s not worth considering as a Desire. By that metric, “I want to drive a cherry Maserati” or “I want to eat a brunette” fail as Desires, but “I want to drive Cytherea’s cherry Maserati” or “I want to eat Lord Harkness’ brunette” make excellent Desires. The Storyteller should judge whether Desires involving fellow player characters fall under the spirit of encouraging meaty interaction or of just lazily trying to sponge free Willpower.</p></div></details></div></li></ul><p id="6c67fe03-9535-4f12-96f6-81d3b4de0f5b" class="" dir="auto">
+</p><ul id="2ce9f0e7-9572-4d9b-a916-634c41edf885" class="to-do-list" dir="auto"><li><input type="checkbox" class="checkbox checkbox-off" disabled=""/> <span class="to-do-children-unchecked">Fast walker, keep up and get out of my way.</span><div class="indented"></div></li></ul><ul id="c6d628d8-7410-4276-aa75-c0b75fd2f6fd" class="to-do-list" dir="auto"><li><input type="checkbox" class="checkbox checkbox-off" disabled=""/> <span class="to-do-children-unchecked">Superstitious about walking under ladders, etc.</span><div class="indented"></div></li></ul><ul id="497d7263-b67b-4aae-99c3-f9c94c3252ce" class="to-do-list" dir="auto"><li><input type="checkbox" class="checkbox checkbox-off" disabled=""/> <span class="to-do-children-unchecked">She is rumored to have massacred a gang for interrupting a smoke with an initiation.</span><div class="indented"></div></li></ul><ul id="261683aa-3d3b-4350-9edf-5ea32a57043c" class="to-do-list" dir="auto"><li><input type="checkbox" class="checkbox checkbox-off" disabled=""/> <span class="to-do-children-unchecked">I wasn&#x27;t hungry, but you were upsetting me.</span><div class="indented"></div></li></ul><h3 id="9d013f8b-ce39-49ff-8a20-80e91109be0c" class="" dir="auto">GM To-Do</h3><ul id="9bbb6483-2bb7-4aea-8628-9d317b57ea1b" class="to-do-list" dir="auto"><li><input type="checkbox" class="checkbox checkbox-off" disabled=""/> <span class="to-do-children-unchecked">Ana</span><div class="indented"><p id="05cc77fd-7007-4156-9fc3-ff4ca69f5c81" class="" dir="auto">Someone from the church who is part of the corruption that overrun it, but was a friend of mine in life?</p></div></li></ul><h3 id="9b3dba3b-82d0-4b70-b52a-1d6b89f45f0f" class="" dir="auto">Session Notes</h3><figure id="b2805426-15cb-4898-9bae-257554d080cb" class="image" data-notion-image="Calliope/Untitled.png" dir="ltr"><a href="Calliope/Untitled.png"><img style="width:433.546875px" src="Calliope/Untitled.png"/></a></figure><p id="8d626672-c2ab-435c-be33-fdbea11cf346" class="" dir="auto">Claire wants to rebuild clan Tremere/Cam and is focused on restoring her clan. </p><ul id="91daa5bf-f41e-4ad3-b118-92b9232d7cc8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Maybe Calliope helps her even though it&#x27;s a different clan?</li></ul><ul id="03ddf4f1-6826-48c9-9298-b153ace45ae1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Callie&#x27;s love of community supersedes the separation of the clans?</li></ul><ul id="5244c0ac-9e61-458b-a835-70fd702a0513" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Baroch doesn&#x27;t care who is in power so long as I help seize it?</li></ul><p id="4c374361-ea08-4c45-8b0b-3d64283ab215" class="" dir="auto">
+</p><h3 id="ea547165-2ac8-45ec-94d8-eaa2c0036db8" class="" dir="auto">Character Notes</h3><ul id="6a3e09df-65ae-4bf0-b9cd-81aacc0ad2b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">abandoned by mother and has strong connections to her father.<ul id="6ae6545d-e611-4b91-ab21-03581f79f905" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Father was someone important in the city. </li></ul><ul id="6646d195-f241-4e6f-ae66-c830ab234ac6" class="bulleted-list" dir="auto"><li style="list-style-type:circle">He is responsible for building many of the educational institutions and safe havens (orphanages, libraries, schools, hospitals)</li></ul></li></ul><ul id="2c36a393-1746-41f6-8a2c-da98b623fd48" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Callie was raised with strong faith and strong bonds to the church.<ul id="56edad9c-fd40-4441-b702-35a7956ed549" class="bulleted-list" dir="auto"><li style="list-style-type:circle">People have twisted the teachings to fit their own agenda.</li></ul><ul id="e16b4b5a-1d95-408b-b2f1-f9ef754a2648" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Churches have become money hungry and began excluding populations of people marking them as weak or less-than.</li></ul><ul id="e6f00025-17b4-41d8-ab2a-b54b2073e32f" class="bulleted-list" dir="auto"><li style="list-style-type:circle">In an attempt to find her own way and unite others something happened and she was turned?</li></ul></li></ul><ul id="6508e118-88d8-4d8b-babf-0ddddccaa751" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Quick tempered. Fast walker and talker.</li></ul><ul id="55aebd8b-782a-4e4f-811e-8a84a242a842" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Superstitious.</li></ul><ul id="f3f6b0fd-be99-4dcc-b85d-a558667e2636" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Possible rumor - she once massacred a gang for interrupting an initiation. We don&#x27;t know if it&#x27;s true or not.</li></ul><ul id="63a7ba67-51a5-418f-b12b-9e3eb3225a58" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Connected to Jerome &quot;The Bank&quot; and the pack of Gangrel.</li></ul><h3 id="cac9e13d-d208-482f-ab8e-ab178b50a45c" class="" dir="auto">History</h3><p id="827f6563-0fd6-4811-898d-e0f8e0dff52d" class="" dir="auto">Anarch</p><h3 id="933a52ab-4867-4ea2-805a-f7099a185423" class="" dir="auto">Ambition</h3><p id="3bd8ccaa-e9b2-46e2-a8dd-c87c28ca51cf" class="" dir="auto">To restore the churches in the city to the feeling of real community and safe haven (as opposed to the corruption they are under today). </p><p id="9b087e3b-be0a-4068-a3b9-d69ecbca9b65" class="" dir="auto">Maybe vampires and humans?</p><h3 id="4b4b98e5-6222-41b7-8aeb-7d744e285ca1" class="" dir="auto">Desire</h3><p id="8abea6e8-93cf-46e7-92d4-e79a855e024c" class="" dir="auto">To find Elua and see if he is OK.</p><h3 id="76ed3930-ebb6-4a3e-9d32-713364bfdb4d" class="" dir="auto">Convictions &amp; Touchstones</h3><p id="c8929447-6a4d-485a-baa3-4a1022dd98e1" class="" dir="auto">T: Callie&#x27;s father who built many of the libraries in the city as a promise to her that she would always have a place of solace after her mother abandoned them.</p><p id="6e7253dc-d3d5-4025-82c5-d1e87d5d928a" class="" dir="auto">C: Always keep your sworn word.</p><p id="e77d7ccd-5545-48be-9c09-e80bf0bf5911" class="" dir="auto">T: Preacher Elua, who always taught her to value the lives of others.</p><p id="c635fbb8-69ca-4042-b34c-bfa145282da2" class="" dir="auto">C: Protect the innocent.</p><h3 id="0a76c914-b4bc-4e2d-a78a-77f817f1874f" class="" dir="auto">Lore Notes</h3><p id="13045f95-2c61-4381-92e5-5380df928267" class="" dir="auto">Archetype: Voice of the People<br/>The Brujah have always strived for progress in Kindred society. Many of them were progressives in life and<br/>follow the same path in undeath. The voice of the people might be a former feminist activist, eco-warrior,<br/>or an anti-capitalist protester who channels their passion into speaking out against the Ventrue and Toreador<br/>or fomenting political unrest among mortals. Their ambitions may come back to hurt their clan, but sometimes they form the core of revolutionary movements.</p><h2 id="c7ee9136-bfd9-449e-9856-c0f991286bb4" class="" dir="auto">Domain</h2><p id="bc5c32f8-cf50-43aa-adba-5a8bfdca5b88" class="" dir="auto">Chasse (3): See shaded section of <a href="https://www.google.com/maps/d/u/0/edit?mid=1o25Yh7uYAypQKS81oc6ADpYTF2vuNqlK&amp;usp=sharing">map</a> for permitted hunting ground. Default hunting Difficulty is 4.</p><p id="e3424330-93f6-4d16-a5c9-eda553276eb4" class="" dir="auto">Lien (0): No modifier to interactions with native mortals or for finding/investigating within domain.</p><p id="4c1a70b4-f3b5-4614-bbeb-c33f3204bb8a" class="" dir="auto">Portillon (3): This Trait describes how secure the domain is against intrusion or disruption: other vampires, mortal police or predators, the Second Inquisition, etc. Each dot of Portillon subtracts one die from a foe’s pool when they attempt to, for example, enter, investigate, or surveil the domain without the coterie’s knowledge. Portillon seldom adds to character pools; it primarily acts as a resistance Trait. A critical success by an intruder might lower the Portillon of the Domain against that specific intruder – unless the coterie deals with them before the next incursion. Portillon does not apply to Havens, in or out of the Domain.</p><h2 id="00b044bb-f7e7-4948-8b93-dffd5d254a87" class="" dir="auto">Haven</h2><p id="a62f23ee-e89a-4c45-83eb-fd621cb973ae" class="" dir="auto"><strong>Comte Cioran&#x27;s Crypt, Cimetière de l&#x27;Hôpital-Général de Québec</strong></p><p id="d655aef6-68b5-437c-a5ec-38cb6792053c" class="" dir="auto">The mausoleum your coterie guarded was for Comte Cioran, an Anarch Brujah who was immensely powerful throughout the twentieth century and ruled Quebec City (and held sway over much of Quebec), keeping independent and holding off all comers, including werewolves, Sabbat, and Camarilla.</p><p id="431eb67b-8765-49b9-a6c7-d89639834d6b" class="" dir="auto">The events leading to his torpor are contradictory, but the guarding of his tomb became a priority for all factions; those who honored his memory wished to prevent a true death or diablerie, and those who feared his return wished to ensure he remained in torpor.</p><p id="356ee434-fba7-449f-a7ba-69e2a69860b2" class="" dir="auto">When he arose, it was with a single-mindedness that led him to the Levant and the rumored location of the Antediluvian founder of the Brujah; leaving the crypt complex a hollow shell.</p><p id="de12e816-3af0-4aa0-a2f7-38a794fb947b" class="" dir="auto">Supernature abhors a void, and of late you have been accumulating evidence that this haven now also hosts a wraith or revenant, but you have as yet avoided direct confrontation and have been unable to expel it.</p><p id="0ad697f6-a148-463d-9074-1073af1036b4" class="" dir="auto">Postern (2): Your Haven has a rear exit, secret tunnel, grating in the cellar leading into the sewers, or other unobtrusive way out. For each dot of this Merit, add one die to your dice pools to evade or escape surveillance near your haven.</p><p id="451f8b5f-d23f-40f8-9112-ae93eab49e5b" class="" dir="auto">Warding (2): Your haven possesses some kind of magical ward barring supernatural forces. You may not be able to de activate it, but it allows you to pass. Discuss the limits of your ward with the Storyteller. Each dot of this Merit adds one to the dice pool to resist supernatural scrying, as well as whatever other entry the Storyteller allows it to prevent. The Storyteller may require you to possess Occult 3 or better, or Blood Sorcery, to buy this Merit.</p><p id="6a937612-f46f-48b5-86fb-ea36cc4c7f96" class="" dir="auto">Flaw: (••) Haunted. Your haven has a supernatural manifestation in it that you do not control or really even understand. It might just have a ghost, but a Haunted haven could hold a dimensional portal, a cursed meteorite, or anything else you can’t get rid of. Obviously, someone who does understand the manifestation could use it to breach your haven’s security. The Storyteller defines any other effect of the haunting, imposing at least a one-die penalty to affected pools used in the haven per dot of Haunted taken as a Flaw.</p></div><div id="c0fcda14-9141-49cf-8921-94dfc5bc2f4c" style="width:22.5%" class="column" data-notion-column-ratio="0.225" dir="auto"><h2 id="2a54fa2e-d456-4165-a8b8-1f7b7105d61f" class="" dir="auto">Humanity 6</h2><p id="1ba341fb-6fb6-46af-a981-bfdbd649c535" class="" dir="auto">Hey, people die; stuff breaks. You have little difficulty with the fact that you need blood to survive and that you do what needs to be done to get it. You might not go out of your way to wreck things or kill people, but you don’t cry bloody tears over it either. Not automatically horrid, Kindred at this stage of Humanity don’t win any prizes for congeniality either. </p><p id="f230c067-fa09-432d-9837-952d7e6b21a5" class="" dir="auto">Rules for this level of Humanity work as the previous rating unless otherwise noted, as the human mask<br/>becomes more difficult to wear:</p><ul id="2ecd901d-29de-41c9-9450-05deeedfff7e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">You must make a Rouse Check to use Blush of Life.</li></ul><ul id="05e2c84b-2bc8-4fa0-85b2-ab6feb111d7f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">You cannot have sexual intercourse per se, but you can fake it by winning a Dexterity + Charisma test<br/>if you wish, made at a one-die penalty to your pool (Difficulty equals your partner’s Composure or<br/>Wits). </li></ul><ul id="3e263873-f4d1-42e4-8087-49acd74b250d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Even when using Blush of Life, you need make a Composure + Stamina test (Difficulty 3) to be able<br/>to keep food and drink down for an hour.</li></ul><h2 id="03734fc4-02f4-4d60-a813-128a010db99b" class="" dir="auto">Predator Type: Alleycat</h2><p id="426cd5a2-e748-4002-a8a9-5a4c05e8d7b5" class="" dir="auto">A combative assault-feeder, you stalk, overpower, and drink from whomever you can, when you can. You may or may not attempt to threaten or Dominate victims into silence or mask the feeding as a robbery. Think about how you arrived at this direct approach to feeding and what makes you comfortable with an unlife of stalking, attacking, feeding, and escaping. You could have been homeless, an SAS soldier, a cartel hit-man, or a big-game hunter.</p><h2 id="42752024-f612-4239-b61b-5b6f9c46d0e8" class="" dir="auto">Blood Potency 1</h2><p id="87b36e3d-fee1-405c-a2ec-de6a745b401a" class="" dir="auto">You are a true vampire, though only barely so according to some elders. Still, your vampiric Blood can accomplish some spectacular things when roused.</p><p id="14232b6e-5872-498a-b14d-56de7a806f03" class="" dir="auto">Add one Attribute die to your dice pool when performing a Blood Surge (p. 218).</p><p id="7e3294c6-8fd8-4cc8-b3b1-00bc9fbf2030" class="" dir="auto">When Mending Damage, you can remove 1 point of Superficial damage per Rouse Check.</p><p id="8b406ea6-4aef-4e12-a64b-66c7586b51cb" class="" dir="auto">Roll two dice and pick the highest when rolling a Rouse Check for level 1 discipline powers. (Or re-roll the Rouse Check)</p><p id="a58c5b0e-adc3-4c66-b980-aa2c719f3395" class="" dir="auto">You have a Bane Severity of 1.</p><p id="07e616f0-e4a9-424d-a5dc-d7531992f7eb" class="" dir="auto">
+</p><figure id="57216062-115d-4620-9f79-9ea5d343051e" class="image" data-notion-image="Claire%20Breguet/Untitled%201.png" dir="ltr"><a href="Claire%20Breguet/Untitled%201.png"><img style="width:433.515625px" src="Claire%20Breguet/Untitled%201.png"/></a></figure><h2 id="40a47ef2-5799-4e39-80ce-0d8a61657036" class="" dir="auto">Blush of Life</h2><p id="8f1a50dc-7a6e-4c4a-a1b5-caffb6f41873" class="" dir="auto">Unless intentionally brought to a semblance of life, the body of a vampire is functionally dead. Undeath signifies its presence in pale or ashy skin, cold flesh, and lack of breath (except to speak) or a heartbeat. By sending their Blood through the dead capillaries of their skin and into their shriveled heart, a vampire can appear completely human for a night, including but not limited to a heartbeat, body temperature, and breath. The vampire can even pass a cursory medical examination, though they still fail more intrusive screenings for minute tells such as the absence of intestinal flora.</p><p id="5c77b936-d28c-4eea-99fa-f987d245bf94" class="" dir="auto">Non thin-blooded vampires must use Blush of Life to use touch screens – such as those on smart phones – unaided, which don’t work without the skin moisture and conductivity of the living. Blush of Life generally allows a vampire to consume food and drink without vomiting for up to an hour. Without it, vampires must make an immediate Composure + Stamina test (Difficulty 3) to be able to get outside or to a bathroom in time.</p><p id="b98f8255-0024-4349-900a-b48a87edca37" class="" dir="auto">Depending on their Humanity, vampires can fake or sometimes even enjoy sexual intercourse while Blush of Life is active (see p. 236.) At Humanity 9 or higher, vampires appear ill or “heroin chic” rather than dead; their heartbeat, pulse, and breath seem thready but detectable. They do not need to use Blush of Life for other than cosmetic purposes. Bringing on the Blush of Life requires a Rouse Check.</p><h2 id="ecaa91e0-b46d-43e7-af73-07fd9233d851" class="" dir="auto">Blood Surge</h2><p id="6bc75a44-b46c-4682-8f4e-6b86fe3149f3" class="" dir="auto">Any vampire can call upon their Blood to temporarily augment their Attributes, whether Physical, Social, or Mental. When the character wills a Blood Surge, the player can add a number of dice to a dice pool incorporating an Attribute. The number of dice a Blood Surge adds depends on the  character’s Blood Potency; characters can only use Blood Surge once per roll. A Blood Surge requires a Rouse Check.</p><p id="01576642-f37e-4461-a8be-9ed1990955fe" class="" dir="auto">Blood Surge applies only to a single roll of the dice. (Dice added in a Blood Surge remain throughout<br/>any Willpower re-rolls.) Characters cannot use a Blood Surge for Willpower or Humanity rolls, for rolls that apply to more than one scene, in One-Roll Combat (p. 296), or whenever else the Storyteller disallows them. Do not apply automatic wins (p. 120) or “Take Half” to rolls augmented<br/>by a Blood Surge.</p><h2 id="cd668c71-3148-42dd-8ab2-1bb7ac2bed4c" class="" dir="auto">Vampiric Mending</h2><p id="e3cd15a0-c7f3-4fff-a3b7-d0c5e0057533" class="" dir="auto">Being dead, vampires do not heal naturally. Their unliving frames can still knit themselves together, given enough effort.</p><p id="91bf1fd7-4759-499a-b811-d0adf490f65f" class="" dir="auto"><em>Mending superficial health damage</em></p><p id="7892ccdf-a097-4c49-b2d1-f0ea1f0cafb7" class="" dir="auto">Depending on their Blood Potency, a vampire can mend one or more points of Superficial Health damage with a single Rouse Check. Vampires can make one Rouse Check per turn to mend Superficial Health damage.</p><p id="376d4aeb-2632-4413-b50a-a3c20dcb88ca" class="" dir="auto"><em>Mending aggravated health damage</em></p><p id="a40324c9-c252-4633-97db-264f324c8a3a" class="" dir="auto">To mend Aggravated Damage, a vampire must wait until the next nightfall and make three Rouse Checks, in addition to the regular Rouse Check made when rising.</p><p id="99f5ce72-6e3c-46a0-be73-e921f6103155" class="" dir="auto">This process removes one point of Aggravated damage as well as one Crippling Injury or similar impairment. A vampire can only mend one point of Aggravated damage per night.</p><p id="1a7e21e8-0b1a-45af-8b27-c7932e9c2e20" class="" dir="auto">As with awakening, if these Rouse Checks raise the vampire’s Hunger above Hunger 5, they fall into torpor rather than testing for hunger frenzy.</p><h1 id="5bc7be5a-3ce1-4b77-89b8-9606fb75197e" class="" dir="auto">Advantages</h1><h2 id="492bfa87-3f8d-47ff-97f2-957274906199" class="" dir="auto">Merits</h2><ul id="04072c79-b6a3-43ff-ab8f-f53d8f88178f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Criminal Contacts (3)</li></ul><ul id="a7225d7a-b2df-432f-82e6-f9f4eb4bdd3a" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Unbondable (5): You cannot be Blood Bound. If you’re ever short of cash, you can probably sell your vitae to alchemists, too.</li></ul><ul id="d78c8a81-cbed-43c1-957a-545a65d44ba0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Iron Gullet (2): You can feed from cold blood, rancid blood, and fractionated plasma. None of these provide Resonances. Ventrue may not take this Merit.</li></ul><ul id="bdeb387c-24a5-44fc-bec5-3af5f17f36d4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Boot &amp; Rally (1): Sometimes the best way out of a bad situation is to try again, harder, and have a frenzy-prone coteriemate impress upon you the error of your ways. Once per session, the Brujah inspires a flagging coteriemate, who may then reroll all regular dice on a failed Physical Skill test.</li></ul><h2 id="333ea715-0d90-4709-b76c-7cd7dd02adb7" class="" dir="auto">Flaws</h2><ul id="ddf0baed-08c5-4fd5-80e9-641e84cbbcf9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Prey Exclusion (1) - refuse to hunt/feed on women. You refuse to hunt a certain class of prey: drug users, women, children, policemen, innocents, a given minority or ethnic group, etc. If you feed on such prey, you gain Stains as though you had violated a chronicle Tenet. Witnessing other Kindred feeding on the object of your exclusion without interfering might also give Stains, at the Storyteller’s discretion. Ventrue with this Flaw gain an additional restriction, making their choice of vessels extremely narrow.</li></ul><ul id="d52fe980-3c1a-4864-9242-02108881a539" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Suspect (Camarilla) You’re not good with this sect at all. You weaseled out of a boon, broke an oath, or did something similar. You can try to stay out of sight and out of mind, but unless you somehow make amends, you suffer a two-dice penalty to all Social tests involving the offended faction.</li></ul><h2 id="cc903037-b50a-4f07-86e0-ed3159f191ed" class="" dir="auto">Clan Bane</h2><p id="cfcbf6bd-e9ea-437e-a387-10b41524728f" class="" dir="auto">The Blood of the Brujah simmers with barely contained rage, exploding at the slightest provocation. Subtract dice equal to the Bane Severity of the Brujah from any roll to resist fury frenzy. This cannot take the pool below one die.</p><h2 id="9830c713-5579-43cb-8972-9ba1c86d811d" class="" dir="auto">Clan Compulsion</h2><p id="cf2f12e1-3581-4546-89b4-f075bd058d5e" class="" dir="auto">Rebellion - The vampire takes a stand against whatever or whomever they see as the status quo in the situation, whether that’s their leader, a viewpoint expressed by a potential vessel, or just the task they were supposed to do at the moment. Until they’ve gone against their orders or expectations, perceived r real, the vampire receives a twodice penalty to all rolls. This Compulsion ends once they’ve managed to either make someone change their minds (by force if necessary) or done the opposite of what was expected of them.</p></div><div id="f550e61f-67f4-437e-b831-fc492e9ba7dd" style="width:22.499999999999996%" class="column" data-notion-column-ratio="0.22499999999999995" dir="auto"><h1 id="11f5a97d-8d8e-4daa-85ad-564c5bddfdd7" class="" dir="auto">Disciplines</h1><p id="569d4251-8570-4dfe-b019-07db026993d1" class="" dir="auto">Vampires add dice equal to half their Blood Potency (rounded down) to their dice pools to use or resist Disciplines.</p><h2 id="4f13e08d-1530-4014-ab92-f9b66cd5cd3c" class="" dir="auto">Potence (3)</h2><p id="02601202-8ad9-425d-b786-1df3c407804e" class="" dir="auto">Type: Physical</p><p id="00037ec3-42ea-40c9-a9ad-3c9f19c7d76a" class="" dir="auto">Masquerade threat: Medium to high. Lesser exercises of the<br/>Discipline might be passed off as “hysterical strength,” but once pavement cracks and buildings start to crumble that explanation loses what little credibility it had.</p><p id="7389d02c-3403-469e-b7ed-23893b7295b6" class="" dir="auto">Blood Resonance: Choleric. The strong and healthy; athletes<br/>and young men and women in their prime, gym rats, wrestlers,<br/>construction workers and lumberjacks, longshoremen.</p><h3 id="63fc9436-0f79-4229-b1c4-3ba53930fde6" class="" dir="auto">Lethal Body</h3><p id="f26ae7e2-9f41-4026-b091-81d1dff0aaa8" class="" dir="auto">Using this power, the user is capable of causing horrendous damage to mortals, tearing skin and breaking bones with bare fingers.</p><p id="437172b3-6ad9-43de-bc47-60d86adbea6f" class="" dir="auto">Cost: Free</p><p id="d8349521-2c5f-4489-af6a-c9afa3c0721b" class="" dir="auto">System: The user’s unarmed attacks can now do Aggravated<br/>Health damage to mortals, if desired. They also ignore one level of armor per Potence level of the user.</p><p id="50b1761f-739a-44f9-bc21-48890797f95f" class="" dir="auto">Duration: Passive</p><h3 id="4c3fb40d-71f0-4d40-9066-0cc40c4e1825" class="" dir="auto">Prowess</h3><p id="ae6d570d-54d2-420b-aa4a-f12b6f9a4693" class="" dir="auto">Vampires with Potence gain far greater strength from their Blood than those who lack it. </p><p id="e711c701-ae4c-46fd-9998-8a58c8143e93" class="" dir="auto">Cost: One Rouse Check</p><p id="68f3641a-161e-4042-b248-1cfe6ba61289" class="" dir="auto">System: When activated, add the Potence rating of the user<br/>to their unarmed damage value as well as to feats of Strength.</p><p id="4e155bcf-6a39-42e1-9d0c-d2f6e60e4dd1" class="" dir="auto">Duration: One scene</p><h3 id="4fe90ef8-9a0c-4202-aaec-35ccf07a758f" class="" dir="auto">Spark of Rage</h3><p id="d68a5a72-8af0-4d95-a43e-88f9d6cf5f44" class="" dir="auto">Amalgam: Presence 3</p><p id="250380ae-44d1-46a4-93cb-a7e6a3af884d" class="" dir="auto">Combining Potence and Presence, the vampire can incite anger and even frenzy in onlookers, as easily as awe or dread. The user must take care not to rile up an angry mob to turn on them rather than the target or each other. </p><p id="fe84b426-aa1c-4d2c-8067-ee71d899f989" class="" dir="auto">Cost: One Rouse Check </p><p id="7346953b-641b-44cd-85ca-85246e0ba339" class="" dir="auto">Dice Pools: Manipulation + Potence</p><p id="fb0ccb22-61ac-471a-ac79-2c90713f8e55" class="" dir="auto">System: When active, the user can add their Potence rating<br/>to any attempt to rile or incite a person or a crowd to violence. In addition, the user can activate this power and roll a contest of Manipulation + Potence vs Composure + Intelligence of another vampire. If they win, the opposing vampire must make a fury frenzy test at Difficulty 3.</p><p id="e5cf19a1-fa79-4cfb-bf96-10d3fb0cf09e" class="" dir="auto">Duration: One Scene</p><p id="e78c3933-bff9-4ada-9a32-1245b5b0d1f3" class="block-color-yellow" data-notion-highlight="yellow" dir="auto">
+</p></div><div id="87684184-dc58-450c-9cb7-665ad77680f7" style="width:20%" class="column" data-notion-column-ratio="0.2" dir="auto"><h2 id="27b07f3b-b58a-4a0c-bb2c-67a1b4bc4ed2" class="" dir="auto">Presence (3)</h2><p id="13ba73e0-10d0-4228-88af-b00a53172ec4" class="" dir="auto">Type: Mental</p><p id="4e2d1f9e-a729-4748-9c6d-9d835c35c303" class="" dir="auto">Masquerade threat: Low-Medium. A subtle power, people seldom realize Presence has affected them at all. As with most Disciplines, its higher powers can leave puzzled witnesses behind, especially once the effects wear off.</p><p id="70cf75df-824b-488d-b04e-287c91f9d435" class="" dir="auto">Blood Resonance: Sanguine. The beautiful and lustful, those completely infatuated with the vampire, models and actors and movie stars, compelling public and private speakers from politicians to car salesmen, YouTube sensations and Instagram influencers.</p><h3 id="77f40b9f-99a6-4ced-9131-bb1919e2c445" class="" dir="auto">Awe</h3><p id="eddda869-ff3a-46df-ac0e-93c6c8d339b2" class="" dir="auto">Anyone in the presence of the vampire finds their attention<br/>inexplicably drawn to them. Those listening to the vampire speak might suddenly agree on subjects where they once held different viewpoints. While this power doesn’t cause rapt infatuation, it is still strong enough to sway the minds of most mortals.</p><p id="7f357b93-017e-49ae-904b-a0c21015610e" class="" dir="auto">Cost: Free</p><p id="0fe2c5e2-0fe6-4a32-b764-a105675112ba" class="" dir="auto">Dice Pools: Manipulation + Presence vs Composure + Intelligence</p><p id="8adbfdf2-cb88-4051-a5c1-fd255df74679" class="" dir="auto">System: Add the Presence rating to any Skill roll involving<br/>Persuasion or Performance as well as to other Charisma related rolls, at the Storyteller’s discretion. Anyone aware that they’re being affected can try to resist with a contest of Composure + Intelligence vs the user’s Manipulation +  Presence. On a win, the target can resist the effects for one scene; a critical win makes the target immune for the entire night. Once the power wears off, victims revert to their previous opinions.</p><p id="5dd737f8-6b40-4fad-a9d7-2a9f6fabcd94" class="" dir="auto">Duration: One scene or until intentionally ended</p><h3 id="c139fab9-bbca-43db-bc95-31dcc123b719" class="" dir="auto">Daunt</h3><p id="a13dd60a-44be-47f0-b30f-83b293eea688" class="" dir="auto">Instead of attracting people, the vampire uses Presence to repel. With this power the user appears threatening and exudes an aura of menace powerful enough to make most mortals avoid their attention and even vampires think twice<br/>about acting against them.</p><p id="589d9fa5-5df9-4d87-b5df-9f1e784e4392" class="" dir="auto">Cost: Free</p><p id="642c8545-cbd4-407b-9e78-2393d63c23fb" class="" dir="auto">System: Add the user’s Presence rating to any Intimidation rolls. Attacking the user requires a Resolve+Composure<br/>roll at Difficulty 2. Vampires cannot use Awe and Daunt simultaneously.</p><p id="c3e63ef9-2285-434f-bdde-95ff5b787cb4" class="" dir="auto">Duration: One scene or until intentionally ended</p><h3 id="88c38c04-89e5-42b1-b5c1-4168e9f6d71f" class="" dir="auto">Dread Gaze</h3><p id="48f7ed33-9c62-40dc-887e-6aca22a09686" class="" dir="auto">Briefly exposing their vampiric nature, the user instills a single subject with utter terror. Mortals are cowed, run, or freeze with fear, while other vampires either submit like whipped dogs or flee in frenzied Rötschreck.</p><p id="33606910-44c6-4d18-a492-2da31365bd18" class="" dir="auto">Cost: One Rouse Check</p><p id="9ea4ea41-d69f-493a-8297-2154637f6f37" class="" dir="auto">Dice Pools: Charisma + Presence vs Composure + Resolve</p><p id="c7e7275b-168f-4695-b3e0-970b8e8759b7" class="" dir="auto">System: Displaying their fangs, their face twisted in a predatory grimace, the user rolls a contest of Charisma + Presence against their target’s Composure + Resolve.</p><p id="d71ca619-7972-430d-abfc-f66abf001352" class="" dir="auto">Failure: Mortals are unable to act other than in their own defense, backing off for a turn. Vampires are unaffected.</p><p id="e2e9f3d6-a579-4f6a-b6b2-d2a6f67b3319" class="" dir="auto">Win: Mortals run in fear. Vampires are unable to act other than in their own defense for a turn unless they spend Willpower equal to the users margin of win (to a minimum of one).</p><p id="fc1fdb13-9141-4c95-8821-27f419736811" class="" dir="auto">Critical Win: Mortals freeze or crumple into a fetal position. Vampires must make a terror frenzy test (Difficulty 3). If they<br/>win, they are still affected as above.</p><p id="6cb444d6-48f3-4106-ba37-fe44a5a25c46" class="" dir="auto">Duration: One turn</p></div></div><p id="d26535d6-954d-446e-b8a0-096295329d3f" class="" dir="auto">
+</p><p id="4b05d55c-e893-4679-8711-fb58bc0d8aad" class="" dir="auto">
+</p><p id="a4c70d62-785a-4aa6-8b32-527f6cddb97b" class="" dir="auto">
+</p><p id="ada8dd43-cc10-4a4d-81f7-a9af8cec8098" class="" dir="auto">
+</p><p id="d2b7a114-a39a-46a2-a266-fe8c93b022e0" class="" dir="auto">
+</p><p id="856f4809-851d-489d-9247-f8f268e33c82" class="" dir="auto">
+</p><p id="d3cca15a-c5d8-44e6-b865-43e4a9dd5927" class="" dir="auto">
+</p><p id="a5810a16-5110-4021-b76a-005738e14d3b" class="" dir="auto">
+</p><p id="f97d70dc-648a-4206-a3f7-f2b2b7e3c1e5" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

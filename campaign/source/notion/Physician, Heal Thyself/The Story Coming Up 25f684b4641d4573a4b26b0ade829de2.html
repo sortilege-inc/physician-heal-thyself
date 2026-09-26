@@ -1,0 +1,810 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>...The Story Coming Up</title><meta name="data-notion-page-icon" content="⛅"/><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%E2%9B%85%3C%2Ftext%3E%3C%2Fsvg%3E"/><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+	/* Paint a complete callout box on every PDF page fragment. */
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+}
+
+/* For default-background callouts, render the border outline. */
+.callout.block-color-default_background {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+/*
+ * Toggles and callouts hold arbitrary content, so they can easily be taller
+ * than a page. They must stay breakable: avoiding breaks inside them makes
+ * Chromium push the whole block onto the next page, which leaves the previous
+ * page mostly empty before every long toggle.
+ */
+details,
+aside {
+	margin: 1.25em 0;
+}
+
+/* Keep a toggle's title on the same page as the start of its content. */
+summary {
+	page-break-after: avoid;
+	break-after: avoid;
+}
+
+/*
+ * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
+ * <summary>. Without this reset, the heading's margin-top pushes it below the
+ * ::marker (▼), so the triangle and the title appear on separate lines.
+ */
+summary h1,
+summary h2,
+summary h3,
+summary h4 {
+	margin-top: 0;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding-inline: 0.125rem;
+	padding-block: 0.375rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+/*
+ * Render emoji icons using a ::before pseudo-element to keep the glyph
+ * out of the DOM textContent traversal. This avoids double-rendering icons
+ * in callouts and page titles.
+ * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
+ * flag as a duplicate tag after codegen.
+ */
+.icon[data-emoji]::before {
+	content: attr(data-emoji);
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	margin-right: 0.4em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.tab {
+	margin: 1.25em 0;
+	padding-inline: 1rem;
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="25f684b4-641d-4573-a4b2-6b0ade829de2" class="page sans" data-notion-page-icon="⛅"><header><div class="page-header-icon undefined"><span class="icon" data-emoji="⛅"></span></div><h1 class="page-title" dir="auto">...The Story Coming Up</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div id="b5a70a2f-bb16-4d80-864e-ad3dcd88ada4" class="column-list" data-notion-column-list="" dir="auto"><div id="eb90bf84-933d-4f7d-a16b-4c9ce1ebbbe8" style="width:25%" class="column" data-notion-column-ratio="0.25" dir="auto"><p id="33020934-1189-4652-9d68-1813fe0034cb" class="" dir="auto"><a href="https://kumu.io/hewhocutsdown/physician-heal-thyself#vtm-all-characters/claire?focus=%23elem-BEAxqL6m%20out%201">NPC relationships</a></p><details id="3cc542d6-d484-4093-b15c-d4c54e6fed03" open="" class="toggle" dir="auto"><summary>Archive</summary><div class="indented"><ul id="cb6f7b8e-d8f1-4333-b10f-2aac34f6fffa" class="to-do-list" dir="auto"><li><input type="checkbox" class="checkbox checkbox-off" disabled=""/> <span class="to-do-children-unchecked">What does Faith want?</span><div class="indented"></div></li></ul><details id="89c3c604-0b8d-479c-b6f3-2318ff0426d9" open="" class="toggle" dir="auto"><summary>Richart takes 2 artifacts</summary><div class="indented"><ul id="b4a0452f-b886-467a-b5fb-22211ef0947c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Blood Clock; attune to it.</li></ul><ul id="8fef946e-7a8a-40b2-b83d-44dabdbc0f60" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Torpor Orb - advantage on frenzy</li></ul><ul id="0fb2480d-a3b0-484b-b76a-d40ecdbc0682" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A needle for piercing into flesh, tattoos; necessary but not sufficient</li></ul><ul id="631bb73f-643b-4f94-a4a1-e01f0afd76b4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A small bell.</li></ul><ul id="2e6cfb90-52bf-4a17-9c07-6f3698e56a77" class="bulleted-list" dir="auto"><li style="list-style-type:disc">A Mask that takes a face.</li></ul></div></details><ul id="075319fa-2dac-45e8-a4cb-6ae629af8789" class="bulleted-list" dir="auto"><li style="list-style-type:disc">We could say that the Sabbat gave him the mark (the prior Prince), again thinking he would never be able to succeed. He did it, and it was such a big deal that the Sabbat in reconciliation took his hands and gave them to the offended clan. Richart would see this as an ultimate betrayal and that the Sabbat set him up seeing he was becoming too powerful and this gave them justification to handicap him.</li></ul><p id="a43fb7a1-5786-4277-8a9d-a5f9c6ac2cc0" class="" dir="auto">Richart&#x27;s betrayal.</p><p id="228944b5-c402-424a-a6a7-eca60c687729" class="" dir="auto">T: Callie&#x27;s father who built many of the libraries in the city as a promise to her that she would always have a place of solace after her mother abandoned them.</p><p id="b8a77595-83d6-4db2-8d60-11ee79695e0d" class="" dir="auto">C: Always keep your sworn word.</p><p id="c1114527-e973-4cff-8440-df4cbd472e23" class="" dir="auto">T: Preacher Elua, who always taught her to value the lives of others.</p><p id="8f442910-f3dd-485e-bd94-9739187074ce" class="" dir="auto">C: Protect the innocent.</p><ul id="a73280e4-b736-4427-83b0-79c5f9b96145" class="to-do-list" dir="auto"><li><input type="checkbox" class="checkbox checkbox-off" disabled=""/> <span class="to-do-children-unchecked">Richard Cartier</span><div class="indented"><ul id="f59f366d-778a-46b4-95a6-d1137f4b2232" class="to-do-list" dir="auto"><li><input type="checkbox" class="checkbox checkbox-off" disabled=""/> <span class="to-do-children-unchecked">also another characteristic and possible flaw option that I may not have emphasized enough, was him not wanting to expose his hands to any kind of damage, as they cannot heal like the rest of him. Meaning if he breaks a finger, he&#x27;s stuck with it till it gets replaces. For a severe consequence and possible flaw, the possibility of being able to bleed out through his hands, as the wounds can&#x27;t close, which triggers a feeding frenzy for survival or death</span><div class="indented"></div></li></ul></div></li></ul><p id="1e7aefcc-46e6-4945-8453-e323103717a4" class="" dir="auto">
+</p><p id="3b5532c3-007e-4e11-9429-765467910686" class="" dir="auto">The Sabbat are ultimately ancestor worshippers. It’s important to note that.</p><p id="26bea4ce-2d8d-4912-bff5-a95323070a05" class="" dir="auto">How is Richart blood cursed? By whom? Sybille, at someone&#x27;s behest?<br/>...they coveted Richart&#x27;s hands.</p><p id="62e74156-1723-408c-b739-35c9ddca6421" class="" dir="auto">I forgot I had an Ally (Merit) - Surgeon/Admin: Gifted, unreliable - maybe the thin blood who gets me my blood bags (unreliably, yay haha)?</p><p id="ec161c6c-774c-4115-8871-ba6094a5c33e" class="" dir="auto">Who is shunned by Kamal?<div class="indented"><p id="dd8974bb-5a12-4d4d-bb3c-0965464b3035" class="" dir="auto">Kamal - transgressor, public figure, TBD.</p></div></p><p id="8eaca50c-0f77-4287-9e35-4d9f8181a044" class="" dir="auto">
+</p><ul id="3fe12ade-2b17-4bd7-b95f-de87cd0dd5b6" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Finding The Spanariad</li></ul><ul id="62948cb8-78c9-4609-9a62-f009c2131384" class="to-do-list" dir="auto"><li><input type="checkbox" class="checkbox checkbox-off" disabled=""/> <span class="to-do-children-unchecked">Sybille responds on Milica&#x27;s behalf?</span><div class="indented"></div></li></ul><p id="7ad55f61-b1d3-426e-b0b7-fd45b50293f9" class="" dir="auto">
+</p><ul id="73152c8b-0262-4176-afc1-f1ff4bb9685f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Why was Nico&#x27;s file missing? He knew about Aurora</li></ul><ul id="4a0f85d7-b251-4028-a2d5-14b0bd9acbc0" class="to-do-list" dir="auto"><li><input type="checkbox" class="checkbox checkbox-off" disabled=""/> <span class="to-do-children-unchecked">Kamal has a food source from Jerome when he wakes up.</span><div class="indented"><ul id="106901c6-3808-4e15-bcd2-413c88318917" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Linh? Or someone who disrespects the dead; maybe Jonah.</li></ul></div></li></ul><ul id="5828e383-6cc4-42c0-8f46-a8cee7439b41" class="to-do-list" dir="auto"><li><input type="checkbox" class="checkbox checkbox-off" disabled=""/> <span class="to-do-children-unchecked">Matthieu: Calli owes a boon for a bunch of blood</span><div class="indented"></div></li></ul><ul id="22eda7f1-2f20-438c-bd04-70839a437cb8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The SI was a gun that the Camarilla is pointing at the Anarchs and Sabbat.</li></ul><ul id="dd0b3173-c9ed-41e8-ad9c-574bbca324ef" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The Prince makes people do and say things that are patently untrue to solidify allegiance.</li></ul><details id="caca5284-4c4b-43aa-94c2-916a45055c1a" open="" class="toggle" dir="auto"><summary>What does Calli (Kali?) learn about Kamal, Nico?</summary><div class="indented"><ul id="491a1e49-2526-429c-ad19-75bac9edf92e" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Nico was always conspiracy-minded; Baruch didn&#x27;t give his ramblings much credence, but documented them faithfully nonetheless. It&#x27;s the only thing in his file that you can think of that might have been relevant.</li></ul><ul id="ab2c82a9-ed92-4119-b6b7-d4c1828fd439" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Calli knows that Kamal once diablerized another vampire, and relocated to QC in part to avoid a blood hunt. It is unclear if this information is known widely in the court.</li></ul></div></details><ul id="d6ef93e9-c723-492c-9dc0-7a8379b4ac6f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Rumor that Richart killed someone way above his abilities</li></ul></div></details><p id="fae7fa11-b05b-4aed-a692-d27bb56a1d4e" class="" dir="auto">
+</p><h3 id="920b3307-d84c-422c-9007-b62048cb764a" class="" dir="auto">Scenes</h3><p id="e0b32c38-9286-4674-b277-38ba7e76217f" class="" dir="auto"><em>Setting Up</em></p><ul id="e3ecd2bd-f50b-484c-bb72-0d29f740984d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Michel confronts Claire about no Salubri in the chantry</li></ul><p id="ab2f47c5-11ea-48b1-bd48-eaeba26de2e1" class="" dir="auto">
+</p><ul id="02e462b5-3c9a-46c8-8f6a-995718800489" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul><p id="c6c8944f-571b-4108-8c58-ce32f8f013e8" class="" dir="auto">
+</p><ul id="223b4945-8ed2-4aa6-bfa2-258f0568aef7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Mausoleum<ul id="8b3ad74a-2ed8-4798-83a1-a66759d1f0e9" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Matthieu</li></ul></li></ul><ul id="73a560eb-6f60-4725-b2cf-6a35a30b4f34" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Warehouse</li></ul><ul id="624bd6b1-a952-468e-8c11-45cec71b3305" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Sabbat Haven</li></ul><ul id="b1334be8-d903-494f-9ce0-439207b4ddd7" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Chantry</li></ul><p id="84189e5e-5986-48a0-b9bf-4339399ebb3b" class="" dir="auto">
+</p></div><div id="57c47abb-3b60-4a11-b4a0-e1a33d10b0f9" style="width:25%" class="column" data-notion-column-ratio="0.25" dir="auto"><h3 id="284b787c-9d4f-4e1a-8e1a-8262a32b0c09" class="" dir="auto">NPCs</h3><p id="96faf0f0-f049-4bb6-bbed-3d3ea55c3bab" class="" dir="auto"><strong>Anarchs</strong></p><ul id="84626ab1-e7c8-4645-9d7f-602cbf948cff" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Matthieu &amp; the Guardian Wolves<ul id="f5bddf7d-3bc0-4566-ac50-1acdc777685d" class="bulleted-list" dir="auto"><li style="list-style-type:circle">For Kamal to feed upon</li></ul><ul id="b957a3e0-719d-4ea7-ba8a-f64389c093f3" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Seeks payment from Calli</li></ul><ul id="9e2cc91a-e7c9-4d97-902a-bd661250cb23" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Seeking Susanna</li></ul></li></ul><ul id="80f9c2b5-1451-4422-a5bb-ef51733c8b5b" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Calli<ul id="fc61ff7a-614b-4254-9b00-6e3cc5733af1" class="bulleted-list" dir="auto"><li style="list-style-type:circle">What was her and Matthieu&#x27;s plan?</li></ul></li></ul><ul id="be63c135-2cb3-4a10-b775-5b19f7dc44d8" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Jerome<ul id="6cc423b3-92f6-48ad-8f78-c19d09b3d1f7" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Baruch was setting up a 3-way bidding war for Susanna.<ul id="f70f4eb1-220a-479c-9d2a-60b6521e21e0" class="bulleted-list" dir="auto"><li style="list-style-type:square">Anarch, via Jerome (Jerome knows about the Salubri)<ul id="ba01b2b7-fd66-4c17-abaa-8611cae98c85" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Hecata</li></ul><ul id="5e617317-e2c7-45ce-b789-bf6f52df4700" class="bulleted-list" dir="auto"><li style="list-style-type:disc">This would be in conjunction with Calli</li></ul></li></ul><ul id="bc6f5f2e-25c9-4bc3-8770-b85d8fd6ab2d" class="bulleted-list" dir="auto"><li style="list-style-type:square">Camarilla, via Prince Beatrice and Michel<ul id="9b7f511d-0027-4d29-9f52-9e629e0aad6f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Protection + Use</li></ul></li></ul><ul id="2a1e324c-2800-46de-a8d7-995bf70dfb62" class="bulleted-list" dir="auto"><li style="list-style-type:square">Threaten to hand her over to the Sabbat, who would either destroy her or keep her to taunt the Camarilla.</li></ul></li></ul></li></ul><p id="96ac6e55-e51e-4359-b11d-a86e03772a14" class="" dir="auto">
+</p><p id="35b7f8ba-bfb8-4902-8829-b3b840f76b70" class="" dir="auto"><strong>Sabbat</strong></p><ul id="a6e3edfc-78d4-4d47-bb41-facfdb8e7b48" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Richart<ul id="d13adc2c-c329-4fca-9918-b7ffb4c34609" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Bring his head, get status in the Cam</li></ul></li></ul><ul id="e681471e-966f-47dc-8947-563a8e2b19fe" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Glaurung</li></ul><ul id="08843751-1bbd-4dc4-84c1-a7a1b6f281bc" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Sybille<ul id="af7bd44d-5d7b-4f7b-bcd5-2add8e148722" class="bulleted-list" dir="auto"><li style="list-style-type:circle">The Wight is awoken, and defends Glaurung.</li></ul></li></ul><ul id="842c946b-8823-4514-9a79-22e1f97a47a1" class="bulleted-list" dir="auto"><li style="list-style-type:disc">The Spaniard</li></ul><p id="2dc14a1f-a7e6-40ba-a621-c7a696b8745d" class="" dir="auto">
+</p><p id="e3befcfd-c86a-404e-ad97-3520cba98505" class="" dir="auto"><strong>Camarilla</strong></p><ul id="11cae8c3-5a2d-486d-b48e-75889b6866db" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Gisele<ul id="712beffe-3478-425a-9228-f4bc04d91c4a" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Gisele asks for the coordinates from Nico, sends the Prince to the trap, and AURORA there.</li></ul></li></ul><ul id="1a7e5b92-6dc3-4d79-8381-c1cf6d1e6ff9" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Michel<ul id="00568962-765a-4993-9915-a37bbf578ef2" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Wants Susanna&#x27;s identity.</li></ul><ul id="6b8f9669-e690-478f-9c6a-a7dcb57fd8b8" class="bulleted-list" dir="auto"><li style="list-style-type:circle">How does he intend to deal with Jerome?</li></ul></li></ul><p id="030ac18a-56ef-4bc5-9976-1fe355134941" class="" dir="auto">
+</p><p id="2fd04756-7c87-4b4c-81bb-437787da53b8" class="" dir="auto"><strong>AURORA</strong></p><ul id="9361e281-9437-4b5f-ac96-0497e299ac40" class="bulleted-list" dir="auto"><li style="list-style-type:disc"></li></ul></div><div id="c25a2769-7a3b-4293-9a7b-4ca387d0f0fd" style="width:25%" class="column" data-notion-column-ratio="0.25" dir="auto"><h3 id="aec4ccc7-8a2c-4240-af30-78c205cba883" class="" dir="auto">Chekhov&#x27;s Armory/Co</h3><p id="9e415a1a-d6ba-4521-85cc-515f4f8d26b1" class="" dir="auto">Their haven is compromised by AURORA.</p><p id="4761f6d2-ffd7-476c-837c-02ba15c33a6b" class="" dir="auto">
+</p><p id="d296a1a0-31c2-40e1-a673-7acfb3e6b22d" class="" dir="auto">Kamal<div class="indented"><ul id="ef933448-baa6-49af-a546-9676226f51f0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Kamal knows that the Sabbat is probably not responsible, but that the Camarilla wants that to be the official line.<ul id="0464ad26-49f8-4eec-997c-1d2aadd3852e" class="bulleted-list" dir="auto"><li style="list-style-type:circle">Needs to reckon with Javier&#x27;s complicity.</li></ul></li></ul><ul id="178660f8-8185-4334-8314-b23ac1e512e4" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Kamal has a food source from Jerome. It is one of Matthieu&#x27;s gang, or it&#x27;s Matthieu himself!</li></ul><ul id="790d71c0-3eaa-442a-b13e-5b61cdd34391" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Needs to protect the Camarilla</li></ul><ul id="5f6b8104-d353-4467-aed0-d4633b3c8e6c" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Has a bead on the Spaniard.</li></ul></div></p><p id="daabd95e-3913-4d42-9976-ac06e543f385" class="" dir="auto">Nico</p><ul id="17cc1d0b-2b79-4821-93e5-99a7dda7bccd" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Nico knows about AURORA and that Gisele is connected to it.</li></ul><ul id="480767bd-d719-4e92-a161-acc09882c267" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Nico warns that the coordinates <em>he</em> has is for a trap.</li></ul><ul id="de8d9b54-b44b-4d39-ac45-e49006a62979" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Nico would love to take credit for something, that he&#x27;s a super-confident manipulator of the AURORA people.</li></ul><p id="be844ade-05e5-4aa8-a4ad-21eedbbba304" class="" dir="auto">Susanna</p><ul id="d9693c08-610b-46bb-bede-ffe772b3d573" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Jerome and Matthieu were going to use the instability to back Calli and carve out a section of QC. With Calli gone, they may have to retreat.</li></ul><ul id="3b9ff16b-c0c7-4406-a76f-5188501b5877" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Glaurung has a blood bond on her.</li></ul><ul id="5854ae69-fd0f-4f76-9ccf-d454188acad5" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Jerome has a major boon.</li></ul><ul id="ca4a6d2c-96f4-4db4-a2ff-9613186b11c0" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Is there a better way forward with Claire? Can she ever be trusted as long as the Camarilla dictates things for her?</li></ul><p id="9a18faa5-108a-4703-93d6-695c02d3fb94" class="" dir="auto">Claire</p><details id="fe18576e-dd1e-4554-860a-136fe16f52b6" open="" class="toggle" dir="auto"><summary>Creatio Ignis</summary><div class="indented"><figure id="08a8c51a-b98b-4814-b2ac-cf084a5b6067" class="image" data-notion-image="The%20Story%20Coming%20Up/Untitled.png" dir="ltr"><a href="The%20Story%20Coming%20Up/Untitled.png"><img style="width:425px" src="The%20Story%20Coming%20Up/Untitled.png"/></a></figure><figure id="eaf21114-29ff-40d5-96e4-6af264eb174c" class="image" data-notion-image="The%20Story%20Coming%20Up/Untitled%201.png" dir="ltr"><a href="The%20Story%20Coming%20Up/Untitled%201.png"><img style="width:253px" src="The%20Story%20Coming%20Up/Untitled%201.png"/></a></figure></div></details><ul id="97aa436e-b080-4a18-b557-7202ea6a8a84" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Location of warehouse is known.</li></ul><ul id="d9e39400-ef1a-4ea7-9f6a-174cb7e27497" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Needs to come to some kind of resolution with Susanna</li></ul><ul id="70d94243-7da8-4f87-a58d-a0af8d37f87f" class="bulleted-list" dir="auto"><li style="list-style-type:disc">Still owes Jerome</li></ul><ul id="0726c495-f932-4a36-82d9-4863d7485d6d" class="bulleted-list" dir="auto"><li style="list-style-type:disc">What will she do about Michel?</li></ul><p id="3883240a-9f74-45ef-a320-a3f88d8bc42b" class="" dir="auto">
+</p></div><div id="c0134860-cb4a-4b15-83d0-12cfa2ca83d8" style="width:25%" class="column" data-notion-column-ratio="0.25" dir="auto"><details id="781d9566-b663-4e97-807f-8295d7e6f97b" open="" class="toggle" dir="auto"><summary>Meta: Clan Merits</summary><div class="indented"><p id="da65364f-e77b-4ec4-9288-6ffe793cce68" class="" dir="auto">Claire: ● ● MULTI-LEVEL LOREKEEPING (Clan Coterie Merit): Despite the Tremere reputation for jealously hoarding occult knowledge, many vestiges of the notorious Pyramid actually facilitate the sharing of such among scholars of the forbidden. Once per game session, a single Kindred in a coterie with a Tremere who has this Merit can use a Loresheet Advantage that someone else in the coterie possess, including clan-specific Loresheets, at the Storyteller’s discretion. This additional Loresheet Advantage is usable only for the game session, and any knowledge supposed by the Loresheet Advantage is not retained thereafter by the borrower.</p><p id="b32bef27-6d13-4b83-8455-c3edb127e205" class="" dir="auto">Kamal: ●● CALL TO PURPOSE (Clan Coterie Merit): Once per session, the Banu Haqim motivates a coterie-mate they can see with a rousing statement reminding her of her Convictions or even an intense stare that calls her to action. The coterie-mate gains the effects of a Willpower point that must be used immediately, such as to reroll three dice or to briefly master a frenzy. This “Willpower point” isn’t taken from the Banu Haqim, and must be given to a coterie-mate (the Banu Haqim cannot use it on themselves.) See Vampire: The Masquerade, p. 158, for more information on using Willpower.</p><p id="b4f2f2b2-f6fe-4c81-a723-1f9bafecc958" class="" dir="auto">Calliope ● BOOT AND RALLY (Clan Coterie Merit): Sometimes the best way out of a bad situation is to try again, harder, and have a frenzy-prone coteriemate impress upon you the error of your ways. Once per session, the Brujah inspires a flagging coteriemate, who may then reroll all regular dice on a failed Physical Skill test.</p><p id="694494ad-4df9-443a-8c68-80453c67db1d" class="" dir="auto">Nico ●●● EVERYTHING IS CONNECTED (Clan Coterie Merit): The Malkavian is able to extract secrets from the most unlikely sources, such as discerning the location of an elder’s vault from someone’s casual exchange about the weather or unearthing an adversary’s deepest fears from the way they take a right at an intersection. Once per session, the Malkavian has the ability to let another member of their coterie substitute one Skill pool for another of their choice (that they possess) in a test involving the gathering of information. The Oracle is then able to interpret the results, gaining the same information as the original pool would have yielded, depending on the margin of success as usual.</p><p id="c4ab419f-b28f-4b3a-92d6-0188fc060a94" class="" dir="auto">Richart ●● OLD-WORLD HOSPITALITY (Clan Coterie Merit): Enter freely and of your own will. At the beginning of a session, any members of the coterie who stayed at the Tzimisce’s haven when the previous session concluded restore an additional Superficial Willpower damage.</p></div></details></div></div><p id="4d474e97-05d4-4bed-95bb-e71fbccf7cf2" class="" dir="auto">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
