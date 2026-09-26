@@ -45,7 +45,7 @@
     ]));
     const cards = [
       ['coterie', 'The Coterie', DOCS.coterie.length + ' who answered Baruch’s letters'],
-      ['chronicle', 'The Story So Far', DOCS.chronicle.filter((c) => /^Night of/.test(c.title)).length + ' nights and an epilogue, as they were written down'],
+      ['chronicle', 'The Story So Far', DOCS.chronicle.filter((c) => c.title !== 'Epilogue').length + ' nights and an epilogue'],
       ['personae', 'Dramatis Personae', DOCS.personae.length + ' met in the city'],
       ['letters', 'The Letters', 'from Baruch Espinosa'],
     ];
