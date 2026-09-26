@@ -58,7 +58,7 @@ window.VttConfig = {
     leave: 'Turn back',
   },
   worker: {
-    deployed: '',
+    deployed: 'https://physician-heal-thyself.sortilege.workers.dev',
     local: 'http://localhost:8798',
   },
 };
