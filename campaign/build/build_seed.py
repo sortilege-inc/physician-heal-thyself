@@ -28,6 +28,8 @@ from build_docs import Node, find, words, body, flat_blocks, NOTION  # noqa: E40
 
 OUT = B.HERE / 'pack' / 'seed.json'
 IMG = '↗ image'                   # an image's link text, not counted as the page's words
+# the cast layer's records (campaign/dsl), so a person's GM notes show on their record in the Inspector
+CAST = re.findall(r'^\s*(#pht\w+) \^"([^"]+)" DEF', (B.HERE / 'dsl' / 'pht-0.5-cast.ttrpg').read_text(encoding='utf-8'), re.M)
 
 
 def sid(*parts):
@@ -251,7 +253,7 @@ def main():
         check(name, path, secs, Counter(words(' '.join(l[2:] for l in lead).replace('**', ' '))))
         entry = {'id': sid('people', name), 'title': name, 'text': '\n\n'.join(s['text'] for s in secs[:1]),
                  'sections': [x for s in secs for x in ([{'id': s['id'], 'title': s['title'], 'text': s['text']}] if s is not secs[0] else []) + s.get('sections', [])],
-                 'about': []}
+                 'about': [h for h, nm in CAST if nm == name]}
         # the NPC's own sub-tables (Maggie Molyneux's Attributes and Skills)
         sub = path.parent / path.stem.rsplit(' ', 1)[0]
         for tcsv in sorted(sub.glob('*.csv')) if sub.is_dir() else []:

@@ -51,7 +51,8 @@ The Story So Far · Dramatis Personae · The Letters.
 **Owner, mid-build: every GM note is in the GM section.** The whole export is in the pack
 (`campaign/pack/seed.json`, `build_seed.py`), word for word.
 
-**P6 — The cast as a DSL layer: DEFERRED, for the owner.** Finding: the VTT counts an entity as a
+**P6 — The cast layer: Maggie Molyneux and Fatima (owner, 2026-09-25)**; the six PCs are filled in
+on the VTT's sheets when their numbers exist. The finding that led to it: Finding: the VTT counts an entity as a
 *character* only by its stat shape (`build_data.py`: *Standard Dice Pools*, or *Secondary
 Attributes*, or *Attributes* and *Skills*). The export carries a full stat block for two people
 (Maggie Molyneux's Attributes and Skills; Fatima's on the root page); the six PCs have clan,
@@ -67,7 +68,7 @@ writing the rest would invent numbers.
 | **M2** | The export in the repo — `campaign/source/import_notion.py` → `campaign/source/notion/` | landed 2026-09-25: *158 files — copied 144, redacted 8, excluded 6; players redacted: 6; 0 names remain*. The name check **proven by planting a fault** (redaction disabled → *a player name survives in:* six Coterie pages, exit 1) |
 | **M3** | The public site — `build_portraits.py`, `build_docs.py` → `campaign/data/docs.js`; `campaign/site/site.js` | landed 2026-09-25: 30 portraits (byte-identical on rebuild); 7 chronicle pages, the letters, 6 coterie, 21 dramatis personae; every page **word-checked both ways** (raw words = published + dropped by reason). Browser on 8748: all five tabs, every character page, 0 console errors, 0 missing assets (35 referenced), no horizontal scroll at 375px |
 | **M4** | The GM's material — `build_seed.py` → `campaign/pack/seed.json`, `defaultCampaign.seed` | landed 2026-09-25: overview 10 sections (47 with subsections), people 25, pc 6, every page word for word; the gate **proven by planting a fault** (one name dropped → *the root page: words differ — missing {'sybille': 1}*). In `/gm/` after the gate: Overview, People and Coterie notes populated from the seed (`seeded` 271 ids), 0 console errors |
-| M5 | The cast layer | DEFERRED (P6) |
+| **M5** | The cast layer — `campaign/source/convert_cast.py` → `campaign/dsl/pht-0.5-cast.ttrpg`, `build/build_layer.sh`, `campaign/source/check_cast.py` | landed 2026-09-25: 2 characters in the books' Storyteller-character labels; upstream's layer gate *28 strings (37 occurrences) — 0 uncovered · 0 short · 0 unsourced; ids 2, none the corpus's; every reference resolves*; check_cast (the VTT's parser on the layer, the export re-read another way — Maggie's Attributes and Skills from her sub-tables) **84 checks, all match**, **proven by planting four faults** (a changed Skill, a dropped Skill, a 0-rated Skill written, a changed Willpower) → 4 mismatches, exit 1. Browser: *Storyteller characters* 805 (803 + 2), Maggie's stat block drawn; the shelf leads with *Physician, Heal Thyself*; her GM notes carry her record's id (`about`) |
 | M6 | Deploy — push, Pages, the Worker | awaiting the owner |
 
 ## Decided without asking (decision log)
@@ -86,3 +87,4 @@ writing the rest would invent numbers.
 | 2026-09-25 | autonomous, scope | **No separate City tab**: the root page's two player-facing blocks — the *Chronicle Tenets* and *Game Lore Notes* (Comte Cioran's mausoleum) — are on Home; the rest of the setting (the sects, the Opposition) is GM material | There was no gazetteer to publish; a City tab would have been two paragraphs |
 | 2026-09-25 | autonomous, fidelity | **Susanna's `Salubri.pdf` is not linked or copied on the public site** (its name stays as the notes show it); the GM's copy links it | It is a published book's chapter |
 | 2026-09-25 | autonomous, tool | The GM page opens on **Overview · People · Chronicle** (`defaultSlots`) | The notes are what the owner asked to have at hand |
+| 2026-09-25 | autonomous, fidelity | **Health and Willpower are the sums of the printed terms** ("HEALTH: 3 + 3" → Health 6); **0-rated Skills are left out**, as the books leave them out; the page references ("(pg.216)") dropped | The corpus's Storyteller-character shape; nothing added that the page does not print |

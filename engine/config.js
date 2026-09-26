@@ -38,7 +38,7 @@ window.VttConfig = {
   instance: {
     styles: ['campaign/site/campaign.css'],
     stages: {
-      data: [],
+      data: ['campaign/data/index.js'],   // the cast layer (build/build_layer.sh)
       // the chronicle's own tabs, ahead of the books: its pages (built from the Notion export), then the tabs
       site: ['campaign/data/docs.js', 'campaign/site/site.js'],
       gm: [], table: [], play: [], maps: [],
