@@ -124,3 +124,31 @@ h4.pht-group { font-family: var(--font-ui); font-size: 12px; letter-spacing: .16
   .pht-prose { font-size: 17.5px; }
   .pht-people { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 20px; }
 }
+
+/* The Story So Far: one page, the nights in a rail beside it */
+.pht-chronicle { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 26px; align-items: start; }
+.pht-chronicle .site-reader.solo { max-width: 900px; }
+.pht-rail { position: sticky; top: calc(var(--pht-head, 64px) + 18px); max-height: calc(100vh - var(--pht-head, 64px) - 36px); overflow: auto; }
+.pht-rail-h { font-family: var(--font-ui); font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--silver); padding: 0 0 10px 14px; border-bottom: 1px solid var(--edge); margin-bottom: 6px; }
+.pht-rail ol { list-style: none; margin: 0; padding: 0; }
+.pht-rail a { display: block; padding: 8px 10px 8px 12px; border-left: 2px solid var(--edge); text-decoration: none; color: var(--bone-2); transition: color .12s, border-color .12s; }
+.pht-rail a:hover { color: var(--bone); border-left-color: var(--silver-dark); }
+.pht-rail a.on { color: var(--bone); border-left-color: var(--silver); background: linear-gradient(90deg, rgba(174, 182, 191, .10), transparent); }
+.pht-rail-n { display: block; font-family: var(--font-display); font-size: 18px; line-height: 1.2; }
+.pht-rail-s { display: block; font-family: var(--font-ui); font-size: 11.5px; letter-spacing: .04em; color: var(--muted); margin-top: 2px; }
+.pht-rail a.on .pht-rail-s { color: var(--silver); }
+.pht-night { scroll-margin-top: calc(var(--pht-head, 64px) + 14px); }
+.pht-night + .pht-night { margin-top: 34px; padding-top: 26px; border-top: 1px solid var(--rule); }
+.pht-night > h2.chapter-h { margin-top: 0; }
+
+@media (max-width: 900px) {
+  .pht-chronicle { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .pht-rail { top: var(--pht-head, 56px); z-index: 5; max-height: none; overflow-x: auto; overflow-y: hidden; background: var(--night); padding: 8px 0; border-bottom: 1px solid var(--edge); }
+  .pht-rail-h { display: none; }
+  .pht-rail ol { display: flex; gap: 4px; }
+  .pht-rail li { flex: none; }
+  .pht-rail a { border-left: 0; border-bottom: 2px solid transparent; padding: 6px 10px; white-space: nowrap; }
+  .pht-rail a.on { border-bottom-color: var(--silver); background: none; }
+  .pht-rail-n { font-size: 16px; }
+  .pht-night { scroll-margin-top: calc(var(--pht-head, 56px) + 64px); }
+}

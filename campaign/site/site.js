@@ -104,23 +104,61 @@
     ]));
   }
 
-  // ── The Story So Far ──
+  // ── The Story So Far: one page, a rail of the nights ──
+  // #chronicle/<night> opens the page at that night. A click on the rail scrolls there and
+  // rewrites the address without a hashchange (history.replaceState), so the page is not redrawn.
+  const railLabel = (c) => c.title.replace(/^Night of /, '').replace(/, \d{4}$/, '');
+  const sessionOf = (c) => ((c.html.match(/Session:\s*([^<]+)/) || [])[1] || '').trim();
   function renderChronicle(container, path, ctx) {
     const p = page(container);
-    const i = DOCS.chronicle.findIndex((c) => c.slug === path[0]);
-    if (i === -1) {
-      p.appendChild(reader([
-        el('h2', { class: 'chapter-h' }, ['The Story So Far']),
-        el('ol', { class: 'pht-toc' }, DOCS.chronicle.map((c) => el('li', {}, [el('a', { href: ctx.href('chronicle', [c.slug]) }, [c.title])]))),
-      ]));
-      return;
-    }
-    const c = DOCS.chronicle[i], prev = DOCS.chronicle[i - 1], next = DOCS.chronicle[i + 1];
-    const paging = () => el('div', { class: 'pht-paging' }, [
-      prev ? el('a', { href: ctx.href('chronicle', [prev.slug]) }, ['← ' + prev.title]) : el('span'),
-      next ? el('a', { href: ctx.href('chronicle', [next.slug]) }, [next.title + ' →']) : el('span'),
+    const head = document.querySelector('.site-head');
+    // how much of the top the band holds while scrolling: its height where it sticks, none where it scrolls away (phones)
+    const bandH = () => (head && /sticky|fixed/.test(getComputedStyle(head).position) ? head.offsetHeight : 0);
+    p.style.setProperty('--pht-head', bandH() + 'px');
+    const links = {};
+    const rail = el('nav', { class: 'pht-rail', 'aria-label': 'Nights' }, [
+      el('div', { class: 'pht-rail-h' }, ['The Story So Far']),
+      el('ol', {}, DOCS.chronicle.map((c) => el('li', {}, [links[c.slug] = el('a', {
+        href: ctx.href('chronicle', [c.slug]),
+        onclick: (ev) => { ev.preventDefault(); go(c.slug, true); },
+      }, [el('span', { class: 'pht-rail-n' }, [railLabel(c)]), sessionOf(c) ? el('span', { class: 'pht-rail-s' }, [sessionOf(c)]) : null])]))),
     ]);
-    p.appendChild(reader([crumbs(ctx, 'chronicle', 'The Story So Far', c.title), el('h2', { class: 'chapter-h' }, [c.title]), prose(c.html, 'pht-notes'), paging()]));
+    const sections = DOCS.chronicle.map((c) => el('section', { class: 'pht-night', id: 'night-' + c.slug, 'data-slug': c.slug }, [
+      el('h2', { class: 'chapter-h' }, [c.title]), prose(c.html, 'pht-notes'),
+    ]));
+    p.appendChild(el('div', { class: 'pht-chronicle' }, [rail, reader(sections)]));
+
+    function mark(slug) {
+      Object.keys(links).forEach((k) => links[k].classList.toggle('on', k === slug));
+      const a = links[slug];
+      if (a && rail.scrollWidth > rail.clientWidth) a.scrollIntoView({ block: 'nearest', inline: 'center' });
+    }
+    function go(slug, smooth) {
+      const sec = document.getElementById('night-' + slug);
+      if (!sec) return;
+      sec.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+      history.replaceState(null, '', ctx.href('chronicle', [slug]));
+      mark(slug);
+    }
+    // the night being read: the last one whose top has passed under the band
+    const onScroll = () => {
+      if (!document.body.contains(p)) { window.removeEventListener('scroll', onScroll); return; }
+      // on a phone the rail is a bar under the band, and the page reads from below it
+      const bar = getComputedStyle(rail).overflowY === 'hidden';
+      const top = (bar ? rail.getBoundingClientRect().bottom : bandH()) + 40;
+      let cur = sections[0].dataset.slug;
+      sections.forEach((s) => { if (s.getBoundingClientRect().top <= top) cur = s.dataset.slug; });
+      // at the foot of the page the last night (the short Epilogue) cannot reach the top: it is the one being read
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) cur = sections[sections.length - 1].dataset.slug;
+      mark(cur);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    mark(DOCS.chronicle[0].slug);
+    // opened at a night: jump there now, and again once the fonts have settled the page's height
+    if (path[0] && DOCS.chronicle.some((c) => c.slug === path[0])) {
+      setTimeout(() => go(path[0], false), 0);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (document.body.contains(p)) go(path[0], false); });
+    }
   }
 
   // ── The Letters ──
