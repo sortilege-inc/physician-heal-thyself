@@ -2,16 +2,16 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "vtt-vtm5e",
+      "name": "physician",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8738"],
-      "port": 8738
+      "runtimeArgs": ["-m", "http.server", "8748"],
+      "port": 8748
     },
     {
-      "name": "vtt-vtm5e-worker",
+      "name": "physician-worker",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["wrangler", "dev", "--port", "8789"],
-      "port": 8789,
+      "runtimeArgs": ["wrangler", "dev", "--port", "8798"],
+      "port": 8798,
       "cwd": "worker"
     }
   ]

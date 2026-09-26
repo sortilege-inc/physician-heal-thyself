@@ -1,0 +1,57 @@
+/* campaign/site/campaign.css — Physician, Heal Thyself's pages, in the VTT's own tokens
+   (assets/css/vtm5e.css). Written after the VTT's stylesheet, so these win: the same black
+   band, paper and blood, cooled to silver — a blue-black night, silver-grey bone and paper,
+   silver rules — in place of the VTT's warm bone. */
+
+:root {
+  --night: #0c0e11;
+  --night-2: #15181c;
+  --night-3: #262b31;
+  --bone: #e4e7eb;
+  --bone-2: #b3bac2;
+  --paper: #f3f4f6;
+  --paper-2: #e3e6ea;
+  --ink: #15171b;
+  --ink-2: #434951;
+  --muted: #707781;
+  --rule: #cdd2d8;
+  --blood: #8e0c20;
+  --blood-2: #b8142f;
+  --blood-dark: #540714;
+  /* the chronicle's own: a silver for edges and small marks */
+  --silver: #aeb6bf;
+  --silver-2: #d6dbe0;
+  --silver-dark: #5d656e;
+}
+
+/* the band: a silver hairline under the black, and a faint sheen across it */
+.site-head {
+  background: linear-gradient(180deg, var(--night-2) 0%, var(--night) 100%);
+  border-bottom: 1px solid var(--silver-dark);
+  box-shadow: inset 0 -1px 0 rgba(214, 219, 224, .08);
+}
+
+/* The VTT sets some edges in warm plum hex rather than tokens; cool them to the same silver-greys.
+   (#2c2329 / #2a2227 / #221b20 → --edge, #3a2f35 → --edge-2, #4a3d44 → --edge-3, #1b1618 / #1e1a1c → --night-2) */
+:root { --edge: #2a2f35; --edge-2: #39404a; --edge-3: #4c545e; }
+.shelf-book, .mark-card, .roller, .card, .creator-step, .creator-sheet { border-color: var(--edge); }
+.shelf-book { border-left-color: var(--silver); }
+table.records td, .results .hit, .roll-line, .alloc-row, .spec-row, .grant, .adv-row, .adv-list { border-color: var(--edge); }
+.adv-hit { border-bottom-color: var(--night-3); }
+table.records th, input.search, select.scope, input.text, textarea.text, .row-line, .third-party, .creator-tabs, .disc-card, .curse { border-color: var(--edge-2); }
+.third-party.on { border-color: var(--edge-3); }
+.btn.ghost, .verdict-bit, .step-b, .dist-card { border-color: var(--edge-3); }
+.hunger-pip { border-color: var(--edge-3); color: var(--edge-3); }
+aside.guidance, .die { background: var(--night-2); }
+.site-reader .muted { color: var(--muted); }
+.corrections { background: #f7f8fa; }
+
+/* silver where the VTT is bone: titles and the marks' hover */
+.brand-title, .chapter-h {
+  background: linear-gradient(180deg, #f4f6f8 0%, var(--silver) 70%, #8b939c 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.mark-card:hover, .shelf-book:hover { border-color: var(--silver); }
+.mark-card:hover { color: var(--silver-2); }
+/* on the paper the title stays ink */
+.site-reader .chapter-h { background: none; color: var(--ink); }
