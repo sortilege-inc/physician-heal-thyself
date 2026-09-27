@@ -532,7 +532,14 @@
     "id": "pht-0b441c3534e4",
     "title": "Baruch Espinosa",
     "text": "- **Blood Potency:** 3\n- **Clan:** Nosferatu\n- **Faction:** Unaffiliated\n- **Generation:** Ancillae (11th Generation)\n- **Humanity Left:** 5",
-    "about": []
+    "about": [],
+    "sections": [
+     {
+      "title": "The bond Kamal found (from the 8 May 2021 recording)",
+      "text": "[SOURCE 8 May 2021 recording] [NOTE Storyteller only: no character knows this]\n\nThe blood walk showed Susanna bound to an older Tzimisce man, close and recent (Glaurung, as Richart named him from Kamal's description the next night), and a weak, distant bond running the other way: someone bound to her.\n\n> The one that you were bonded to was done surreptitiously by Baruch the first couple days that you guys were there, and it is not Baruch, it's somebody else, but basically he fed you something that established that bond without your knowledge.\n\nEstelle would have known of the other bond, the one bound to Susanna.",
+      "id": "pht-be0f3cae134a"
+     }
+    ]
    }
   ],
   "pc": [
@@ -1375,6 +1382,11 @@
       "id": "pht-5b7b7b0f858a",
       "title": "Loresheet: Golconda",
       "text": "Most vampires claim it’s a mythical state of enlightenment, but some few claim to have reached the fabled state of Golconda or know of others who managed it. Supposedly discovered by an ancient vampire named Saulot, Golconda is a state of perfect equilibrium between Humanity and the Beast.\n\nA vampire walking Golconda’s path can temper their Beast’s outrage, subdue their Hunger, and even stand in the daylight, or so it is said. The gifts accompanying Golconda’s achievement are great, and so many vampires make the pilgrimage. Few succeed on the journey. The route to reaching the state of Golconda has never been accurately recorded. Indeed, Saulot’s followers claim the journey is different for every vampire, dependent on their sins. What Golconda does to a vampire when they reach it is also disputed. Some claim it leads to a state of perfect serenity, while others say it makes a vampire into a cold-blooded shark of a predator, no longer susceptible to mindless rage, but just as hungry for blood. You may be a disciple of Golconda, a follower of Saulot’s words, or a Kindred who wishes to remove the misleading veil of Golconda from other vampires’ eyes. An elusive vampire named the Master of Ravens seeks to quash the myth of Golconda once and for all, and you may serve him in this task.\n\n- Satisfy the Hunger: You do not need to feed as often as other vampires. Your Golconda focus is to suppress your constant Hunger, potentially at the expense of other Traits. Your temperance acts as an inspiration to many other vampires. Once per session, you may lower your Hunger by one (but not below one) without feeding.\n\n- Greet the Sun: You know Golconda’s secrets. You may be incapable of walking the path forever, but for as long as you do, you can brave full daylight without suffering harm. However, the night after you walk in sunlight, you wake in a Hunger frenzy. You can do this once per story.\n\n[https://s3-us-west-2.amazonaws.com/secure.notion-static.com/af9d7a25-fdcb-4667-8640-645fde7e2101/Salubri.pdf](campaign/assets/pages/dd74ade8343e6979.pdf)"
+     },
+     {
+      "title": "The bond Kamal found (from the 8 May 2021 recording)",
+      "text": "[SOURCE 8 May 2021 recording] [NOTE Storyteller only: no character knows this]\n\nThe blood walk showed Susanna bound to an older Tzimisce man, close and recent (Glaurung, as Richart named him from Kamal's description the next night), and a weak, distant bond running the other way: someone bound to her.\n\n> The one that you were bonded to was done surreptitiously by Baruch the first couple days that you guys were there, and it is not Baruch, it's somebody else, but basically he fed you something that established that bond without your knowledge.\n\nEstelle would have known of the other bond, the one bound to Susanna.",
+      "id": "pht-565ee9916685"
      }
     ],
     "about": [

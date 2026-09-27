@@ -232,6 +232,22 @@ def fields(r, skip=('Name', 'Portrait')):
     return out
 
 
+# From the 8 May 2021 recording: the Storyteller's explanation of the blood walk's result, said to
+# Susanna's player out of character. No character learns it (campaign/PLAN.md, 2026-09-27).
+BARUCH_BOND = {
+    'title': 'The bond Kamal found (from the 8 May 2021 recording)',
+    'text': ("[SOURCE 8 May 2021 recording] [NOTE Storyteller only: no character knows this]\n\n"
+             "The blood walk showed Susanna bound to an older Tzimisce man, close and recent (Glaurung, "
+             "as Richart named him from Kamal's description the next night), and a weak, distant bond "
+             "running the other way: someone bound to her.\n\n"
+             "> The one that you were bonded to was done surreptitiously by Baruch the first couple days "
+             "that you guys were there, and it is not Baruch, it's somebody else, but basically he fed "
+             "you something that established that bond without your knowledge.\n\n"
+             "Estelle would have known of the other bond, the one bound to Susanna."),
+}
+GM_ADDITIONS = [('pc', 'Susanna', BARUCH_BOND), ('people', 'Baruch Espinosa', BARUCH_BOND)]
+
+
 def main():
     B.BOOK = B.corpus_shingles()
     overview, people, pcs = [], [], []
@@ -280,6 +296,11 @@ def main():
         pcs.append({'id': sid('pc', name), 'title': name, 'text': secs[0]['text'],
                     'sections': [x for s in secs for x in ([{'id': s['id'], 'title': s['title'], 'text': s['text']}] if s is not secs[0] else []) + s.get('sections', [])],
                     'about': [name]})
+    # Storyteller-only facts from the session recordings, which are not in the Notion export (so the
+    # page gate above does not cover them). Added as one more subsection on the people they concern.
+    for kind, name, sub in GM_ADDITIONS:
+        entry = next(x for x in {'pc': pcs, 'people': people}[kind] if x['title'] == name)
+        entry.setdefault('sections', []).append(dict(sub, id=sid(kind, name, 'addition', sub['title'])))
     pack = {'kind': 'sortilege-vtt-campaign', 'version': 1,
             'gm': {'overview': overview, 'people': people, 'pc': pcs}}
     OUT.parent.mkdir(parents=True, exist_ok=True)
