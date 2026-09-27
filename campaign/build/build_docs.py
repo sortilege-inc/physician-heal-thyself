@@ -336,10 +336,13 @@ def names_check(chapters, notes_text):
         if not c.get('written'):
             continue
         text = re.sub(r'<[^>]+>', ' ', c['html'])
+        text = re.sub(r'["\u201c\u201d]|&quot;', '\n', text)       # a quotation starts a sentence
         for sent in re.split(r'(?<=[.!?"\u201d:])\s+|\n', text):
             for w in re.findall(r"(?<!^)(?<![.!?]\s)\b([A-Z][a-z\u00e0-\u00ff'\u2019]+(?:[- ][A-Z][a-z]+)*)", sent.strip())[0:]:
                 for part in re.split(r"[- ]", w):
-                    part = re.sub(r"['\u2019]s$", '', part)
+                    part = re.sub(r"['\u2019]s?$", '', part)
+                    if re.match(r"I['\u2019]", part):              # I'd, I'm, I'll: the pronoun, not a name
+                        continue
                     if part and part not in export and part not in NAME_OK:
                         bad.setdefault(c['slug'], set()).add(part)
     if bad:
@@ -349,6 +352,13 @@ def names_check(chapters, notes_text):
 # words a chapter may capitalise that are not names from the export (declared, with the reason)
 NAME_OK = {
     'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Monday', 'June',   # the nights' dates
+    # words the session transcripts use and the export does not (the transcripts, 2021-04-03,
+    # 04-17 and 05-08, are the owner's and stay outside the repo; campaign/PLAN.md)
+    'Catholic',                 # 04-17: the councillor's robes, "not Catholic but Catholic adjacent"
+    'Canadian',                 # 04-17, 05-08: "CSIS, which is like the Canadian counterintelligence"
+    'Danish',                   # 05-08: Kamal asks after a Tzimisce "who has a vaguely Danish character"
+    'Final',                    # 04-03, 05-08: the Final Death (the export writes "true death")
+    'Malkavians',               # 05-08: "the Malkavians collectively are welcome" (the export: Malkavian)
 }
 
 

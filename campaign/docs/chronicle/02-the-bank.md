@@ -3,38 +3,88 @@ title: The Bank
 part: Thursday, 10 June 2021
 ---
 
-Susanna woke in a large room she did not know. There was a one-way mirror on one wall, and
-cameras. She lay in the dark at its centre, and around her, in a ring, were bright lights.
+Susanna woke on a cot in a large, sterile room she did not know.
 
-She pushed the hunger down and walked out into the light. She called out. She knocked on the
-door. Nobody came. She went back to the cot in the middle of the room, and then the door opened
-and two people came in: a man who looked like a priest, and a woman in fatigues who looked like a
-field medic.
+Around the cot was darkness. The rest of the room blazed with light, ultraviolet and a great deal
+of it. One wall was a sheet of one-way glass with a door in it. There were cameras up in the
+corners by the ceiling, and speakers.
+
+The last thing she clearly remembered was Estelle. Her sire, whom she had travelled with for a few
+years now, learning her practices, learning Golconda; the two of them had kept apart from Kindred
+society, moving from place to place, and were only just beginning to come into it. One of the
+first people Estelle had wanted her to meet was a Nosferatu in Quebec City she spoke of very
+highly. Baruch. They had been staying with him for a couple of nights, in his guest quarters. Then
+something had happened, and she did not know what, and she had woken up alone here.
+
+She was hungrier than when she had lain down. She pushed it down, the way Estelle had taught her,
+without feeding.
+
+Then she walked into the light. Estelle had taught her that too. She could go into the sun, or
+anything like it, and it would not burn her; the price came the next night, and it was always a
+bad one.
+
+She went to the window, and to the door, and knocked, and called out. Nobody answered. After a
+while she went back to the cot.
+
+About ten minutes after she had settled again, the door opened. A man and a woman came in. The man
+wore robes and something like religious dress, not Catholic, but not far off. The woman wore
+fatigues, like a medic. They brought chairs in with them, and sat down in the light.
 
 ---
 
-The others went to Bar le Sacrilège, all but Calliope.
+The others were going to the Bar le Sacrilège. Faith ran it. It was a place Kindred knew, and it
+kept its cover as a popular night spot.
 
-Fatima was sitting at the bar. Nico's ex. They spoke to the bartender, who told them Faith was
-in, and busy somewhere else.
+Calliope was not with them. She had gone to meet a friend of hers, a gang girl who rode with a
+motorcycle gang.
 
-Richart and Nico each knew some of the club, some of the floors below too, though neither of them
-well. Nico had been seeing things since they left Baruch's. Kamal told them the bodies were
-buried; he had stayed behind the night before, after the rest of them left, to give the dead
-their last rites.
+They woke. Kamal woke hungrier still.
 
-Nico bought a martini and sent it over to Fatima.
+---
 
-The bartender pointed them to the feeding room. "Take the left staircase, two floors down."
+The street level of the club was an ordinary bar, mostly mortal. Faith was not behind it. The man
+running it was Kindred, from the Ministry like her: trim, with a corded build, a small red mohawk
+and sideburns.
 
-The first floor down was some kind of kink dungeon. The second had the air of an old west
-brothel, and a host who came up to them at once. "It looks like you have need of something." He
-explained that their selection was better than average, though the particular needs of the
-Ventrue might take some arranging in advance.
+Fatima was sitting at the bar, near him. Nico's ex. The breakup had been bitter.
 
-Claire knew one of the faces on offer. Jonah, her thin-blood contact from the hospital. There was
-also a young Asian woman with pink hair and glasses who read as Kindred. Everyone else there was
-human.
+The bar was Anarch, plainly. Kamal knew that coming in, and so, in her way, did Claire, and both of
+them knew better than to start anything here they did not want to finish.
+
+Richart and Nico each knew some of the club. Past the bar a long hallway ran by the bathrooms to
+three stairwells down. Nico knew the leftmost: at least two levels below it, one given over to
+the more sexual proclivities, one to feeding, and the lowest of all Kindred only.
+
+Nico had been seeing things since Baruch's: eyes, coming out of the walls, out of the ceilings.
+Kamal had stayed behind at the haven the night before, after the rest of them left, to give the
+dead their last rites, and he had buried them.
+
+Nico bought a martini and sent it over to Fatima. A little peace offering. *No drama right now,
+please.*
+
+Richart opened his senses to the room.
+
+---
+
+The bartender looked at Kamal as if he knew already.
+
+"Do you know where the feeding room is?"
+
+"Head to the back, take a left, two floors down."
+
+They went down past what looked like a dungeon, private rooms and an open space, and down again.
+The second floor had the look of an old western brothel. And the people on offer here were not
+only mortal.
+
+The host came up and looked them over. "Welcome. It looks like you have need of something." He
+told them what he had. "We try to cater to most preferences. Although we find that Ventrue can
+sometimes be disappointed, with their incredibly idiosyncratic tastes. The hosts we have here are
+what we have immediately available, but we can place an order for something that's more to your
+taste, if there's nothing satisfactory."
+
+Two of the hosts were Kindred. One was a small man trying to make up for it with a leather jacket
+and a spiked bracelet. Claire knew him: Jonah, her thin-blood contact from the hospital. The other
+was a young woman with pink hair and glasses, bookish, easy in herself.
 
 ---
 
@@ -42,234 +92,374 @@ The priest-looking man did the talking first.
 
 "We know who your companions were, and those blankbodies have been excised from existence. You
 are condemned, death is the only way out. You have no possibility of being rescued. The only way
-this will go gently for you is to give up your companions."
+this can go gently for you is for you to give up your companions."
 
-"Are you not a blankbody?" Susanna said.
+"Are you not a blankbody?" said Susanna.
 
-The woman spoke up. "Your vitals are different from any we've ever seen; it doesn't appear that
-the infection has fully taken hold. I feel that you're turning into something there is no turning
-back from, and at that point we would have no choice but to detain you indefinitely, or deal with
-the infection."
+The woman spoke up. "Your vitals are different than any that we've seen. It doesn't look as if the
+infection has fully taken hold as yet. But I fear that you're turning into something that there's
+no turning back from, and at that point we would have an obligation to detain or deal with you."
 
-The man in the robe began again. The woman cut him off and steered him out of the room to talk in
-private. She came back alone, and apologised.
+The man in the robe began again. The woman cut him off, and without a word they went outside to
+talk. A few minutes later she came back alone.
 
-"The councillor speaks a little hastily, but your medical records are dubious; a brief
-examination could assure us as to your risks to national security."
+"I'm sorry. I feel that the councillor is jumping to conclusions a little hastily, but your medical
+records are dubious, and a thorough examination would really give us the confidence of whether or
+not you're a risk to national security."
 
-Susanna asked whether she had a choice.
+Did she have a choice?
 
-Asking for her consent, the woman said, was a formality. Strictly speaking, an optional one.
+"As a formality, yes. That is for my superiors to decide."
 
-Susanna asked for time to think about it, and the woman left.
+Susanna said she would think about it.
 
----
-
-In the feeding room, Kamal went over to the Kindred woman first, and then to the host, to ask
-about anything off the menu. Custom orders. Special orders could be placed ahead of time, the host
-said.
-
-Nico chose a woman who had had a few drinks, and the two of them went off to a side room.
-
-When Kamal described what he was after, the host sent him to the VIP lounge: up two flights by
-the centre stairs, then down two. Speak to Jerome.
-
-Richart asked the host what that had been about. The clients' preferences were kept discreet.
-He asked about Faith, and was told she was working, serving the VIP lounge. Richart went after
-Kamal.
+"I'll get back to you." The woman folded up her chair and went out.
 
 ---
 
-The woman came back with an offer. They would drop Susanna where they had found her. In exchange,
-some blood.
+Kamal went over to the woman with pink hair. Everything could be accommodated, she told him, for a
+price. Check with the host. Better yet, speak to Jerome. He was in the VIP lounge. Then come back
+with his answer.
 
-She drew a couple of vials, then walked Susanna through drab, unmarked hallways and out into a
-garage, where a large van was waiting with half a dozen soldiers to escort her. They drove her to
-Baruch's and let her out on the street and drove away without a word.
+The VIP lounge was back up a couple of flights, then down two more by the centre stairs. Kamal
+went.
 
-Her dog came back to her out of the bushes, where it had been hiding.
+Nico chose a woman who had had a few drinks, and took her behind the privacy curtain of one of the
+booths.
 
-Susanna went inside. The door had been battered in and the place turned over, ransacked. The
-haven was empty.
+Richart asked the host what that had been about.
 
----
+"I keep preferences discreet, but special requests sometimes need supervisors' approval."
 
-Claire went up to Jonah and asked him what he was doing there, and whether there was any bagged
-blood. Ask at the bar for a juicebox, he said.
+And Faith?
 
-He was sheepish about it. Supplies might be short. A gang had attacked a blood drive and they
-were dealing with a shortage, and it was causing trouble at the hospital as well. He was on the
-menu tonight to pay off a boon. He owed the Bank.
-
-Claire finished the conversation, went up to the bar for a juicebox, and went down to the VIP
-lounge. Nico followed her once he had fed.
+"She's taking care of things in the VIP lounge. I'll let her know, but it might be faster for you
+to go find her yourself. Just know that she's working, and may not have a ton of time."
 
 ---
 
-"Mr. Giovanni will be the judge of that."
+Half an hour later, perhaps, the woman came back.
 
-The VIP lounge had been a luxurious room once, and it had been rearranged into something like a
-throne room.
+"We can get you dropped back off where you were found. We just need to do a blood draw before you
+go, and get your contact information. Would that be okay?"
 
-Jerome waved Kamal in. "Come in, come in; Mr. Hussein, am I right? Your reputation precedes you;
-you've assisted the sheriff in the nascent court, correct? What can I do for you?"
+Susanna let her blood warm, and came as close to looking alive as she could. The medic tied off her
+arm, drew a vial, bandaged it. "Please follow me."
 
-Kamal told him. A feeding source that was reliable, ongoing and safe, and in return, his services.
+Through the light again, still unhurt. Drab corridors like a government building or a hospital,
+doors with bureaucratic names. A garage. Half a dozen soldiers, fully armed, and a large unmarked
+van.
 
-"A boon for a boon; that can certainly be arranged."
+"Sorry for the enhanced security. We'll drop you off."
 
-Jerome set out the terms. Non-lethal feeding at the graveyard near Kamal's haven, in return for
-Kamal's services on an ongoing basis. No more than twenty-four hours from request to delivery;
-the same night was possible, but not promised. Richart listened and said nothing.
+They drove for about fifteen minutes. When the doors opened one of the soldiers gave her his hand
+down, and she was standing outside the half-hidden entrance to Baruch's haven. Without a word they
+got back in and drove off.
 
-As a first payment, Jerome wanted a message carried to the coming Elysium.
+She heard a yip, and her dog came running up to her out of the bushes, where it had been hiding.
 
-Kamal was taken to a private room for a first feeding, and only sipped.
-
----
-
-Outside, Nico and Claire told Faith about Baruch's haven. She went from distracted to horrified.
-When they told her Baruch was not in torpor but dead, truly dead, the colour went out of her, and
-she asked who had done it. She could not see who would. She could not see who even could, not to
-Baruch. Jerome needed to hear it, she said.
-
-Nico asked her for a stiff drink first, before he faced Jerome, and she went to get one.
-
-Kamal went out to feed and came back soon after. Richart joined them outside, and they talked it
-over.
-
-Faith came back with Nico's drink. "0.1 blood alcohol content."
-
-Claire would not go in to see Jerome.
-
-Nico and Richart went in. Nico bargained first: Fatima banned from the club, in exchange for what
-they knew. Then they told Jerome what they had seen at Baruch's.
-
-Jerome stood up suddenly and began to pace. "When did this happen? This is catastrophic news.
-Baruch knew everything that happened in this city, from all sides. Was this a Sabbat hit?"
-
-They did not know.
-
-He murmured to himself. "Jesus Christ... he had some information he was going to present at the
-Elysium via proxy."
-
-"I need to call in some favors on the Anarch side; if the Camarilla weren't the perpetrators, then
-they will be incentivized to find them, as will we; this risks everyone."
-
-To Nico and Richart: "I'll pay for results. In exchange, if you find a door that needs opening,
-I'll pull some strings to gain you access in your investigation."
-
-Then he dismissed them. "If you'll excuse me."
-
-Outside, the four of them worked out what came next. Richart would try to get a message to his
-sire in the Sabbat, and Nico offered to go with him. Kamal and Claire would go to the sheriff,
-Javier.
+She went in. Down the winding hall, to the real door, and the door was battered in, and the haven
+was ransacked. There was blood, and the signs of a struggle. There were no bodies. The whole place
+was empty.
 
 ---
 
-Richart knew of Sybille, who ran a pack under Milica, and he knew where to find her, or to leave
-her a message.
+Claire went up to Jonah. He was embarrassed to be seen there. Was there any bagged blood?
 
-Glaurung had cursed him, once. Richart had escaped, and got enough protection from the Anarchs to
-stay out of reach of the Sabbat's revenge.
+There was, he said. Ask the host, or go up to the bar and ask for a juicebox. "It'll be fine for you
+right now, but supplies are kind of limited." A gang had attacked a blood drive and taken all of
+it. There was a shortage for now, and it was causing trouble at the hospital. He did not know what
+the deal was.
 
-Sybille had been maybe nineteen when she was turned, and looked fifteen. How old she really was,
+He was here to repay a boon. He owed the Bank. "You can get whatever you need, but the price isn't
+always acceptable."
+
+"I hear that," said Claire.
+
+She went up to the bar for a juicebox, and went down after the others.
+
+---
+
+At the bottom of the first flight there was a cordoned door and two guards. One of them put out a
+hand and stopped Kamal with it flat on his chest.
+
+"Excuse me. Who are you?"
+
+Mr. Giovanni had an audience at present. If Kamal would wait a minute or two.
+
+Richart, Claire and Nico began to catch up. Faith came out of the lounge. The guard looked at Kamal.
+"Jerome is available."
+
+"Mr. Giovanni will be the judge of that. But go ahead."
+
+---
+
+The lounge was a luxurious room whose furniture could be moved into whatever arrangement was
+wanted, and tonight it had been arranged into a throne room. Jerome was very sharply dressed, suave
+and a little menacing with it.
+
+"Come in, come in. Mr. Hussein, am I right? Your reputation precedes you; you've assisted the
+sheriff, the investigator, with the nascent court, is that correct? What can I do for you?"
+
+There were seats. Kamal told him what he needed: somewhere to feed that was discreet, and safe,
+and reliable, and in return, his services.
+
+"A boon for a boon. I like this. Yes, that can certainly be arranged. So I understand the magnitude
+of your request: are you looking for an entirely disposable source, or one that's more recurrent?"
+
+Recurrent.
+
+"Easily done. Do you have a preferred rendezvous point?"
+
+There was a graveyard near Kamal's haven.
+
+Jerome gave him a way to make requests. Ask, and no later than the next night it would be
+arranged; a day's notice and he could guarantee it; the same night, no guarantees. The first could
+be tonight.
+
+"And in exchange, if you don't mind. I know that there is an Elysium coming up in a matter of days,
+and I ask that you relay a message on my behalf. I'll get that to you later this evening." And then:
+"You have quite a wide and varied capacity, I am told, and I will be sure to make use of it."
+
+Richart had followed Kamal in. He said nothing.
+
+Jerome touched something by his chair, and a guard came in. "Please escort Mr. Hussein to one of
+the private rooms. We'll have him attended to."
+
+Kamal only sipped.
+
+---
+
+Outside, Claire and Nico had caught Faith between one thing and the next. She gave them a few
+minutes, distracted, until they told her about Baruch. Then she sobered all at once, and went
+ashen.
+
+"What happened? How do you know?" And: "Do you have any idea who did that?"
+
+They did not.
+
+"This is the first I've heard of it, but that's concerning on multiple levels. I don't know who
+could even do that to Baruch, and much more than that, who would. I mean, I know he plays all
+sides, but he does so with the utmost courtesy. I can't even imagine the Sabbat trying to dispose
+of him." She raised an eyebrow at Nico. "Well, you really need to tell Jerome this. This changes a
+lot of things."
+
+Nico wanted a drink first, something potent.
+
+"I'll be right back." She darted off.
+
+Kamal came out, and Richart after him, and found Claire and Nico there. Faith came back with one
+of the club's signature cocktail glasses and handed it to Nico.
+
+"It's a point one blood alcohol content."
+
+Claire's plan for Jerome was to avoid him. Nico went in, with Richart.
+
+---
+
+Nico named his price before he said anything. Fatima, banned from the club.
+
+"Let's hear your information," said Jerome, "and if it is judicious, we will ban her from the
+establishment."
+
+They told him. He stood up and began to pace, stiffly.
+
+"When did this happen? This is catastrophic news. Baruch knew everything that happens in this city.
+From all sides. We need to find out who did this. You don't have any indication as to who the
+perpetrators were? Was this a Sabbat hit? The bishops, involved?"
+
+They could not say.
+
+"Jesus Christ. What was he doing? He had some information that he was going to present at the
+Elysium through a proxy. I'm going to call in some favors, but I need you to find out whatever you
+can find out about the situation. Before the Elysium. I can make contacts on the unaffiliated and
+the Anarch sides of things, but I don't really have the full ear of the Camarilla. And if they
+weren't the perpetrators, then they will be highly incentivized to find the perpetrators. As are
+we. This risks everyone."
+
+He looked at Nico. "You are a negotiator. I'll pay for results. Let me call in the favors I have
+and see what I'm able to obtain. And what I can offer you is this: should your investigation take
+you into spaces that you cannot otherwise access, send me a message, and I will open those doors
+for you."
+
+He looked past Nico. "If you'll excuse me."
+
+Richart had kept his other sight open the whole time. The VIP suite was warded against ghouls.
+
+---
+
+They split up. Claire and Kamal would take it to the sheriff, Javier. Richart would try to get a
+message to his sire, Milica, who was still with the Sabbat and wanted him dead, and Nico would go
+with him.
+
+---
+
+The Sabbat was not something people left. It was something they were carried out of. Richart had
+been cursed and cast out, and he had got away, and the Anarchs had given him enough of a shield
+since that no pack had thought it worth finishing the job. He knew enough to walk straight into
+Sabbat spaces. Whether he would walk out again was another question.
+
+He no longer had a direct line to Milica. But he knew of Sybille, a heretical Tremere who ran a
+pack under her, and he knew how to leave a message for her, or where she might be found.
+
+Sybille had been perhaps nineteen when she was turned, and looked fifteen. How old she really was,
 nobody could say.
 
-They left the bar before the mortal curfew. In some of these neighbourhoods the Sabbat packs
-enforced the curfew, and enforced it hard.
+The club closed at midnight now, not two, because of the curfew. Since the curfew came in, the
+Sabbat packs had treated anyone out on the streets after midnight as fair game, and the deaths went
+down as more of the pandemic's toll. The Bar le Sacrilège was an Anarch bulwark in a Sabbat
+neighbourhood, a little north-west of the Plains of Abraham, in the old part of the city.
 
-They came to the back entrance of Sybille's ritual space from the alley. There was a ward on the
-door, an alarm. Richart pushed through it.
+These were Richart's old stomping grounds, though it had been a while. He led. Nico followed.
 
-Sybille was surrounded by books, and whiteboards, all in disarray. She turned on them angrily.
-"Roscoe, I told you to stop... who are you?"
+Sybille stayed put more than most, and sent the rest of her pack out to do the work. Richart knew a
+couple of the places she was likely to be. The one they came to had the front of some small
+business, and an alleyway, and at the back a separate entrance to a separate room.
 
-Then: "Oh, Richart; what the hell are you doing here?"
+There was a ward on the door. It would not keep anything in or out. It was an alarm. They went in
+anyway. The door was not locked.
 
-And then: "Thank you, but that won't save you."
+Inside was a makeshift magic circle, books in every stage of disarray, a whiteboard covered in
+inscriptions. A small, red-haired figure turned on them, angry.
 
-And then: "Now you have me intrigued. Whose murder are we talking about?"
+"Roscoe, I told you to stop interrupting me every — oh. Who are you?"
+
+Then: "Oh, Richart. What the hell are you doing here?"
+
+"Thank you, but that won't save you. Not if you don't explain what you're doing here."
+
+They explained.
+
+"Now you have me intrigued. You'll have to bring me up to speed a little bit. Whose murder are we
+talking about?"
 
 "The blessed one," Nico said.
 
-"There was no love lost but Baruch was an asset nonetheless. We try not to throw assets away
-needlessly. Are you accusing us of this?"
+Her body let go of its anger. She was listening now.
 
-Nico had admired Sybille's boots once before. He asked about Milica's.
+"Baruch. Don't get me wrong, there was no love lost there, but he's been an asset. We try not to
+throw those away recklessly. Are you accusing us of this?"
+
+Nico had admired Sybille's boots before. He asked about Milica's.
 
 "Milica has exquisite boots. What do you want of her?"
 
-She agreed to pass the message on. "I can see Jerome using this as a pretext for all sorts of
-trouble." And: "Can you give me the location of the blessed one's haven?"
+They gave her the message.
 
-Afterwards they went to the mausoleum.
+"Well, I'll relay that message. I can see Jerome using this as a pretext for all sorts of
+problems." She did not know where Baruch's haven was. "Can you give me the location of the blessed
+one's haven?"
 
----
+They did not give it to her.
 
-Kamal and Claire got a ride out to Javier's haven in Sainte-Foy.
+"Well, you've been supremely unhelpful, but I will at least do the courtesy of relaying that
+message. Now, I'll do you the courtesy of not setting my pack on you. But you need to get out."
 
-Javier had been aloof in the past and turned down attempts to work with him, but he got along
-well enough with Kamal. He let them in. He had been working through the security for the coming
-Elysium.
-
-They told him what they had found at Baruch's. The Camarilla claimed jurisdiction, Javier
-admitted, but had no real authority there, and Baruch had formally been Anarch. Still, he asked
-them to take him to the scene. He drove.
+They went back to the mausoleum.
 
 ---
 
-On the way in, Kamal saw that someone had disturbed the entrance since he left.
+The Camarilla kept mostly to the south and the south-west of the city, and Kamal and Claire needed a
+ride. It took about fifteen minutes to reach Javier's haven in Sainte-Foy.
 
-They went in carefully, and found Susanna there with her dog, looking around, lost. When she
-turned, Claire caught a glimpse of a third eye in her forehead.
+Kamal and Javier understood each other, as professionals and as clan, to a point. But Javier took
+his work very seriously, and had never really extended his trust. He was aloof. He kept control of
+things himself, and involved others only as far as he had to.
 
-Her clothes were scuffed and torn. Whatever injuries had gone with them had already healed.
+They announced themselves. He let them in.
 
-Javier suggested it, and Kamal and Claire offered to take Susanna back to the coterie's haven.
+"I'm a bit busy right now. I'm preparing for Elysium, making sure all the security protocols are in
+place. What can I do for you?"
 
-Kamal wanted to match her to the blood on the guest-room walls, and asked for a sample. She
-hesitated, and looked into him. His aura told her he was Kindred like her, that he meant her no
-harm, and that he believed he had the authority to ask.
+They told him. He sat back and thought.
 
-Claire unpacked her equipment and drew a vial of Susanna's blood. She handed it to Kamal. He
-tasted it. He dabbed again. Then he drained the vial and went into a hunger frenzy.
+"Strictly speaking, it's a little delicate. He is not one of our own. He falls within our
+aspirational jurisdiction, but our effective capacity to protect and enforce is, as you know,
+limited. But nevertheless, something like this seems to be a threat that is worth apprising
+ourselves of. Can you take me to the scene?"
 
-It was the blood from the guest room, no question. Javier had to hold him back bodily to keep him
-off Susanna.
-
-Claire tried to thicken her own blood, and could not. She gave Kamal her wrist anyway, enough to
-start bringing him down, and then took it back. Kamal lunged for more. Javier stopped him.
-
-Susanna had frenzied herself, though in more controlled circumstances, and knew what she was
-watching.
-
-She offered a little more. Claire drew a second vial and this time tasted it herself instead of
-giving it to Kamal. She felt the frenzy pull at her and held against it, and she was certain:
-Susanna was the third Kindred.
-
-Kamal was mortified by what he had done. He was in awe of Claire.
-
-They questioned Susanna, and learned that she and her sire, Estelle, were to have been introduced
-to the Camarilla by Baruch at the next Elysium.
-
-Javier looked the room over. He ripped a camera out of the wall and crushed it. Then he went over
-the other walls, and found two more.
-
-"I don't know whose these are, but I don't appreciate being watched by parties unknown."
-
-He would go over the scene himself, he said, and asked them to go on ahead and take Susanna with
-them.
-
-Susanna told them how she had been taken and let go. Now she remembered: the soldiers wore CSIS
-patches. She had not been blindfolded, but she could not see out of the van, and she did not know
-the way they had come.
+He had a car. They went together.
 
 ---
 
-Claire and Kamal brought Susanna to the mausoleum, where Richart, Nico and Calliope were waiting.
-Calliope had come back with a freezer box of bagged blood.
+Javier did not know the entrance. As they came up to it, Kamal saw that the door stood ajar, and
+not the way he had left it. They went in carefully.
 
-They made their introductions. It was getting on for dawn.
+Susanna was standing in the ruin of the room she had so lately been a guest in, lost. That was how
+they found her.
 
-As the day's sleep came down on them, something howled out of the earth beneath their feet.
+Half hidden under her bangs, Claire saw a third eye in her forehead. It blinked.
+
+Her clothes were scuffed and torn, as if from a fight. Whatever the damage had been, it had been
+superficial, and it had healed. It was her body language that was distressed.
+
+Javier watched.
+
+The best place for her, they suggested, would be their haven. The sheriff's authority could be
+invoked; whether anyone took any notice of the Camarilla's authority was another matter, but this
+was not a fight many would want.
+
+Kamal wanted to match her to the blood in the guest room, and asked for a sample. Susanna looked
+into him first. His aura was not aggressive, and it was not malicious. It carried the confidence of
+someone who was here on proper authority, his own or somebody else's.
+
+She agreed.
+
+Claire had the equipment. She drew a small vial and gave it to Kamal.
+
+Kamal dabbed a finger and tasted. Dabbed again, and tasted. Then he drank the rest of the vial, and
+began to twitch, and went into a hunger frenzy.
+
+It was the blood from the guest room, beyond doubt. It was, again, the best he had ever tasted, and
+he wanted more of it. Javier caught hold of him and held him back from going at Susanna with his
+bare hands.
+
+A hunger frenzy has to be fed at least a little before it will come down. Claire tried to thicken
+her own blood, and failed without knowing she had, and gave Kamal her wrist. He took what she
+allowed and she pulled it back. Javier's grip made it hers to decide. He began to come down.
+
+Susanna had been there herself. Every time she went into the light, the next night was bad, and
+Estelle nearly always had something ready so that she could get through the frenzy, and every time
+she had felt it was not hers to control.
+
+She offered more. Claire drew another vial, and this time tasted it herself. It was the best blood
+she had ever had too, and unlike anything else. She understood why it had done that to Kamal. She
+held herself back from it, just barely. For science.
+
+Javier let Kamal go. He had come back to his senses, and was mortified.
+
+---
+
+They asked Susanna what she knew. She and Estelle had been with Baruch. Estelle was going to finish
+her training: she had been teaching Susanna everything, and the last step of that teaching would
+have been Susanna destroying her, and that had not happened yet. They were going to start making
+introductions too. The last she had heard, they were to be introduced to the local Camarilla.
+
+Javier stepped away to the far side of the room. He pulled something off the wall, a recording
+device, and crushed it.
+
+"No, these aren't mine. I'm not sure whose they are, but I don't quite like being watched by persons
+unknown."
+
+He went over the rest of the room and found two more. They had no local storage. They had been
+transmitting somewhere, and he wanted to know where. He would take the cameras and the microphones
+back to his haven to find out.
+
+Did they have somewhere secure they could take her? He would deal with the scene. "And then let's
+have you bring her to the Elysium, in two days."
+
+---
+
+At the mausoleum they met Richart and Nico. Calliope had come back with a freezer box of bagged
+blood. They made their introductions and their explanations.
+
+Susanna remembered more, now. The only name she had heard was Councillor Lefebvre. She had known
+some of the patches on the soldiers' fatigues, though not all, and one was CSIS: Canadian
+counter-intelligence. They had not blindfolded her, but she had not been able to see out of the
+van, and the garage she had seen only from inside.
+
+They had all felt something else in the mausoleum for some time. A presence, but latent, never
+doing anything. As the night ended and dawn came near, there was a frightful howl, the sound of
+something waking.
+
+Then the dawn broke, and before they could go and see, the day's sleep took all of them.
