@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Take the owner's Notion export of the chronicle into campaign/source/notion/.
 
-    python3 campaign/source/import_notion.py "<export>/Private & Shared"
+    python3 campaign/source/import_notion.py "../physician-heal-thyself-support/archive/notion-export/2026-09-25"
 
 Every file is copied byte for byte, except:
   - the consent checklists (the page and its folder) — players' personal data, never in the repo;
